@@ -1,0 +1,42 @@
+name: Publish
+
+on:
+    push:
+        tags: ['v*']
+
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    npm:
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        environment: npm
+        steps:
+            - uses: actions/checkout@v6
+            - uses: pnpm/action-setup@v6
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: 24
+                  cache: pnpm
+                  registry-url: https://registry.npmjs.org
+            - run: npm install --global npm@11.5.1
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm lint
+            - run: pnpm test
+            - name: Verify tag matches package version
+              run: |
+                  node --input-type=module --eval 'import pkg from "./package.json" with { type: "json" }; const expected = "v" + pkg.version; if (process.env.GITHUB_REF_NAME !== expected) throw new Error("Tag " + process.env.GITHUB_REF_NAME + " does not match " + expected);'
+            - name: Check whether version is already published
+              id: registry
+              run: |
+                  package_name="$(node --input-type=module --eval 'import pkg from "./package.json" with { type: "json" }; process.stdout.write(pkg.name)')"
+                  package_version="$(node --input-type=module --eval 'import pkg from "./package.json" with { type: "json" }; process.stdout.write(pkg.version)')"
+                  if npm view "${package_name}@${package_version}" version >/dev/null 2>&1; then
+                      echo "exists=true" >> "$GITHUB_OUTPUT"
+                  else
+                      echo "exists=false" >> "$GITHUB_OUTPUT"
+                  fi
+            - if: steps.registry.outputs.exists != 'true'
+              run: npm publish

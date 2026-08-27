@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/openhandlehq/openhandle-typescript/compare/v0.1.0...v0.2.0) (2026-08-27)
+
+
+### Features
+
+* improve agent SDK discoverability ([7be8838](https://github.com/openhandlehq/openhandle-typescript/commit/7be8838e38e249c298f826e0c8aca937335c4985))
+
 ## 0.1.0 (2026-08-26)
 
 

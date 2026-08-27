@@ -80580,6 +80580,14 @@
       "url": "https://api.openhandle.dev"
     }
   ],
+  "x-openhandle-sdks": [
+    {
+      "documentation": "https://openhandle.dev/docs/sdks",
+      "language": "TypeScript",
+      "package": "@openhandle/sdk",
+      "repository": "https://github.com/openhandlehq/openhandle-typescript"
+    }
+  ],
   "x-openhandle-test-data": {
     "catalogUrl": "/v1/test-data",
     "contentHash": "sha256:4fe030da765bd49c35868124200314a8dc40181266a3519751b43677eb5c9d08",

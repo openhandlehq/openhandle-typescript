@@ -7,8 +7,10 @@ export {
     OpenHandleReferenceError,
     ReferenceMismatchError,
 } from './errors.js';
+export type * from './generated/public-types.js';
 export type { components } from './generated/schema.js';
 export type {
+    Camelize,
     FetchOptions,
     Freshness,
     OpenHandleConfig,

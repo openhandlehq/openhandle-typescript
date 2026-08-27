@@ -20,10 +20,12 @@ const manifest = `${generatedHeader()}import type { OperationDefinition } from '
 export const operations = ${JSON.stringify(operations, null, 4)} as const satisfies readonly OperationDefinition[];
 `;
 const resources = generateResources(operations, document);
+const publicTypes = generatePublicTypes(operations, document);
 
 writeGenerated('src/generated/schema.ts', schema);
 writeGenerated('src/generated/operations.ts', manifest);
 writeGenerated('src/generated/resources.ts', resources);
+writeGenerated('src/generated/public-types.ts', publicTypes);
 
 function operationDefinitions(openapi) {
     const result = [];
@@ -80,6 +82,52 @@ ${interfaces.join('\n\n')}
 `;
 }
 
+function generatePublicTypes(definitions, openapi) {
+    const aliases = [];
+    const names = new Set();
+    for (const schemaName of Object.keys(openapi.components?.schemas ?? {}).sort()) {
+        const name = pascalCase(schemaName);
+        addAlias(names, name);
+        aliases.push(
+            `/** Camel-cased ${schemaName} model used by SDK responses. */\nexport type ${name} = Camelize<components['schemas'][${JSON.stringify(schemaName)}]>;`,
+        );
+    }
+    for (const operation of definitions) {
+        const base = operationTypeBase(operation);
+        const path = JSON.stringify(operation.apiPath);
+        const method = JSON.stringify(operation.method);
+        const operationPath = operation.path;
+        if (operation.operation !== 'fetch') {
+            const optionsName = `${base}Options`;
+            addAlias(names, optionsName);
+            aliases.push(`/** Options accepted by ${operationPath}. */\nexport type ${optionsName} = OperationOptions<${path}, ${method}>;`);
+        }
+
+        const resultName = `${base}${operation.paginated ? 'Page' : 'Response'}`;
+        const resultType = operation.paginated ? 'OperationPage' : 'OperationResponse';
+        addAlias(names, resultName);
+        aliases.push(`/** Typed result returned by ${operationPath}. */\nexport type ${resultName} = ${resultType}<${path}, ${method}>;`);
+    }
+    return `${generatedHeader()}import type { Camelize, OperationOptions, OperationPage, OperationResponse } from '../types.js';
+import type { components } from './schema.js';
+
+${aliases.join('\n\n')}
+`;
+}
+
+function operationTypeBase(operation) {
+    const scope = operation.scope.map(segment => pascalCase(segment.name)).join('');
+    const terminal = operation.operation === 'search' ? 'Search' : operation.operation === 'fetch' ? 'Fetch' : '';
+    return `${scope}${terminal}` || pascalCase(operation.operation);
+}
+
+function addAlias(names, name) {
+    if (names.has(name)) {
+        throw new Error(`Generated public type alias ${name} is not unique.`);
+    }
+    names.add(name);
+}
+
 function treeNode(path, scope) {
     return { children: new Map(), operations: new Map(), path, scope };
 }
@@ -91,7 +139,7 @@ function collectInterfaces(node, output, openapi) {
         const childType = `${child.path.map(pascalCase).join('')}Resource`;
         if (child.scope?.parameter) {
             const reference = child.scope.reference === 'profile' ? 'ProfileReference' : 'ResourceReference';
-            members.push(`    readonly ${propertyName(childName)}: (reference: ${reference}) => ${childType};`);
+            members.push(`${selectorDocumentation(child.scope)}\n    readonly ${propertyName(childName)}: (reference: ${reference}) => ${childType};`);
         } else {
             members.push(`    readonly ${propertyName(childName)}: ${childType};`);
         }
@@ -109,11 +157,69 @@ function operationMember(name, operation, openapi) {
     const path = JSON.stringify(operation.apiPath);
     const method = JSON.stringify(operation.method);
     const response = operation.paginated ? `OperationPage<${path}, ${method}>` : `OperationResponse<${path}, ${method}>`;
+    const openapiOperation = openapi.paths[operation.apiPath][operation.method];
+    const documentation = operationDocumentation(operation, openapiOperation);
     if (operation.operation === 'fetch') {
-        return `    readonly fetch: (url: string, options?: FetchOptions) => Promise<${response}>;`;
+        return `${documentation}\n    readonly fetch: (url: string, options?: FetchOptions) => Promise<${response}>;`;
     }
-    const required = operationRequiresOptions(openapi.paths[operation.apiPath][operation.method]);
-    return `    readonly ${propertyName(name)}: (options${required ? '' : '?'}: OperationOptions<${path}, ${method}>) => Promise<${response}>;`;
+    const required = operationRequiresOptions(openapiOperation);
+    return `${documentation}\n    readonly ${propertyName(name)}: (options${required ? '' : '?'}: OperationOptions<${path}, ${method}>) => Promise<${response}>;`;
+}
+
+function selectorDocumentation(scope) {
+    const reference = scope.reference ?? scope.name;
+    const forms =
+        reference === 'profile' ? 'a username shorthand or an explicit ID or URL reference' : 'a supported string shorthand or an explicit ID or URL reference';
+    return jsdoc([`Select the ${reference} resource using ${forms}.`, '', 'Resource selection is synchronous and does not perform a request.']);
+}
+
+function operationDocumentation(operation, openapiOperation) {
+    const lines = [openapiOperation.summary ?? operation.path];
+    if (openapiOperation.description) {
+        lines.push('', openapiOperation.description);
+    }
+    const example = operationExample(operation, openapiOperation);
+    if (example) {
+        lines.push('', '@example', example);
+    }
+    const operationID = openapiOperation['x-openhandle-operation'];
+    if (typeof operationID === 'string') {
+        lines.push('', `@see https://openhandle.dev/docs/api-reference/${operationID.replaceAll('.', '-')}`);
+    }
+    return jsdoc(lines);
+}
+
+function operationExample(operation, openapiOperation) {
+    if (operation.operation === 'fetch') {
+        return `await openhandle.fetch('https://www.instagram.com/openai/', { freshness: '24h' });`;
+    }
+    const example = openapiOperation['x-openhandle-test-data']?.example ?? {};
+    let call = 'await openhandle';
+    for (const scope of operation.scope) {
+        call += `.${scope.name}`;
+        if (scope.parameter) {
+            call += `(${JSON.stringify(example[scope.parameter] ?? `<${scope.parameter}>`)})`;
+        }
+    }
+    call += `.${operation.operation}`;
+
+    const options = [];
+    for (const parameter of openapiOperation.parameters ?? []) {
+        if (parameter.in !== 'query' || (parameter.required !== true && parameter.name !== 'freshness')) {
+            continue;
+        }
+        const value = parameter.example ?? parameter.schema?.default ?? example[parameter.name] ?? `<${parameter.name}>`;
+        options.push(`${camelCase(parameter.name)}: ${JSON.stringify(value)}`);
+    }
+    return `${call}(${options.length > 0 ? `{ ${options.join(', ')} }` : ''});`;
+}
+
+function jsdoc(lines) {
+    return `    /**\n${lines.map(line => `     *${line ? ` ${escapeComment(line)}` : ''}`).join('\n')}\n     */`;
+}
+
+function escapeComment(value) {
+    return String(value).replaceAll('*/', '*\\/');
 }
 
 function operationRequiresOptions(operation) {
@@ -136,6 +242,10 @@ function pascalCase(value) {
 
 function propertyName(value) {
     return /^[A-Za-z_$][A-Za-z0-9_$]*$/.test(value) ? value : JSON.stringify(value);
+}
+
+function camelCase(value) {
+    return value.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 }
 
 function generatedHeader() {

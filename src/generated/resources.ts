@@ -14,18 +14,66 @@ export interface GeneratedClient {
     readonly testData: TestDataResource;
     readonly tiktok: TikTokResource;
     readonly twitter: TwitterResource;
+    /**
+     * Fetch the resource at a social URL
+     *
+     * Parse a supported social URL locally, then return the same typed resource as its canonical Openhandle operation. The underlying data read is metered once and redirects are never followed.
+     *
+     * @example
+     * await openhandle.fetch('https://www.instagram.com/openai/', { freshness: '24h' });
+     */
     readonly fetch: (url: string, options?: FetchOptions) => Promise<OperationResponse<"/v1/urls/fetch", "post">>;
 }
 
 export interface InstagramResource {
+    /**
+     * Select the comment resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly comment: (reference: ResourceReference) => InstagramCommentResource;
+    /**
+     * Select the hashtag resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly hashtag: (reference: ResourceReference) => InstagramHashtagResource;
+    /**
+     * Select the highlight resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly highlight: (reference: ResourceReference) => InstagramHighlightResource;
+    /**
+     * Select the location resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly location: (reference: ResourceReference) => InstagramLocationResource;
+    /**
+     * Select the music resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly music: (reference: ResourceReference) => InstagramMusicResource;
+    /**
+     * Select the post resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly post: (reference: ResourceReference) => InstagramPostResource;
+    /**
+     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly profile: (reference: ProfileReference) => InstagramProfileResource;
     readonly search: InstagramSearchResource;
+    /**
+     * Select the story resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly story: (reference: ResourceReference) => InstagramStoryResource;
 }
 
@@ -34,52 +82,157 @@ export interface InstagramCommentResource {
 }
 
 export interface InstagramCommentLikersResource {
+    /**
+     * List comment likers
+     *
+     * List comment likers from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.comment("910100000001").likers.list({ mediaId: "910100000001", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-comment-likers-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/comments/{identifier}/likers", "get">) => Promise<OperationPage<"/v1/instagram/comments/{identifier}/likers", "get">>;
 }
 
 export interface InstagramHashtagResource {
     readonly posts: InstagramHashtagPostsResource;
     readonly reels: InstagramHashtagReelsResource;
+    /**
+     * Get a hashtag
+     *
+     * Return one public hashtag by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.hashtag("syntheticvolume").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-hashtag-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/hashtags/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/hashtags/{identifier}", "get">>;
 }
 
 export interface InstagramHashtagPostsResource {
+    /**
+     * List hashtag posts
+     *
+     * Return a cursor-paginated collection of public posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.hashtag("syntheticvolume").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-hashtag-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/hashtags/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/instagram/hashtags/{identifier}/posts", "get">>;
 }
 
 export interface InstagramHashtagReelsResource {
+    /**
+     * List hashtag reels
+     *
+     * Return a cursor-paginated collection of Instagram reels for a hashtag. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.hashtag("910100000001").reels.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-hashtag-reels-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/hashtags/{identifier}/reels", "get">) => Promise<OperationPage<"/v1/instagram/hashtags/{identifier}/reels", "get">>;
 }
 
 export interface InstagramHighlightResource {
+    /**
+     * Get a highlight
+     *
+     * Get a highlight from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.highlight("910100000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-highlight-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/highlights/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/highlights/{identifier}", "get">>;
 }
 
 export interface InstagramLocationResource {
     readonly guides: InstagramLocationGuidesResource;
     readonly posts: InstagramLocationPostsResource;
+    /**
+     * Get a location
+     *
+     * Return one public location by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.location("950000000002").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-location-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/locations/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/locations/{identifier}", "get">>;
 }
 
 export interface InstagramLocationGuidesResource {
+    /**
+     * List location guides
+     *
+     * List location guides from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.location("910100000001").guides.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-location-guides-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/locations/{identifier}/guides", "get">) => Promise<OperationPage<"/v1/instagram/locations/{identifier}/guides", "get">>;
 }
 
 export interface InstagramLocationPostsResource {
+    /**
+     * List location posts
+     *
+     * Return a cursor-paginated collection of public posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.location("950000000002").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-location-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/locations/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/instagram/locations/{identifier}/posts", "get">>;
 }
 
 export interface InstagramMusicResource {
     readonly stream: InstagramMusicStreamResource;
+    /**
+     * Get a music
+     *
+     * Return one public music by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.music("950000000003").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-music-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/music/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/music/{identifier}", "get">>;
 }
 
 export interface InstagramMusicStreamResource {
+    /**
+     * List music stream pages
+     *
+     * List music stream pages from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.music("910100000001").stream.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-music-stream-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/music/{identifier}/stream", "get">) => Promise<OperationPage<"/v1/instagram/music/{identifier}/stream", "get">>;
 }
 
 export interface InstagramPostResource {
     readonly clipMetadata: InstagramPostClipMetadataResource;
+    /**
+     * Select the comment resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly comment: (reference: ResourceReference) => InstagramPostCommentResource;
     readonly commentMetadata: InstagramPostCommentMetadataResource;
     readonly commentModeration: InstagramPostCommentModerationResource;
@@ -89,10 +242,30 @@ export interface InstagramPostResource {
     readonly oembed: InstagramPostOEmbedResource;
     readonly taggedUsers: InstagramPostTaggedUsersResource;
     readonly template: InstagramPostTemplateResource;
+    /**
+     * Get a post
+     *
+     * Get a post by a canonical platform identifier. URLs must be converted before calling a data endpoint. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/posts/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}", "get">>;
 }
 
 export interface InstagramPostClipMetadataResource {
+    /**
+     * Get clip metadata
+     *
+     * Get clip metadata from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").clipMetadata.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-clip-metadata-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/clip-metadata", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}/clip-metadata", "get">>;
 }
 
@@ -101,38 +274,128 @@ export interface InstagramPostCommentResource {
 }
 
 export interface InstagramPostCommentRepliesResource {
+    /**
+     * List comment replies
+     *
+     * Return a stable page of replies for one comment. Use find_test_data to discover compatible post and comment IDs. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").comment("910200000001").replies.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-comment-replies-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/comments/{comment_id}/replies", "get">) => Promise<OperationPage<"/v1/instagram/posts/{identifier}/comments/{comment_id}/replies", "get">>;
 }
 
 export interface InstagramPostCommentMetadataResource {
+    /**
+     * Get comment metadata
+     *
+     * Get comment metadata from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").commentMetadata.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-comment-metadata-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/comment-metadata", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}/comment-metadata", "get">>;
 }
 
 export interface InstagramPostCommentModerationResource {
+    /**
+     * Check comment moderation
+     *
+     * Check comment moderation from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").commentModeration.get({ comment: "synthetic comment", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-comment-moderation-get
+     */
     readonly get: (options: OperationOptions<"/v1/instagram/posts/{identifier}/comment-moderation", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}/comment-moderation", "get">>;
 }
 
 export interface InstagramPostCommentsResource {
+    /**
+     * List post comments
+     *
+     * List post comments by a canonical platform identifier. URLs must be converted before calling a data endpoint. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-comments-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/instagram/posts/{identifier}/comments", "get">>;
 }
 
 export interface InstagramPostInsightsResource {
+    /**
+     * Get post insights
+     *
+     * Get post insights from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").insights.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-insights-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/insights", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}/insights", "get">>;
 }
 
 export interface InstagramPostLikersResource {
+    /**
+     * List post likers
+     *
+     * Return public profiles that liked an Instagram post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").likers.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-likers-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/likers", "get">) => Promise<OperationPage<"/v1/instagram/posts/{identifier}/likers", "get">>;
 }
 
 export interface InstagramPostOEmbedResource {
+    /**
+     * Get post oEmbed data
+     *
+     * Get post oEmbed data from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").oembed.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-oembed-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/oembed", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}/oembed", "get">>;
 }
 
 export interface InstagramPostTaggedUsersResource {
+    /**
+     * List tagged users
+     *
+     * Return public profiles tagged in an Instagram post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").taggedUsers.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-tagged-users-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/tagged-users", "get">) => Promise<OperationPage<"/v1/instagram/posts/{identifier}/tagged-users", "get">>;
 }
 
 export interface InstagramPostTemplateResource {
+    /**
+     * Get post template
+     *
+     * Get post template from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.post("910100000001").template.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-post-template-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/posts/{identifier}/template", "get">) => Promise<OperationResponse<"/v1/instagram/posts/{identifier}/template", "get">>;
 }
 
@@ -151,64 +414,234 @@ export interface InstagramProfileResource {
     readonly suggested: InstagramProfileSuggestedResource;
     readonly taggedPosts: InstagramProfileTaggedPostsResource;
     readonly videos: InstagramProfileVideosResource;
+    /**
+     * Get a profile
+     *
+     * Return one public profile. Use @username or a platform ID as the identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/profiles/{identifier}", "get">>;
 }
 
 export interface InstagramProfileAboutResource {
+    /**
+     * Get profile about information
+     *
+     * Get profile about information from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").about.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-about-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/about", "get">) => Promise<OperationResponse<"/v1/instagram/profiles/{identifier}/about", "get">>;
 }
 
 export interface InstagramProfileBusinessRecommendationsResource {
+    /**
+     * List business recommendations
+     *
+     * List business recommendations from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").businessRecommendations.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-business-recommendations-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/business-recommendations", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/business-recommendations", "get">>;
 }
 
 export interface InstagramProfileFollowersResource {
+    /**
+     * List profile followers
+     *
+     * Return a cursor-paginated collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").followers.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-followers-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/followers", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/followers", "get">>;
+    /**
+     * Search profile followers
+     *
+     * Search within a public profile's followers collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").followers.search({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-followers-search
+     */
     readonly search: (options: OperationOptions<"/v1/instagram/profiles/{identifier}/followers/search", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/followers/search", "get">>;
 }
 
 export interface InstagramProfileFollowingResource {
+    /**
+     * List profile following
+     *
+     * Return a cursor-paginated collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").following.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-following-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/following", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/following", "get">>;
+    /**
+     * Search profile following
+     *
+     * Search within a public profile's following collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").following.search({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-following-search
+     */
     readonly search: (options: OperationOptions<"/v1/instagram/profiles/{identifier}/following/search", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/following/search", "get">>;
 }
 
 export interface InstagramProfileHighlightsResource {
+    /**
+     * List profile highlights
+     *
+     * List profile highlights from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").highlights.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-highlights-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/highlights", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/highlights", "get">>;
 }
 
 export interface InstagramProfilePinnedPostsResource {
+    /**
+     * List profile pinned posts
+     *
+     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").pinnedPosts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-pinned-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/pinned-posts", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/pinned-posts", "get">>;
 }
 
 export interface InstagramProfilePostsResource {
+    /**
+     * List profile posts
+     *
+     * Return a stable page of posts for one public profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/posts", "get">>;
 }
 
 export interface InstagramProfileReelsResource {
+    /**
+     * List profile reels
+     *
+     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").reels.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-reels-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/reels", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/reels", "get">>;
 }
 
 export interface InstagramProfileRelatedResource {
+    /**
+     * List profile related
+     *
+     * Return a cursor-paginated collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").related.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-related-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/related", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/related", "get">>;
 }
 
 export interface InstagramProfileRepostsResource {
+    /**
+     * List profile reposts
+     *
+     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").reposts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-reposts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/reposts", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/reposts", "get">>;
 }
 
 export interface InstagramProfileStoriesResource {
+    /**
+     * List profile stories
+     *
+     * List profile stories from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").stories.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-stories-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/stories", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/stories", "get">>;
 }
 
 export interface InstagramProfileSuggestedResource {
+    /**
+     * List profile suggested
+     *
+     * Return the current collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").suggested.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-suggested-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/suggested", "get">) => Promise<OperationResponse<"/v1/instagram/profiles/{identifier}/suggested", "get">>;
 }
 
 export interface InstagramProfileTaggedPostsResource {
+    /**
+     * List profile tagged posts
+     *
+     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").taggedPosts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-tagged-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/tagged-posts", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/tagged-posts", "get">>;
 }
 
 export interface InstagramProfileVideosResource {
+    /**
+     * List profile videos
+     *
+     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.profile("@northstar_forge_test").videos.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-profile-videos-list
+     */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/videos", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/videos", "get">>;
 }
 
@@ -222,141 +655,460 @@ export interface InstagramSearchResource {
 }
 
 export interface InstagramSearchHashtagsResource {
+    /**
+     * Search Instagram hashtags
+     *
+     * Search public Instagram hashtags with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.search.hashtags.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-search-hashtags-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/search/hashtags", "get">) => Promise<OperationPage<"/v1/instagram/search/hashtags", "get">>;
 }
 
 export interface InstagramSearchMusicResource {
+    /**
+     * Search Instagram music
+     *
+     * Search public Instagram music with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.search.music.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-search-music-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/search/music", "get">) => Promise<OperationPage<"/v1/instagram/search/music", "get">>;
 }
 
 export interface InstagramSearchPlacesResource {
+    /**
+     * Search Instagram places
+     *
+     * Search public Instagram places with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.search.places.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-search-places-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/search/places", "get">) => Promise<OperationPage<"/v1/instagram/search/places", "get">>;
 }
 
 export interface InstagramSearchProfilesResource {
+    /**
+     * Search Instagram profiles
+     *
+     * Search public Instagram profiles with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.search.profiles.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-search-profiles-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/search/profiles", "get">) => Promise<OperationPage<"/v1/instagram/search/profiles", "get">>;
 }
 
 export interface InstagramSearchReelsResource {
+    /**
+     * Search Instagram reels
+     *
+     * Search public Instagram reels with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.search.reels.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-search-reels-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/search/reels", "get">) => Promise<OperationPage<"/v1/instagram/search/reels", "get">>;
 }
 
 export interface InstagramSearchTopResource {
+    /**
+     * Search all Instagram results
+     *
+     * Search all Instagram results from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.search.top.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-search-top-list
+     */
     readonly list: (options: OperationOptions<"/v1/instagram/search/top", "get">) => Promise<OperationPage<"/v1/instagram/search/top", "get">>;
 }
 
 export interface InstagramStoryResource {
+    /**
+     * Get a story
+     *
+     * Get a story from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.instagram.story("910100000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/instagram-story-get
+     */
     readonly get: (options?: OperationOptions<"/v1/instagram/stories/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/stories/{identifier}", "get">>;
 }
 
 export interface TestDataResource {
+    /**
+     * Select the testDataEntry resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly entry: (reference: ResourceReference) => TestDataEntryResource;
+    /**
+     * Search the synthetic test-data catalog
+     *
+     * Public, unmetered discovery. Filter by platform, resource, operation, traits, expected status, error code, or text.
+     *
+     * @example
+     * await openhandle.testData.list();
+     */
     readonly list: (options?: OperationOptions<"/v1/test-data", "get">) => Promise<OperationResponse<"/v1/test-data", "get">>;
 }
 
 export interface TestDataEntryResource {
+    /**
+     * Get one synthetic catalog entry
+     *
+     * @example
+     * await openhandle.testData.entry("<id>").get();
+     */
     readonly get: (options?: OperationOptions<"/v1/test-data/{id}", "get">) => Promise<OperationResponse<"/v1/test-data/{id}", "get">>;
 }
 
 export interface TikTokResource {
+    /**
+     * Select the effect resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly effect: (reference: ResourceReference) => TikTokEffectResource;
     readonly effects: TikTokEffectsResource;
+    /**
+     * Select the hashtag resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly hashtag: (reference: ResourceReference) => TikTokHashtagResource;
     readonly live: TikTokLiveResource;
+    /**
+     * Select the location resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly location: (reference: ResourceReference) => TikTokLocationResource;
+    /**
+     * Select the music resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly music: (reference: ResourceReference) => TikTokMusicResource;
+    /**
+     * Select the post resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly post: (reference: ResourceReference) => TikTokPostResource;
+    /**
+     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly profile: (reference: ProfileReference) => TikTokProfileResource;
     readonly search: TikTokSearchResource;
     readonly shop: TikTokShopResource;
+    /**
+     * Select the story resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly story: (reference: ResourceReference) => TikTokStoryResource;
     readonly trending: TikTokTrendingResource;
 }
 
 export interface TikTokEffectResource {
     readonly posts: TikTokEffectPostsResource;
+    /**
+     * Get an effect
+     *
+     * Get an effect from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.effect("920100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-effect-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/effects/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/effects/{identifier}", "get">>;
 }
 
 export interface TikTokEffectPostsResource {
+    /**
+     * List effect posts
+     *
+     * Return a cursor-paginated collection of TikTok posts that use an effect. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.effect("920100000000000001").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-effect-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/effects/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/effects/{identifier}/posts", "get">>;
 }
 
 export interface TikTokEffectsResource {
+    /**
+     * Get effects in a batch
+     *
+     * Get effects in a batch from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.effects.list({ ids: "950000000007", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-effects-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/effects", "get">) => Promise<OperationPage<"/v1/tiktok/effects", "get">>;
 }
 
 export interface TikTokHashtagResource {
     readonly posts: TikTokHashtagPostsResource;
+    /**
+     * Get a hashtag
+     *
+     * Return one public hashtag by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.hashtag("950000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-hashtag-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/hashtags/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/hashtags/{identifier}", "get">>;
 }
 
 export interface TikTokHashtagPostsResource {
+    /**
+     * List hashtag posts
+     *
+     * Return a cursor-paginated collection of public posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.hashtag("950000000001").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-hashtag-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/hashtags/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/hashtags/{identifier}/posts", "get">>;
 }
 
 export interface TikTokLiveResource {
+    /**
+     * Select the event resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly event: (reference: ResourceReference) => TikTokLiveEventResource;
     readonly feed: TikTokLiveFeedResource;
+    /**
+     * Select the room resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly room: (reference: ResourceReference) => TikTokLiveRoomResource;
 }
 
 export interface TikTokLiveEventResource {
+    /**
+     * Get a live event
+     *
+     * Get a live event from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.live.event("920100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-live-event-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/live/events/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/live/events/{identifier}", "get">>;
 }
 
 export interface TikTokLiveFeedResource {
+    /**
+     * List live feed
+     *
+     * List live feed from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.live.feed.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-live-feed-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/live/feed", "get">) => Promise<OperationPage<"/v1/tiktok/live/feed", "get">>;
 }
 
 export interface TikTokLiveRoomResource {
     readonly rankings: TikTokLiveRoomRankingsResource;
     readonly rankingTypes: TikTokLiveRoomRankingTypesResource;
+    /**
+     * Get live room info
+     *
+     * Get live room info from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.live.room("920100000000000001").get({ userId: "920000000001", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-live-info-get
+     */
     readonly get: (options: OperationOptions<"/v1/tiktok/live/rooms/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/live/rooms/{identifier}", "get">>;
 }
 
 export interface TikTokLiveRoomRankingsResource {
+    /**
+     * Get a live ranking
+     *
+     * Get a live ranking from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.live.room("920100000000000001").rankings.list({ userId: "920000000001", rankType: "daily", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-live-ranking-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/live/rooms/{identifier}/rankings", "get">) => Promise<OperationPage<"/v1/tiktok/live/rooms/{identifier}/rankings", "get">>;
 }
 
 export interface TikTokLiveRoomRankingTypesResource {
+    /**
+     * List live ranking types
+     *
+     * List live ranking types from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.live.room("920100000000000001").rankingTypes.list({ userId: "920000000001", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-live-ranking-types-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/live/rooms/{identifier}/ranking-types", "get">) => Promise<OperationPage<"/v1/tiktok/live/rooms/{identifier}/ranking-types", "get">>;
 }
 
 export interface TikTokLocationResource {
     readonly posts: TikTokLocationPostsResource;
+    /**
+     * Get a location
+     *
+     * Return one public location by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.location("950000000002").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-location-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/locations/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/locations/{identifier}", "get">>;
 }
 
 export interface TikTokLocationPostsResource {
+    /**
+     * List location posts
+     *
+     * Return a cursor-paginated collection of public posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.location("950000000002").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-location-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/locations/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/locations/{identifier}/posts", "get">>;
 }
 
 export interface TikTokMusicResource {
     readonly posts: TikTokMusicPostsResource;
+    /**
+     * Get a music
+     *
+     * Return one public music by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.music("950000000003").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-music-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/music/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/music/{identifier}", "get">>;
 }
 
 export interface TikTokMusicPostsResource {
+    /**
+     * List music posts
+     *
+     * Return a cursor-paginated collection of public posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.music("950000000003").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-music-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/music/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/music/{identifier}/posts", "get">>;
 }
 
 export interface TikTokPostResource {
+    /**
+     * Select the comment resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly comment: (reference: ResourceReference) => TikTokPostCommentResource;
     readonly comments: TikTokPostCommentsResource;
+    /**
+     * Get a post
+     *
+     * Get a post by a canonical platform identifier. URLs must be converted before calling a data endpoint. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.post("920100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-post-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/posts/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/posts/{identifier}", "get">>;
 }
 
 export interface TikTokPostCommentResource {
     readonly replies: TikTokPostCommentRepliesResource;
+    /**
+     * Get a comment
+     *
+     * Get a comment from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.post("920100000000000001").comment("920200000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-comment-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/posts/{identifier}/comments/{comment_id}", "get">) => Promise<OperationResponse<"/v1/tiktok/posts/{identifier}/comments/{comment_id}", "get">>;
 }
 
 export interface TikTokPostCommentRepliesResource {
+    /**
+     * List comment replies
+     *
+     * Return a stable page of replies for one comment. Use find_test_data to discover compatible post and comment IDs. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.post("920100000000000001").comment("920200000000000001").replies.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-comment-replies-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/posts/{identifier}/comments/{comment_id}/replies", "get">) => Promise<OperationPage<"/v1/tiktok/posts/{identifier}/comments/{comment_id}/replies", "get">>;
 }
 
 export interface TikTokPostCommentsResource {
+    /**
+     * List post comments
+     *
+     * List post comments by a canonical platform identifier. URLs must be converted before calling a data endpoint. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.post("920100000000000001").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-post-comments-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/tiktok/posts/{identifier}/comments", "get">>;
 }
 
@@ -365,52 +1117,167 @@ export interface TikTokProfileResource {
     readonly following: TikTokProfileFollowingResource;
     readonly likedPosts: TikTokProfileLikedPostsResource;
     readonly music: TikTokProfileMusicResource;
+    /**
+     * Select the playlist resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly playlist: (reference: ResourceReference) => TikTokProfilePlaylistResource;
     readonly playlists: TikTokProfilePlaylistsResource;
     readonly posts: TikTokProfilePostsResource;
     readonly qrCode: TikTokProfileQRCodeResource;
     readonly stories: TikTokProfileStoriesResource;
+    /**
+     * Get a profile
+     *
+     * Return one public profile. Use @username or a platform ID as the identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/profiles/{identifier}", "get">>;
 }
 
 export interface TikTokProfileFollowersResource {
+    /**
+     * List profile followers
+     *
+     * Return a cursor-paginated collection of Tiktok profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").followers.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-followers-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/followers", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/followers", "get">>;
 }
 
 export interface TikTokProfileFollowingResource {
+    /**
+     * List profile following
+     *
+     * Return a cursor-paginated collection of Tiktok profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").following.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-following-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/following", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/following", "get">>;
 }
 
 export interface TikTokProfileLikedPostsResource {
+    /**
+     * List profile liked posts
+     *
+     * Return a cursor-paginated Tiktok profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").likedPosts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-liked-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/liked-posts", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/liked-posts", "get">>;
 }
 
 export interface TikTokProfileMusicResource {
+    /**
+     * List profile music
+     *
+     * Return sounds published by a public TikTok profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").music.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-music-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/music", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/music", "get">>;
 }
 
 export interface TikTokProfilePlaylistResource {
     readonly posts: TikTokProfilePlaylistPostsResource;
+    /**
+     * Get a playlist
+     *
+     * Get a playlist from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").playlist("950000000006").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-playlist-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/playlists/{playlist_id}", "get">) => Promise<OperationResponse<"/v1/tiktok/profiles/{identifier}/playlists/{playlist_id}", "get">>;
 }
 
 export interface TikTokProfilePlaylistPostsResource {
+    /**
+     * List playlist posts
+     *
+     * Return a cursor-paginated collection of posts in a public TikTok profile playlist. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").playlist("950000000006").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-playlist-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/playlists/{playlist_id}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/playlists/{playlist_id}/posts", "get">>;
 }
 
 export interface TikTokProfilePlaylistsResource {
+    /**
+     * List profile playlists
+     *
+     * List profile playlists from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").playlists.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-playlists-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/playlists", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/playlists", "get">>;
 }
 
 export interface TikTokProfilePostsResource {
+    /**
+     * List profile posts
+     *
+     * Return a stable page of posts for one public profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/posts", "get">>;
 }
 
 export interface TikTokProfileQRCodeResource {
+    /**
+     * Get a profile QR code
+     *
+     * Get a profile QR code from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").qrCode.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-qr-code-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/qr-code", "get">) => Promise<OperationResponse<"/v1/tiktok/profiles/{identifier}/qr-code", "get">>;
 }
 
 export interface TikTokProfileStoriesResource {
+    /**
+     * List profile stories
+     *
+     * Return a cursor-paginated Tiktok profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").stories.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-stories-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/stories", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/stories", "get">>;
 }
 
@@ -427,49 +1294,159 @@ export interface TikTokSearchResource {
 }
 
 export interface TikTokSearchCommentSuggestionsResource {
+    /**
+     * Search comment suggestions
+     *
+     * Search comment suggestions from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.commentSuggestions.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-comment-suggestions-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/comment-suggestions", "get">) => Promise<OperationPage<"/v1/tiktok/search/comment-suggestions", "get">>;
 }
 
 export interface TikTokSearchHashtagsResource {
+    /**
+     * Search Tiktok hashtags
+     *
+     * Search public Tiktok hashtags with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.hashtags.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-hashtags-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/hashtags", "get">) => Promise<OperationPage<"/v1/tiktok/search/hashtags", "get">>;
 }
 
 export interface TikTokSearchInsightsResource {
+    /**
+     * Search insights
+     *
+     * Search insights from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.insights.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-insights-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/insights", "get">) => Promise<OperationPage<"/v1/tiktok/search/insights", "get">>;
 }
 
 export interface TikTokSearchLiveResource {
+    /**
+     * Search live streams
+     *
+     * Search live streams from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.live.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-live-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/live", "get">) => Promise<OperationPage<"/v1/tiktok/search/live", "get">>;
 }
 
 export interface TikTokSearchLocationsResource {
+    /**
+     * Search Tiktok locations
+     *
+     * Search public Tiktok locations with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.locations.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-locations-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/locations", "get">) => Promise<OperationPage<"/v1/tiktok/search/locations", "get">>;
 }
 
 export interface TikTokSearchMusicResource {
+    /**
+     * Search Tiktok music
+     *
+     * Search public Tiktok music with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.music.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-music-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/music", "get">) => Promise<OperationPage<"/v1/tiktok/search/music", "get">>;
 }
 
 export interface TikTokSearchPostsResource {
+    /**
+     * Search Tiktok posts
+     *
+     * Search public Tiktok posts with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.posts.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-posts-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/posts", "get">) => Promise<OperationPage<"/v1/tiktok/search/posts", "get">>;
 }
 
 export interface TikTokSearchProfilesResource {
+    /**
+     * Search Tiktok profiles
+     *
+     * Search public Tiktok profiles with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.profiles.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-profiles-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/profiles", "get">) => Promise<OperationPage<"/v1/tiktok/search/profiles", "get">>;
 }
 
 export interface TikTokSearchTopResource {
+    /**
+     * Search all TikTok results
+     *
+     * Search all TikTok results from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.search.top.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-search-top-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/top", "get">) => Promise<OperationPage<"/v1/tiktok/search/top", "get">>;
 }
 
 export interface TikTokShopResource {
     readonly deals: TikTokShopDealsResource;
     readonly home: TikTokShopHomeResource;
+    /**
+     * Select the live resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly live: (reference: ResourceReference) => TikTokShopLiveResource;
+    /**
+     * Select the product resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly product: (reference: ResourceReference) => TikTokShopProductResource;
+    /**
+     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly profile: (reference: ProfileReference) => TikTokShopProfileResource;
     readonly recommendations: TikTokShopRecommendationsResource;
     readonly search: TikTokShopSearchResource;
+    /**
+     * Select the seller resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly seller: (reference: ResourceReference) => TikTokShopSellerResource;
 }
 
@@ -479,14 +1456,44 @@ export interface TikTokShopDealsResource {
 }
 
 export interface TikTokShopDealsFlashSaleResource {
+    /**
+     * List flash-sale products
+     *
+     * List flash-sale products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.deals.flashSale.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-flash-sale-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/deals/flash-sale", "get">) => Promise<OperationPage<"/v1/tiktok/shop/deals/flash-sale", "get">>;
 }
 
 export interface TikTokShopDealsNewUserResource {
+    /**
+     * List new-user deals
+     *
+     * List new-user deals from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.deals.newUser.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-new-user-deals-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/deals/new-user", "get">) => Promise<OperationPage<"/v1/tiktok/shop/deals/new-user", "get">>;
 }
 
 export interface TikTokShopHomeResource {
+    /**
+     * List shop home sections
+     *
+     * List shop home sections from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.home.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-home-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/home", "get">) => Promise<OperationPage<"/v1/tiktok/shop/home", "get">>;
 }
 
@@ -495,15 +1502,45 @@ export interface TikTokShopLiveResource {
 }
 
 export interface TikTokShopLiveProductsResource {
+    /**
+     * List livestream products
+     *
+     * List livestream products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.live("920100000000000001").products.list({ roomId: "950000000009", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-live-products-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/shop/live/{identifier}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/live/{identifier}/products", "get">>;
 }
 
 export interface TikTokShopProductResource {
     readonly reviews: TikTokShopProductReviewsResource;
+    /**
+     * Get a shop product
+     *
+     * Get a shop product from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.product("920100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-product-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/shop/products/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/shop/products/{identifier}", "get">>;
 }
 
 export interface TikTokShopProductReviewsResource {
+    /**
+     * List product reviews
+     *
+     * List product reviews from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.product("920100000000000001").reviews.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-product-reviews-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/products/{identifier}/reviews", "get">) => Promise<OperationPage<"/v1/tiktok/shop/products/{identifier}/reviews", "get">>;
 }
 
@@ -514,34 +1551,109 @@ export interface TikTokShopProfileResource {
 }
 
 export interface TikTokShopProfilePageResource {
+    /**
+     * List seller page products
+     *
+     * List seller page products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.profile("@pixel_orchard_tt_test").page.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-profile-page-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/page", "get">) => Promise<OperationPage<"/v1/tiktok/shop/profiles/{identifier}/page", "get">>;
 }
 
 export interface TikTokShopProfileProductsResource {
+    /**
+     * List profile shop products
+     *
+     * List profile shop products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.profile("@pixel_orchard_tt_test").products.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-profile-products-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/profiles/{identifier}/products", "get">>;
 }
 
 export interface TikTokShopProfileTabsResource {
+    /**
+     * List seller tabs
+     *
+     * List seller tabs from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.profile("@pixel_orchard_tt_test").tabs.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-profile-tabs-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/tabs", "get">) => Promise<OperationPage<"/v1/tiktok/shop/profiles/{identifier}/tabs", "get">>;
 }
 
 export interface TikTokShopRecommendationsResource {
+    /**
+     * List recommended shop products
+     *
+     * List recommended shop products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.recommendations.list({ categoryId: "950000000008", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-recommendations-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/shop/recommendations", "get">) => Promise<OperationPage<"/v1/tiktok/shop/recommendations", "get">>;
 }
 
 export interface TikTokShopSearchResource {
+    /**
+     * Search shop products
+     *
+     * Search shop products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.search.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-search-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/shop/search", "get">) => Promise<OperationPage<"/v1/tiktok/shop/search", "get">>;
 }
 
 export interface TikTokShopSellerResource {
     readonly categories: TikTokShopSellerCategoriesResource;
+    /**
+     * Select the category resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly category: (reference: ResourceReference) => TikTokShopSellerCategoryResource;
     readonly products: TikTokShopSellerProductsResource;
     readonly sortTypes: TikTokShopSellerSortTypesResource;
+    /**
+     * Get a seller
+     *
+     * Get a seller from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.seller("920100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/shop/sellers/{identifier}", "get">>;
 }
 
 export interface TikTokShopSellerCategoriesResource {
+    /**
+     * List seller categories
+     *
+     * List seller categories from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.seller("920100000000000001").categories.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-categories-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/categories", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/categories", "get">>;
 }
 
@@ -550,18 +1662,58 @@ export interface TikTokShopSellerCategoryResource {
 }
 
 export interface TikTokShopSellerCategoryProductsResource {
+    /**
+     * List seller category products
+     *
+     * List seller category products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.seller("920100000000000001").category("950000000008").products.list({ productSourceType: "0", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-category-products-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/categories/{category_id}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/categories/{category_id}/products", "get">>;
 }
 
 export interface TikTokShopSellerProductsResource {
+    /**
+     * List seller products
+     *
+     * List seller products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.seller("920100000000000001").products.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-products-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/products", "get">>;
 }
 
 export interface TikTokShopSellerSortTypesResource {
+    /**
+     * List seller product sort types
+     *
+     * List seller product sort types from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.shop.seller("920100000000000001").sortTypes.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-sort-types-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/sort-types", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/sort-types", "get">>;
 }
 
 export interface TikTokStoryResource {
+    /**
+     * Get a story
+     *
+     * Return one public TikTok story by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.story("920100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-story-get
+     */
     readonly get: (options?: OperationOptions<"/v1/tiktok/stories/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/stories/{identifier}", "get">>;
 }
 
@@ -573,24 +1725,79 @@ export interface TikTokTrendingResource {
 }
 
 export interface TikTokTrendingCategoriesResource {
+    /**
+     * List trending categories
+     *
+     * Return TikTok trending categories. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.trending.categories.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-trending-categories-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/trending/categories", "get">) => Promise<OperationPage<"/v1/tiktok/trending/categories", "get">>;
 }
 
 export interface TikTokTrendingInsightsResource {
+    /**
+     * List trending insights
+     *
+     * List trending insights from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.trending.insights.list({ tab: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-trending-insights-list
+     */
     readonly list: (options: OperationOptions<"/v1/tiktok/trending/insights", "get">) => Promise<OperationPage<"/v1/tiktok/trending/insights", "get">>;
 }
 
 export interface TikTokTrendingMusicResource {
+    /**
+     * List trending music
+     *
+     * Return TikTok's public Top 50 music chart for the configured provider region. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.trending.music.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-trending-music-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/trending/music", "get">) => Promise<OperationResponse<"/v1/tiktok/trending/music", "get">>;
 }
 
 export interface TikTokTrendingPostsResource {
+    /**
+     * List trending posts
+     *
+     * Return TikTok's public recommended feed. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.tiktok.trending.posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/tiktok-trending-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/tiktok/trending/posts", "get">) => Promise<OperationPage<"/v1/tiktok/trending/posts", "get">>;
 }
 
 export interface TwitterResource {
+    /**
+     * Select the list resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly list: (reference: ResourceReference) => TwitterListResource;
+    /**
+     * Select the post resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly post: (reference: ResourceReference) => TwitterPostResource;
+    /**
+     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly profile: (reference: ProfileReference) => TwitterProfileResource;
     readonly search: TwitterSearchResource;
 }
@@ -598,22 +1805,67 @@ export interface TwitterResource {
 export interface TwitterListResource {
     readonly members: TwitterListMembersResource;
     readonly posts: TwitterListPostsResource;
+    /**
+     * Get a Twitter list
+     *
+     * Return one public Twitter list by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.list("950000000005").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-list-get
+     */
     readonly get: (options?: OperationOptions<"/v1/twitter/lists/{identifier}", "get">) => Promise<OperationResponse<"/v1/twitter/lists/{identifier}", "get">>;
 }
 
 export interface TwitterListMembersResource {
+    /**
+     * List Twitter list members
+     *
+     * Return a cursor-paginated collection of Twitter list members. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.list("950000000005").members.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-list-members-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/lists/{identifier}/members", "get">) => Promise<OperationPage<"/v1/twitter/lists/{identifier}/members", "get">>;
 }
 
 export interface TwitterListPostsResource {
+    /**
+     * List Twitter list posts
+     *
+     * Return the cursor-paginated timeline for a Twitter list. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.list("950000000005").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-list-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/lists/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/twitter/lists/{identifier}/posts", "get">>;
 }
 
 export interface TwitterPostResource {
+    /**
+     * Select the comment resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
     readonly comment: (reference: ResourceReference) => TwitterPostCommentResource;
     readonly comments: TwitterPostCommentsResource;
     readonly likers: TwitterPostLikersResource;
     readonly reposters: TwitterPostRepostersResource;
+    /**
+     * Get a post
+     *
+     * Get a post by a canonical platform identifier. URLs must be converted before calling a data endpoint. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.post("940100000000000001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-post-get
+     */
     readonly get: (options?: OperationOptions<"/v1/twitter/posts/{identifier}", "get">) => Promise<OperationResponse<"/v1/twitter/posts/{identifier}", "get">>;
 }
 
@@ -622,18 +1874,58 @@ export interface TwitterPostCommentResource {
 }
 
 export interface TwitterPostCommentRepliesResource {
+    /**
+     * List comment replies
+     *
+     * Return a stable page of replies for one comment. Use find_test_data to discover compatible post and comment IDs. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.post("940100000000000001").comment("940200000000000001").replies.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-comment-replies-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/posts/{identifier}/comments/{comment_id}/replies", "get">) => Promise<OperationPage<"/v1/twitter/posts/{identifier}/comments/{comment_id}/replies", "get">>;
 }
 
 export interface TwitterPostCommentsResource {
+    /**
+     * List post comments
+     *
+     * List post comments by a canonical platform identifier. URLs must be converted before calling a data endpoint. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.post("940100000000000001").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-post-comments-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/twitter/posts/{identifier}/comments", "get">>;
 }
 
 export interface TwitterPostLikersResource {
+    /**
+     * List post likers
+     *
+     * Return public profiles that interacted with a Twitter post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.post("940100000000000001").likers.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-post-likers-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/posts/{identifier}/likers", "get">) => Promise<OperationPage<"/v1/twitter/posts/{identifier}/likers", "get">>;
 }
 
 export interface TwitterPostRepostersResource {
+    /**
+     * List post reposters
+     *
+     * Return public profiles that interacted with a Twitter post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.post("940100000000000001").reposters.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-post-reposters-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/posts/{identifier}/reposters", "get">) => Promise<OperationPage<"/v1/twitter/posts/{identifier}/reposters", "get">>;
 }
 
@@ -644,30 +1936,100 @@ export interface TwitterProfileResource {
     readonly media: TwitterProfileMediaResource;
     readonly posts: TwitterProfilePostsResource;
     readonly replies: TwitterProfileRepliesResource;
+    /**
+     * Get a profile
+     *
+     * Return one public profile. Use @username or a platform ID as the identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-get
+     */
     readonly get: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}", "get">) => Promise<OperationResponse<"/v1/twitter/profiles/{identifier}", "get">>;
 }
 
 export interface TwitterProfileFollowersResource {
+    /**
+     * List profile followers
+     *
+     * Return a cursor-paginated collection of Twitter profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").followers.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-followers-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/followers", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/followers", "get">>;
 }
 
 export interface TwitterProfileFollowingResource {
+    /**
+     * List profile following
+     *
+     * Return a cursor-paginated collection of Twitter profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").following.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-following-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/following", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/following", "get">>;
 }
 
 export interface TwitterProfileListsResource {
+    /**
+     * List profile lists
+     *
+     * Return a cursor-paginated collection of public Twitter lists owned by a profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").lists.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-lists-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/lists", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/lists", "get">>;
 }
 
 export interface TwitterProfileMediaResource {
+    /**
+     * List profile media
+     *
+     * Return a cursor-paginated Twitter profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").media.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-media-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/media", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/media", "get">>;
 }
 
 export interface TwitterProfilePostsResource {
+    /**
+     * List profile posts
+     *
+     * Return a stable page of posts for one public profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-posts-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/posts", "get">>;
 }
 
 export interface TwitterProfileRepliesResource {
+    /**
+     * List profile replies
+     *
+     * Return a cursor-paginated Twitter profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.profile("@copperfield_lab_x_test").replies.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-profile-replies-list
+     */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/replies", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/replies", "get">>;
 }
 
@@ -679,17 +2041,57 @@ export interface TwitterSearchResource {
 }
 
 export interface TwitterSearchMediaResource {
+    /**
+     * Search Twitter media
+     *
+     * Search public Twitter media with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.search.media.list({ q: "synthetic", type: "image", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-search-media-list
+     */
     readonly list: (options: OperationOptions<"/v1/twitter/search/media", "get">) => Promise<OperationPage<"/v1/twitter/search/media", "get">>;
 }
 
 export interface TwitterSearchPostsResource {
+    /**
+     * Search Twitter posts
+     *
+     * Search public Twitter posts with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.search.posts.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-search-posts-list
+     */
     readonly list: (options: OperationOptions<"/v1/twitter/search/posts", "get">) => Promise<OperationPage<"/v1/twitter/search/posts", "get">>;
 }
 
 export interface TwitterSearchSuggestionsResource {
+    /**
+     * Search suggestions
+     *
+     * Search suggestions from public Twitter data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.search.suggestions.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-search-suggestions-list
+     */
     readonly list: (options: OperationOptions<"/v1/twitter/search/suggestions", "get">) => Promise<OperationPage<"/v1/twitter/search/suggestions", "get">>;
 }
 
 export interface TwitterSearchUsersResource {
+    /**
+     * Search Twitter users
+     *
+     * Search public Twitter users with cursor pagination. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.twitter.search.users.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/twitter-search-users-list
+     */
     readonly list: (options: OperationOptions<"/v1/twitter/search/users", "get">) => Promise<OperationPage<"/v1/twitter/search/users", "get">>;
 }

@@ -1,13 +1,40 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
 
 import { operations } from '../dist/generated/operations.js';
+import type { InstagramProfile, InstagramProfilePostsOptions, InstagramProfilePostsPage, InstagramProfileResponse } from '../dist/index.js';
 import { OpenHandle, OpenHandleError, OpenHandleReferenceError, ReferenceMismatchError } from '../dist/index.js';
 
 describe('OpenHandle resource graph', () => {
     it('generates every OpenAPI operation exactly once', () => {
         assert.equal(operations.length, 126);
         assert.equal(new Set(operations.map(operation => operation.path)).size, operations.length);
+    });
+
+    it('publishes JSDoc for every callable resource member and its options', () => {
+        const resources = readFileSync(new URL('../src/generated/resources.ts', import.meta.url), 'utf8');
+        const callableMembers = resources.match(/^\s+readonly .*=>/gm) ?? [];
+        const documentedMembers = resources.match(/\*\/\n\s+readonly .*=>/g) ?? [];
+        assert.equal(documentedMembers.length, callableMembers.length);
+
+        const schema = readFileSync(new URL('../src/generated/schema.ts', import.meta.url), 'utf8');
+        assert.match(schema, /@description Maximum accepted data age\. The default is 24h\./);
+        assert.match(schema, /@description Opaque cursor returned by the previous page\./);
+        assert.match(schema, /@description Public search query\./);
+
+        const publicTypes = readFileSync(new URL('../src/generated/public-types.ts', import.meta.url), 'utf8');
+        assert.match(publicTypes, /export type InstagramProfile =/);
+        assert.match(publicTypes, /export type InstagramProfileResponse =/);
+        assert.match(publicTypes, /export type InstagramProfilePostsOptions =/);
+        assert.match(publicTypes, /export type InstagramProfilePostsPage =/);
+    });
+
+    it('exports named camel-cased models and operation types', () => {
+        const options = { freshness: '24h' } satisfies InstagramProfilePostsOptions;
+        const acceptsNamedTypes = (_profile: InstagramProfile, _response: InstagramProfileResponse, _page: InstagramProfilePostsPage) => undefined;
+        assert.equal(options.freshness, '24h');
+        assert.equal(typeof acceptsNamedTypes, 'function');
     });
 
     it('treats profile strings as usernames and IDs as explicit strings', async () => {

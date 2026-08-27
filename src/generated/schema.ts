@@ -3324,15 +3324,25 @@ export interface operations {
     Instagram_comment_likers_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example 910100000001 */
+                /**
+                 * @description Opaque native media ID associated with the selected resource.
+                 * @example 910100000001
+                 */
                 media_id: string;
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -3535,12 +3545,18 @@ export interface operations {
     instagramHashtagGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example syntheticvolume */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example syntheticvolume
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -3743,15 +3759,25 @@ export interface operations {
     instagramHashtagPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example recent */
+                /**
+                 * @description Result ordering for this operation.
+                 * @example recent
+                 */
                 sort?: "recent" | "top";
             };
             header?: never;
             path: {
-                /** @example syntheticvolume */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example syntheticvolume
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -3954,13 +3980,20 @@ export interface operations {
     instagramHashtagReelsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -4163,12 +4196,18 @@ export interface operations {
     Instagram_highlight_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -4371,12 +4410,18 @@ export interface operations {
     instagramLocationGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000002 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000002
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -4579,13 +4624,20 @@ export interface operations {
     Instagram_location_guides_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -4788,15 +4840,25 @@ export interface operations {
     instagramLocationPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example recent */
+                /**
+                 * @description Result ordering for this operation.
+                 * @example recent
+                 */
                 sort?: "recent" | "top";
             };
             header?: never;
             path: {
-                /** @example 950000000002 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000002
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -4999,12 +5061,18 @@ export interface operations {
     instagramMusicGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000003 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000003
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -5207,13 +5275,20 @@ export interface operations {
     Instagram_music_stream_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -5416,12 +5491,18 @@ export interface operations {
     instagramPostGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -5624,12 +5705,18 @@ export interface operations {
     Instagram_post_clip_metadata_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -5832,12 +5919,18 @@ export interface operations {
     Instagram_post_comment_metadata_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -6040,14 +6133,23 @@ export interface operations {
     Instagram_post_comment_moderation_get: {
         parameters: {
             query: {
-                /** @example synthetic comment */
+                /**
+                 * @description Provider-specific public-data filter for this operation.
+                 * @example synthetic comment
+                 */
                 comment: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -6250,13 +6352,20 @@ export interface operations {
     instagramPostCommentsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -6459,15 +6568,25 @@ export interface operations {
     instagramCommentRepliesList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910200000001 */
+                /**
+                 * @description Opaque native comment ID.
+                 * @example 910200000001
+                 */
                 comment_id: string;
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -6670,12 +6789,18 @@ export interface operations {
     Instagram_post_insights_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -6878,13 +7003,20 @@ export interface operations {
     instagramPostLikersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -7087,12 +7219,18 @@ export interface operations {
     Instagram_post_oembed_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -7295,13 +7433,20 @@ export interface operations {
     instagramPostTaggedUsersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -7504,12 +7649,18 @@ export interface operations {
     Instagram_post_template_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -7712,12 +7863,18 @@ export interface operations {
     instagramProfileGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -7920,12 +8077,18 @@ export interface operations {
     Instagram_profile_about_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -8128,13 +8291,20 @@ export interface operations {
     Instagram_profile_business_recommendations_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -8337,13 +8507,20 @@ export interface operations {
     instagramProfileFollowersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -8546,15 +8723,25 @@ export interface operations {
     instagramProfileFollowersSearch: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -8757,13 +8944,20 @@ export interface operations {
     instagramProfileFollowingList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -8966,15 +9160,25 @@ export interface operations {
     instagramProfileFollowingSearch: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -9177,13 +9381,20 @@ export interface operations {
     Instagram_profile_highlights_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -9386,13 +9597,20 @@ export interface operations {
     instagramProfilePinned_postsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -9595,14 +9813,22 @@ export interface operations {
     instagramProfilePostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
+                /** @description Return posts captured at or after this RFC 3339 timestamp. */
                 since?: string;
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -9805,13 +10031,20 @@ export interface operations {
     instagramProfileReelsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -10014,13 +10247,20 @@ export interface operations {
     instagramProfileRelatedList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -10223,13 +10463,20 @@ export interface operations {
     instagramProfileRepostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -10432,13 +10679,20 @@ export interface operations {
     Instagram_profile_stories_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -10641,12 +10895,18 @@ export interface operations {
     instagramProfileSuggestedList: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -10849,13 +11109,20 @@ export interface operations {
     instagramProfileTagged_postsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -11058,13 +11325,20 @@ export interface operations {
     instagramProfileVideosList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @northstar_forge_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @northstar_forge_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -11267,10 +11541,17 @@ export interface operations {
     instagramSearchHashtags: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -11475,10 +11756,17 @@ export interface operations {
     instagramSearchMusic: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -11683,10 +11971,17 @@ export interface operations {
     instagramSearchPlaces: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -11891,10 +12186,17 @@ export interface operations {
     instagramSearchProfiles: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -12099,10 +12401,17 @@ export interface operations {
     instagramSearchReels: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -12307,10 +12616,17 @@ export interface operations {
     Instagram_search_top_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -12515,12 +12831,18 @@ export interface operations {
     Instagram_story_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 910100000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 910100000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -12723,14 +13045,24 @@ export interface operations {
     listTestData: {
         parameters: {
             query?: {
+                /** @description Provider-specific public-data filter for this operation. */
                 errorCode?: string;
-                /** @example 100 */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 100
+                 */
                 limit?: number;
+                /** @description Provider-specific public-data filter for this operation. */
                 operation?: string;
+                /** @description Provider-specific public-data filter for this operation. */
                 platform?: "instagram" | "tiktok" | "twitter";
+                /** @description Provider-specific public-data filter for this operation. */
                 resource?: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity";
+                /** @description Provider-specific public-data filter for this operation. */
                 search?: string;
+                /** @description Provider-specific public-data filter for this operation. */
                 status?: number;
+                /** @description Provider-specific public-data filter for this operation. */
                 traits?: string;
             };
             header?: never;
@@ -12755,7 +13087,10 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @example instagram.profile.northstar-forge */
+                /**
+                 * @description Provider-specific public-data filter for this operation.
+                 * @example instagram.profile.northstar-forge
+                 */
                 id: string;
             };
             cookie?: never;
@@ -12785,10 +13120,17 @@ export interface operations {
     Tiktok_effects_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example 950000000007 */
+                /**
+                 * @description Comma-separated opaque native IDs.
+                 * @example 950000000007
+                 */
                 ids: string;
             };
             header?: never;
@@ -12993,12 +13335,18 @@ export interface operations {
     Tiktok_effect_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -13201,13 +13549,20 @@ export interface operations {
     tiktokEffectPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -13410,12 +13765,18 @@ export interface operations {
     tiktokHashtagGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -13618,13 +13979,20 @@ export interface operations {
     tiktokHashtagPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -13827,12 +14195,18 @@ export interface operations {
     Tiktok_live_event_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -14035,10 +14409,16 @@ export interface operations {
     Tiktok_live_feed_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
+                /** @description Provider-specific public-data filter for this operation. */
                 draw_room_id?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
+                /** @description Provider-specific public-data filter for this operation. */
                 max_time?: string;
             };
             header?: never;
@@ -14243,14 +14623,23 @@ export interface operations {
     Tiktok_live_info_get: {
         parameters: {
             query: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example 920000000001 */
+                /**
+                 * @description Opaque native user ID required by this provider surface.
+                 * @example 920000000001
+                 */
                 user_id: string;
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -14453,15 +14842,25 @@ export interface operations {
     Tiktok_live_ranking_types_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example 920000000001 */
+                /**
+                 * @description Opaque native user ID required by this provider surface.
+                 * @example 920000000001
+                 */
                 user_id: string;
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -14664,17 +15063,30 @@ export interface operations {
     Tiktok_live_ranking_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example daily */
+                /**
+                 * @description Provider ranking type returned by the ranking-types operation.
+                 * @example daily
+                 */
                 rank_type: string;
-                /** @example 920000000001 */
+                /**
+                 * @description Opaque native user ID required by this provider surface.
+                 * @example 920000000001
+                 */
                 user_id: string;
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -14877,12 +15289,18 @@ export interface operations {
     tiktokLocationGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000002 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000002
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -15085,13 +15503,20 @@ export interface operations {
     tiktokLocationPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000002 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000002
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -15294,12 +15719,18 @@ export interface operations {
     tiktokMusicGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000003 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000003
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -15502,13 +15933,20 @@ export interface operations {
     tiktokMusicPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000003 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000003
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -15711,12 +16149,18 @@ export interface operations {
     tiktokPostGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -15919,13 +16363,20 @@ export interface operations {
     tiktokPostCommentsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -16128,14 +16579,23 @@ export interface operations {
     Tiktok_comment_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920200000000000001 */
+                /**
+                 * @description Opaque native comment ID.
+                 * @example 920200000000000001
+                 */
                 comment_id: string;
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -16338,15 +16798,25 @@ export interface operations {
     tiktokCommentRepliesList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920200000000000001 */
+                /**
+                 * @description Opaque native comment ID.
+                 * @example 920200000000000001
+                 */
                 comment_id: string;
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -16549,12 +17019,18 @@ export interface operations {
     tiktokProfileGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -16757,13 +17233,20 @@ export interface operations {
     tiktokProfileFollowersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -16966,13 +17449,20 @@ export interface operations {
     tiktokProfileFollowingList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -17175,13 +17665,20 @@ export interface operations {
     tiktokProfileLiked_postsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -17384,13 +17881,20 @@ export interface operations {
     tiktokProfileMusicList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -17593,13 +18097,20 @@ export interface operations {
     Tiktok_profile_playlists_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -17802,14 +18313,23 @@ export interface operations {
     Tiktok_profile_playlist_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
-                /** @example 950000000006 */
+                /**
+                 * @description Opaque native playlist ID.
+                 * @example 950000000006
+                 */
                 playlist_id: string;
             };
             cookie?: never;
@@ -18012,15 +18532,25 @@ export interface operations {
     tiktokProfilePlaylistPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
-                /** @example 950000000006 */
+                /**
+                 * @description Opaque native playlist ID.
+                 * @example 950000000006
+                 */
                 playlist_id: string;
             };
             cookie?: never;
@@ -18223,14 +18753,22 @@ export interface operations {
     tiktokProfilePostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
+                /** @description Return posts captured at or after this RFC 3339 timestamp. */
                 since?: string;
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -18433,12 +18971,18 @@ export interface operations {
     Tiktok_profile_qr_code_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -18641,13 +19185,20 @@ export interface operations {
     tiktokProfileStoriesList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -18850,10 +19401,17 @@ export interface operations {
     Tiktok_search_comment_suggestions_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -19058,10 +19616,17 @@ export interface operations {
     tiktokSearchHashtags: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -19266,10 +19831,17 @@ export interface operations {
     Tiktok_search_insights_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -19474,10 +20046,17 @@ export interface operations {
     Tiktok_search_live_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -19682,10 +20261,17 @@ export interface operations {
     tiktokSearchLocations: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -19890,10 +20476,17 @@ export interface operations {
     tiktokSearchMusic: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -20098,10 +20691,17 @@ export interface operations {
     tiktokSearchPosts: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -20306,10 +20906,17 @@ export interface operations {
     tiktokSearchProfiles: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -20514,10 +21121,17 @@ export interface operations {
     Tiktok_search_top_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -20722,8 +21336,12 @@ export interface operations {
     Tiktok_shop_flash_sale_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -20928,8 +21546,12 @@ export interface operations {
     Tiktok_shop_new_user_deals_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -21134,8 +21756,12 @@ export interface operations {
     Tiktok_shop_home_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -21340,15 +21966,25 @@ export interface operations {
     Tiktok_shop_live_products_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example 950000000009 */
+                /**
+                 * @description Opaque native live-room ID.
+                 * @example 950000000009
+                 */
                 room_id: string;
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -21551,12 +22187,18 @@ export interface operations {
     Tiktok_shop_product_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -21759,13 +22401,20 @@ export interface operations {
     Tiktok_shop_product_reviews_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -21968,14 +22617,22 @@ export interface operations {
     Tiktok_shop_profile_page_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
+                /** @description Provider-specific public-data filter for this operation. */
                 tab_id?: string;
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -22178,13 +22835,20 @@ export interface operations {
     Tiktok_shop_profile_products_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -22387,13 +23051,20 @@ export interface operations {
     Tiktok_shop_profile_tabs_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @pixel_orchard_tt_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @pixel_orchard_tt_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -22596,10 +23267,17 @@ export interface operations {
     Tiktok_shop_recommendations_list: {
         parameters: {
             query: {
-                /** @example 950000000008 */
+                /**
+                 * @description Opaque native category ID.
+                 * @example 950000000008
+                 */
                 category_id: string;
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -22804,10 +23482,17 @@ export interface operations {
     Tiktok_shop_search_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -23012,12 +23697,18 @@ export interface operations {
     Tiktok_shop_seller_get: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -23220,13 +23911,20 @@ export interface operations {
     Tiktok_shop_seller_categories_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -23429,17 +24127,30 @@ export interface operations {
     Tiktok_shop_seller_category_products_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example 0 */
+                /**
+                 * @description Provider product-source type returned by the seller surface.
+                 * @example 0
+                 */
                 product_source_type: string;
             };
             header?: never;
             path: {
-                /** @example 950000000008 */
+                /**
+                 * @description Opaque native category ID.
+                 * @example 950000000008
+                 */
                 category_id: string;
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -23642,15 +24353,24 @@ export interface operations {
     Tiktok_shop_seller_products_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
+                /** @description Provider-specific public-data filter for this operation. */
                 sort_field?: string;
+                /** @description Provider-specific public-data filter for this operation. */
                 sort_order?: string;
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -23853,13 +24573,20 @@ export interface operations {
     Tiktok_shop_seller_sort_types_list: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -24062,12 +24789,18 @@ export interface operations {
     tiktokStoryGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 920100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 920100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -24270,8 +25003,12 @@ export interface operations {
     tiktokTrendingCategoriesList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -24476,10 +25213,17 @@ export interface operations {
     Tiktok_trending_insights_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Provider tab identifier for this operation.
+                 * @example synthetic
+                 */
                 tab: string;
             };
             header?: never;
@@ -24684,7 +25428,10 @@ export interface operations {
     tiktokTrendingMusicList: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -24889,8 +25636,12 @@ export interface operations {
     tiktokTrendingPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
@@ -25095,12 +25846,18 @@ export interface operations {
     twitterListGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000005 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000005
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -25303,13 +26060,20 @@ export interface operations {
     twitterListMembersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000005 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000005
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -25512,13 +26276,20 @@ export interface operations {
     twitterListPostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 950000000005 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 950000000005
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -25721,12 +26492,18 @@ export interface operations {
     twitterPostGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 940100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 940100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -25929,13 +26706,20 @@ export interface operations {
     twitterPostCommentsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 940100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 940100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -26138,15 +26922,25 @@ export interface operations {
     twitterCommentRepliesList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 940200000000000001 */
+                /**
+                 * @description Opaque native comment ID.
+                 * @example 940200000000000001
+                 */
                 comment_id: string;
-                /** @example 940100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 940100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -26349,13 +27143,20 @@ export interface operations {
     twitterPostLikersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 940100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 940100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -26558,13 +27359,20 @@ export interface operations {
     twitterPostRepostersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example 940100000000000001 */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example 940100000000000001
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -26767,12 +27575,18 @@ export interface operations {
     twitterProfileGet: {
         parameters: {
             query?: {
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -26975,13 +27789,20 @@ export interface operations {
     twitterProfileFollowersList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -27184,13 +28005,20 @@ export interface operations {
     twitterProfileFollowingList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -27393,13 +28221,20 @@ export interface operations {
     twitterProfileListsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -27602,13 +28437,20 @@ export interface operations {
     twitterProfileMediaList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -27811,14 +28653,22 @@ export interface operations {
     twitterProfilePostsList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
+                /** @description Return posts captured at or after this RFC 3339 timestamp. */
                 since?: string;
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -28021,13 +28871,20 @@ export interface operations {
     twitterProfileRepliesList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
             };
             header?: never;
             path: {
-                /** @example @copperfield_lab_x_test */
+                /**
+                 * @description Public resource reference. Platform IDs are opaque strings.
+                 * @example @copperfield_lab_x_test
+                 */
                 identifier: string;
             };
             cookie?: never;
@@ -28230,12 +29087,22 @@ export interface operations {
     twitterSearchMedia: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
-                /** @example image */
+                /**
+                 * @description Media type filter.
+                 * @example image
+                 */
                 type: "image" | "video";
             };
             header?: never;
@@ -28440,12 +29307,22 @@ export interface operations {
     twitterSearchPosts: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
-                /** @example latest */
+                /**
+                 * @description Result ordering for this operation.
+                 * @example latest
+                 */
                 sort?: "latest" | "top";
             };
             header?: never;
@@ -28650,10 +29527,17 @@ export interface operations {
     Twitter_search_suggestions_list: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;
@@ -28858,10 +29742,17 @@ export interface operations {
     twitterSearchUsers: {
         parameters: {
             query: {
+                /** @description Opaque cursor returned by the previous page. */
                 cursor?: string;
-                /** @example 24h */
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @example synthetic */
+                /**
+                 * @description Public search query.
+                 * @example synthetic
+                 */
                 q: string;
             };
             header?: never;

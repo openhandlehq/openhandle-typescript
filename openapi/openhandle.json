@@ -3646,6 +3646,7 @@
         "operationId": "Instagram_comment_likers_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -3656,6 +3657,7 @@
             }
           },
           {
+            "description": "Opaque native media ID associated with the selected resource.",
             "example": "910100000001",
             "in": "query",
             "name": "media_id",
@@ -3666,6 +3668,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -3682,6 +3685,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -4272,6 +4276,7 @@
         "operationId": "instagramHashtagGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "syntheticvolume",
             "in": "path",
             "name": "identifier",
@@ -4282,6 +4287,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -4871,6 +4877,7 @@
         "operationId": "instagramHashtagPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "syntheticvolume",
             "in": "path",
             "name": "identifier",
@@ -4881,6 +4888,7 @@
             }
           },
           {
+            "description": "Result ordering for this operation.",
             "example": "recent",
             "in": "query",
             "name": "sort",
@@ -4895,6 +4903,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -4911,6 +4920,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -5499,6 +5509,7 @@
         "operationId": "instagramHashtagReelsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -5509,6 +5520,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -5525,6 +5537,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -6112,6 +6125,7 @@
         "operationId": "Instagram_highlight_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -6122,6 +6136,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -6713,6 +6728,7 @@
         "operationId": "instagramLocationGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000002",
             "in": "path",
             "name": "identifier",
@@ -6723,6 +6739,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -7312,6 +7329,7 @@
         "operationId": "Instagram_location_guides_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -7322,6 +7340,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -7338,6 +7357,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -7928,6 +7948,7 @@
         "operationId": "instagramLocationPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000002",
             "in": "path",
             "name": "identifier",
@@ -7938,6 +7959,7 @@
             }
           },
           {
+            "description": "Result ordering for this operation.",
             "example": "recent",
             "in": "query",
             "name": "sort",
@@ -7952,6 +7974,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -7968,6 +7991,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -8556,6 +8580,7 @@
         "operationId": "instagramMusicGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000003",
             "in": "path",
             "name": "identifier",
@@ -8566,6 +8591,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -9155,6 +9181,7 @@
         "operationId": "Instagram_music_stream_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -9165,6 +9192,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -9181,6 +9209,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -9771,6 +9800,7 @@
         "operationId": "instagramPostGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -9781,6 +9811,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -10369,6 +10400,7 @@
         "operationId": "Instagram_post_clip_metadata_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -10379,6 +10411,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -10973,6 +11006,7 @@
         "operationId": "Instagram_post_comment_metadata_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -10983,6 +11017,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -11577,6 +11612,7 @@
         "operationId": "Instagram_post_comment_moderation_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -11587,6 +11623,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "example": "synthetic comment",
             "in": "query",
             "name": "comment",
@@ -11597,6 +11634,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -12191,6 +12229,7 @@
         "operationId": "instagramPostCommentsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -12201,6 +12240,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -12217,6 +12257,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -12804,6 +12845,7 @@
         "operationId": "instagramCommentRepliesList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -12814,6 +12856,7 @@
             }
           },
           {
+            "description": "Opaque native comment ID.",
             "example": "910200000001",
             "in": "path",
             "name": "comment_id",
@@ -12824,6 +12867,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -12840,6 +12884,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -13434,6 +13479,7 @@
         "operationId": "Instagram_post_insights_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -13444,6 +13490,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -14038,6 +14085,7 @@
         "operationId": "instagramPostLikersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -14048,6 +14096,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -14064,6 +14113,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -14651,6 +14701,7 @@
         "operationId": "Instagram_post_oembed_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -14661,6 +14712,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -15255,6 +15307,7 @@
         "operationId": "instagramPostTaggedUsersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -15265,6 +15318,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -15281,6 +15335,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -15868,6 +15923,7 @@
         "operationId": "Instagram_post_template_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -15878,6 +15934,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -16472,6 +16529,7 @@
         "operationId": "instagramProfileGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -16482,6 +16540,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -17070,6 +17129,7 @@
         "operationId": "Instagram_profile_about_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -17080,6 +17140,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -17674,6 +17735,7 @@
         "operationId": "Instagram_profile_business_recommendations_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -17684,6 +17746,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -17700,6 +17763,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -18290,6 +18354,7 @@
         "operationId": "instagramProfileFollowersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -18300,6 +18365,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -18316,6 +18382,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -18903,6 +18970,7 @@
         "operationId": "instagramProfileFollowersSearch",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -18913,6 +18981,7 @@
             }
           },
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -18923,6 +18992,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -18939,6 +19009,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -19527,6 +19598,7 @@
         "operationId": "instagramProfileFollowingList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -19537,6 +19609,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -19553,6 +19626,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -20140,6 +20214,7 @@
         "operationId": "instagramProfileFollowingSearch",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -20150,6 +20225,7 @@
             }
           },
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -20160,6 +20236,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -20176,6 +20253,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -20764,6 +20842,7 @@
         "operationId": "Instagram_profile_highlights_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -20774,6 +20853,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -20790,6 +20870,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -21380,6 +21461,7 @@
         "operationId": "instagramProfilePinned_postsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -21390,6 +21472,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -21406,6 +21489,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -21993,6 +22077,7 @@
         "operationId": "instagramProfilePostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -22003,6 +22088,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -22019,6 +22105,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -22027,6 +22114,7 @@
             }
           },
           {
+            "description": "Return posts captured at or after this RFC 3339 timestamp.",
             "in": "query",
             "name": "since",
             "required": false,
@@ -22615,6 +22703,7 @@
         "operationId": "instagramProfileReelsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -22625,6 +22714,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -22641,6 +22731,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -23228,6 +23319,7 @@
         "operationId": "instagramProfileRelatedList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -23238,6 +23330,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -23254,6 +23347,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -23841,6 +23935,7 @@
         "operationId": "instagramProfileRepostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -23851,6 +23946,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -23867,6 +23963,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -24454,6 +24551,7 @@
         "operationId": "Instagram_profile_stories_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -24464,6 +24562,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -24480,6 +24579,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -25070,6 +25170,7 @@
         "operationId": "instagramProfileSuggestedList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -25080,6 +25181,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -25671,6 +25773,7 @@
         "operationId": "instagramProfileTagged_postsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -25681,6 +25784,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -25697,6 +25801,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -26284,6 +26389,7 @@
         "operationId": "instagramProfileVideosList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@northstar_forge_test",
             "in": "path",
             "name": "identifier",
@@ -26294,6 +26400,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -26310,6 +26417,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -26897,6 +27005,7 @@
         "operationId": "instagramSearchHashtags",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -26907,6 +27016,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -26923,6 +27033,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -27508,6 +27619,7 @@
         "operationId": "instagramSearchMusic",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -27518,6 +27630,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -27534,6 +27647,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -28119,6 +28233,7 @@
         "operationId": "instagramSearchPlaces",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -28129,6 +28244,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -28145,6 +28261,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -28730,6 +28847,7 @@
         "operationId": "instagramSearchProfiles",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -28740,6 +28858,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -28756,6 +28875,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -29341,6 +29461,7 @@
         "operationId": "instagramSearchReels",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -29351,6 +29472,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -29367,6 +29489,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -29952,6 +30075,7 @@
         "operationId": "Instagram_search_top_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -29962,6 +30086,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -29978,6 +30103,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -30565,6 +30691,7 @@
         "operationId": "Instagram_story_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "910100000001",
             "in": "path",
             "name": "identifier",
@@ -30575,6 +30702,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -31166,6 +31294,7 @@
         "operationId": "listTestData",
         "parameters": [
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "platform",
             "required": false,
@@ -31179,6 +31308,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "resource",
             "required": false,
@@ -31198,6 +31328,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "operation",
             "required": false,
@@ -31206,6 +31337,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "traits",
             "required": false,
@@ -31214,6 +31346,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "status",
             "required": false,
@@ -31222,6 +31355,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "errorCode",
             "required": false,
@@ -31230,6 +31364,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "search",
             "required": false,
@@ -31238,6 +31373,7 @@
             }
           },
           {
+            "description": "Maximum number of results to return.",
             "example": "100",
             "in": "query",
             "name": "limit",
@@ -31280,6 +31416,7 @@
         "operationId": "getTestData",
         "parameters": [
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "example": "instagram.profile.northstar-forge",
             "in": "path",
             "name": "id",
@@ -31335,6 +31472,7 @@
         "operationId": "Tiktok_effects_list",
         "parameters": [
           {
+            "description": "Comma-separated opaque native IDs.",
             "example": "950000000007",
             "in": "query",
             "name": "ids",
@@ -31345,6 +31483,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -31361,6 +31500,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -31953,6 +32093,7 @@
         "operationId": "Tiktok_effect_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -31963,6 +32104,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -32562,6 +32704,7 @@
         "operationId": "tiktokEffectPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -32572,6 +32715,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -32588,6 +32732,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -33175,6 +33320,7 @@
         "operationId": "tiktokHashtagGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000001",
             "in": "path",
             "name": "identifier",
@@ -33185,6 +33331,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -33774,6 +33921,7 @@
         "operationId": "tiktokHashtagPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000001",
             "in": "path",
             "name": "identifier",
@@ -33784,6 +33932,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -33800,6 +33949,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -34388,6 +34538,7 @@
         "operationId": "Tiktok_live_event_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -34398,6 +34549,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -35000,6 +35152,7 @@
         "operationId": "Tiktok_live_feed_list",
         "parameters": [
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "draw_room_id",
             "required": false,
@@ -35009,6 +35162,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "max_time",
             "required": false,
@@ -35018,6 +35172,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -35034,6 +35189,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -35633,6 +35789,7 @@
         "operationId": "Tiktok_live_info_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -35643,6 +35800,7 @@
             }
           },
           {
+            "description": "Opaque native user ID required by this provider surface.",
             "example": "920000000001",
             "in": "query",
             "name": "user_id",
@@ -35653,6 +35811,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -36255,6 +36414,7 @@
         "operationId": "Tiktok_live_ranking_types_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -36265,6 +36425,7 @@
             }
           },
           {
+            "description": "Opaque native user ID required by this provider surface.",
             "example": "920000000001",
             "in": "query",
             "name": "user_id",
@@ -36275,6 +36436,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -36291,6 +36453,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -36892,6 +37055,7 @@
         "operationId": "Tiktok_live_ranking_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -36902,6 +37066,7 @@
             }
           },
           {
+            "description": "Opaque native user ID required by this provider surface.",
             "example": "920000000001",
             "in": "query",
             "name": "user_id",
@@ -36912,6 +37077,7 @@
             }
           },
           {
+            "description": "Provider ranking type returned by the ranking-types operation.",
             "example": "daily",
             "in": "query",
             "name": "rank_type",
@@ -36922,6 +37088,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -36938,6 +37105,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -37539,6 +37707,7 @@
         "operationId": "tiktokLocationGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000002",
             "in": "path",
             "name": "identifier",
@@ -37549,6 +37718,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -38138,6 +38308,7 @@
         "operationId": "tiktokLocationPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000002",
             "in": "path",
             "name": "identifier",
@@ -38148,6 +38319,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -38164,6 +38336,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -38752,6 +38925,7 @@
         "operationId": "tiktokMusicGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000003",
             "in": "path",
             "name": "identifier",
@@ -38762,6 +38936,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -39351,6 +39526,7 @@
         "operationId": "tiktokMusicPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000003",
             "in": "path",
             "name": "identifier",
@@ -39361,6 +39537,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -39377,6 +39554,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -39965,6 +40143,7 @@
         "operationId": "tiktokPostGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -39975,6 +40154,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -40563,6 +40743,7 @@
         "operationId": "tiktokPostCommentsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -40573,6 +40754,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -40589,6 +40771,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -41176,6 +41359,7 @@
         "operationId": "Tiktok_comment_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -41186,6 +41370,7 @@
             }
           },
           {
+            "description": "Opaque native comment ID.",
             "example": "920200000000000001",
             "in": "path",
             "name": "comment_id",
@@ -41196,6 +41381,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -41800,6 +41986,7 @@
         "operationId": "tiktokCommentRepliesList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -41810,6 +41997,7 @@
             }
           },
           {
+            "description": "Opaque native comment ID.",
             "example": "920200000000000001",
             "in": "path",
             "name": "comment_id",
@@ -41820,6 +42008,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -41836,6 +42025,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -42430,6 +42620,7 @@
         "operationId": "tiktokProfileGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -42440,6 +42631,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -43028,6 +43220,7 @@
         "operationId": "tiktokProfileFollowersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -43038,6 +43231,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -43054,6 +43248,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -43641,6 +43836,7 @@
         "operationId": "tiktokProfileFollowingList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -43651,6 +43847,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -43667,6 +43864,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -44254,6 +44452,7 @@
         "operationId": "tiktokProfileLiked_postsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -44264,6 +44463,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -44280,6 +44480,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -44867,6 +45068,7 @@
         "operationId": "tiktokProfileMusicList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -44877,6 +45079,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -44893,6 +45096,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -45481,6 +45685,7 @@
         "operationId": "Tiktok_profile_playlists_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -45491,6 +45696,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -45507,6 +45713,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -46105,6 +46312,7 @@
         "operationId": "Tiktok_profile_playlist_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -46115,6 +46323,7 @@
             }
           },
           {
+            "description": "Opaque native playlist ID.",
             "example": "950000000006",
             "in": "path",
             "name": "playlist_id",
@@ -46125,6 +46334,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -46729,6 +46939,7 @@
         "operationId": "tiktokProfilePlaylistPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -46739,6 +46950,7 @@
             }
           },
           {
+            "description": "Opaque native playlist ID.",
             "example": "950000000006",
             "in": "path",
             "name": "playlist_id",
@@ -46749,6 +46961,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -46765,6 +46978,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -47358,6 +47572,7 @@
         "operationId": "tiktokProfilePostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -47368,6 +47583,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -47384,6 +47600,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -47392,6 +47609,7 @@
             }
           },
           {
+            "description": "Return posts captured at or after this RFC 3339 timestamp.",
             "in": "query",
             "name": "since",
             "required": false,
@@ -47980,6 +48198,7 @@
         "operationId": "Tiktok_profile_qr_code_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -47990,6 +48209,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -48592,6 +48812,7 @@
         "operationId": "tiktokProfileStoriesList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -48602,6 +48823,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -48618,6 +48840,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -49205,6 +49428,7 @@
         "operationId": "Tiktok_search_comment_suggestions_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -49215,6 +49439,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -49231,6 +49456,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -49826,6 +50052,7 @@
         "operationId": "tiktokSearchHashtags",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -49836,6 +50063,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -49852,6 +50080,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -50437,6 +50666,7 @@
         "operationId": "Tiktok_search_insights_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -50447,6 +50677,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -50463,6 +50694,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -51058,6 +51290,7 @@
         "operationId": "Tiktok_search_live_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -51068,6 +51301,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -51084,6 +51318,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -51679,6 +51914,7 @@
         "operationId": "tiktokSearchLocations",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -51689,6 +51925,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -51705,6 +51942,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -52290,6 +52528,7 @@
         "operationId": "tiktokSearchMusic",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -52300,6 +52539,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -52316,6 +52556,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -52901,6 +53142,7 @@
         "operationId": "tiktokSearchPosts",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -52911,6 +53153,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -52927,6 +53170,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -53512,6 +53756,7 @@
         "operationId": "tiktokSearchProfiles",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -53522,6 +53767,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -53538,6 +53784,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -54123,6 +54370,7 @@
         "operationId": "Tiktok_search_top_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -54133,6 +54381,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -54149,6 +54398,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -54744,6 +54994,7 @@
         "operationId": "Tiktok_shop_flash_sale_list",
         "parameters": [
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -54760,6 +55011,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -55362,6 +55614,7 @@
         "operationId": "Tiktok_shop_new_user_deals_list",
         "parameters": [
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -55378,6 +55631,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -55980,6 +56234,7 @@
         "operationId": "Tiktok_shop_home_list",
         "parameters": [
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -55996,6 +56251,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -56595,6 +56851,7 @@
         "operationId": "Tiktok_shop_live_products_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -56605,6 +56862,7 @@
             }
           },
           {
+            "description": "Opaque native live-room ID.",
             "example": "950000000009",
             "in": "query",
             "name": "room_id",
@@ -56615,6 +56873,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -56631,6 +56890,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -57232,6 +57492,7 @@
         "operationId": "Tiktok_shop_product_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -57242,6 +57503,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -57844,6 +58106,7 @@
         "operationId": "Tiktok_shop_product_reviews_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -57854,6 +58117,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -57870,6 +58134,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -58471,6 +58736,7 @@
         "operationId": "Tiktok_shop_profile_page_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -58481,6 +58747,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "tab_id",
             "required": false,
@@ -58490,6 +58757,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -58506,6 +58774,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -59107,6 +59376,7 @@
         "operationId": "Tiktok_shop_profile_products_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -59117,6 +59387,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -59133,6 +59404,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -59734,6 +60006,7 @@
         "operationId": "Tiktok_shop_profile_tabs_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@pixel_orchard_tt_test",
             "in": "path",
             "name": "identifier",
@@ -59744,6 +60017,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -59760,6 +60034,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -60361,6 +60636,7 @@
         "operationId": "Tiktok_shop_recommendations_list",
         "parameters": [
           {
+            "description": "Opaque native category ID.",
             "example": "950000000008",
             "in": "query",
             "name": "category_id",
@@ -60371,6 +60647,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -60387,6 +60664,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -60982,6 +61260,7 @@
         "operationId": "Tiktok_shop_search_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -60992,6 +61271,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -61008,6 +61288,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -61603,6 +61884,7 @@
         "operationId": "Tiktok_shop_seller_get",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -61613,6 +61895,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -62215,6 +62498,7 @@
         "operationId": "Tiktok_shop_seller_categories_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -62225,6 +62509,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -62241,6 +62526,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -62842,6 +63128,7 @@
         "operationId": "Tiktok_shop_seller_category_products_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -62852,6 +63139,7 @@
             }
           },
           {
+            "description": "Opaque native category ID.",
             "example": "950000000008",
             "in": "path",
             "name": "category_id",
@@ -62862,6 +63150,7 @@
             }
           },
           {
+            "description": "Provider product-source type returned by the seller surface.",
             "example": "0",
             "in": "query",
             "name": "product_source_type",
@@ -62872,6 +63161,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -62888,6 +63178,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -63494,6 +63785,7 @@
         "operationId": "Tiktok_shop_seller_products_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -63504,6 +63796,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "sort_field",
             "required": false,
@@ -63513,6 +63806,7 @@
             }
           },
           {
+            "description": "Provider-specific public-data filter for this operation.",
             "in": "query",
             "name": "sort_order",
             "required": false,
@@ -63522,6 +63816,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -63538,6 +63833,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -64139,6 +64435,7 @@
         "operationId": "Tiktok_shop_seller_sort_types_list",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -64149,6 +64446,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -64165,6 +64463,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -64766,6 +65065,7 @@
         "operationId": "tiktokStoryGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "920100000000000001",
             "in": "path",
             "name": "identifier",
@@ -64776,6 +65076,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -65364,6 +65665,7 @@
         "operationId": "tiktokTrendingCategoriesList",
         "parameters": [
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -65380,6 +65682,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -65966,6 +66269,7 @@
         "operationId": "Tiktok_trending_insights_list",
         "parameters": [
           {
+            "description": "Provider tab identifier for this operation.",
             "example": "synthetic",
             "in": "query",
             "name": "tab",
@@ -65976,6 +66280,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -65992,6 +66297,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -66587,6 +66893,7 @@
         "operationId": "tiktokTrendingMusicList",
         "parameters": [
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -67178,6 +67485,7 @@
         "operationId": "tiktokTrendingPostsList",
         "parameters": [
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -67194,6 +67502,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -67783,6 +68092,7 @@
         "operationId": "twitterListGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000005",
             "in": "path",
             "name": "identifier",
@@ -67793,6 +68103,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -68381,6 +68692,7 @@
         "operationId": "twitterListMembersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000005",
             "in": "path",
             "name": "identifier",
@@ -68391,6 +68703,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -68407,6 +68720,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -68994,6 +69308,7 @@
         "operationId": "twitterListPostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "950000000005",
             "in": "path",
             "name": "identifier",
@@ -69004,6 +69319,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -69020,6 +69336,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -69607,6 +69924,7 @@
         "operationId": "twitterPostGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "940100000000000001",
             "in": "path",
             "name": "identifier",
@@ -69617,6 +69935,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -70205,6 +70524,7 @@
         "operationId": "twitterPostCommentsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "940100000000000001",
             "in": "path",
             "name": "identifier",
@@ -70215,6 +70535,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -70231,6 +70552,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -70818,6 +71140,7 @@
         "operationId": "twitterCommentRepliesList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "940100000000000001",
             "in": "path",
             "name": "identifier",
@@ -70828,6 +71151,7 @@
             }
           },
           {
+            "description": "Opaque native comment ID.",
             "example": "940200000000000001",
             "in": "path",
             "name": "comment_id",
@@ -70838,6 +71162,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -70854,6 +71179,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -71448,6 +71774,7 @@
         "operationId": "twitterPostLikersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "940100000000000001",
             "in": "path",
             "name": "identifier",
@@ -71458,6 +71785,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -71474,6 +71802,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -72061,6 +72390,7 @@
         "operationId": "twitterPostRepostersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "940100000000000001",
             "in": "path",
             "name": "identifier",
@@ -72071,6 +72401,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -72087,6 +72418,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -72674,6 +73006,7 @@
         "operationId": "twitterProfileGet",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -72684,6 +73017,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -73272,6 +73606,7 @@
         "operationId": "twitterProfileFollowersList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -73282,6 +73617,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -73298,6 +73634,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -73885,6 +74222,7 @@
         "operationId": "twitterProfileFollowingList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -73895,6 +74233,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -73911,6 +74250,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -74498,6 +74838,7 @@
         "operationId": "twitterProfileListsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -74508,6 +74849,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -74524,6 +74866,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -75111,6 +75454,7 @@
         "operationId": "twitterProfileMediaList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -75121,6 +75465,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -75137,6 +75482,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -75724,6 +76070,7 @@
         "operationId": "twitterProfilePostsList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -75734,6 +76081,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -75750,6 +76098,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -75758,6 +76107,7 @@
             }
           },
           {
+            "description": "Return posts captured at or after this RFC 3339 timestamp.",
             "in": "query",
             "name": "since",
             "required": false,
@@ -76346,6 +76696,7 @@
         "operationId": "twitterProfileRepliesList",
         "parameters": [
           {
+            "description": "Public resource reference. Platform IDs are opaque strings.",
             "example": "@copperfield_lab_x_test",
             "in": "path",
             "name": "identifier",
@@ -76356,6 +76707,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -76372,6 +76724,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -76959,6 +77312,7 @@
         "operationId": "twitterSearchMedia",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -76969,6 +77323,7 @@
             }
           },
           {
+            "description": "Media type filter.",
             "example": "image",
             "in": "query",
             "name": "type",
@@ -76982,6 +77337,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -76998,6 +77354,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -77583,6 +77940,7 @@
         "operationId": "twitterSearchPosts",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -77593,6 +77951,7 @@
             }
           },
           {
+            "description": "Result ordering for this operation.",
             "example": "latest",
             "in": "query",
             "name": "sort",
@@ -77607,6 +77966,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -77623,6 +77983,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -78208,6 +78569,7 @@
         "operationId": "Twitter_search_suggestions_list",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -78218,6 +78580,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -78234,6 +78597,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,
@@ -78819,6 +79183,7 @@
         "operationId": "twitterSearchUsers",
         "parameters": [
           {
+            "description": "Public search query.",
             "example": "synthetic",
             "in": "query",
             "name": "q",
@@ -78829,6 +79194,7 @@
             }
           },
           {
+            "description": "Maximum accepted data age. The default is 24h.",
             "example": "24h",
             "in": "query",
             "name": "freshness",
@@ -78845,6 +79211,7 @@
             }
           },
           {
+            "description": "Opaque cursor returned by the previous page.",
             "in": "query",
             "name": "cursor",
             "required": false,

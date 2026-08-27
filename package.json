@@ -28,7 +28,8 @@
         "generate": "node scripts/generate.mjs",
         "generate:check": "node scripts/generate.mjs --check",
         "build": "pnpm generate && tsc -p tsconfig.build.json",
-        "test": "pnpm build && tsc --noEmit -p tsconfig.test.json && node --test tests/*.test.ts",
+        "eval:agent": "node scripts/score-agent-eval.mjs evals/reference",
+        "test": "pnpm build && tsc --noEmit -p tsconfig.test.json && pnpm eval:agent && node --test tests/*.test.ts",
         "lint": "biome check",
         "lint:fix": "biome check --write",
         "typecheck": "pnpm generate:check && tsc --noEmit"

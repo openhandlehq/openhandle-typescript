@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/openhandlehq/openhandle-typescript/compare/v0.3.0...v0.4.0) (2026-08-27)
+
+
+### Features
+
+* sync API contract ([1a6befb](https://github.com/openhandlehq/openhandle-typescript/commit/1a6befbe29294ac528f52f0c2d2e905ec64d6210))
+
+
+### Bug Fixes
+
+* enable npm trusted publishing ([22498e2](https://github.com/openhandlehq/openhandle-typescript/commit/22498e2a35dc91a7138c06dc9a6dff629a7ab50e))
+
 ## [0.3.0](https://github.com/openhandlehq/openhandle-typescript/compare/v0.2.0...v0.3.0) (2026-08-27)
 
 

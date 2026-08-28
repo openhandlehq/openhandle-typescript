@@ -52,15 +52,23 @@ const details = await post.get();
 const comments = await post.comments.list();
 ```
 
-Profile strings are usernames, including all-numeric usernames. Use an
-explicit reference for platform IDs and URLs:
+Raw strings use the selected resource's natural shorthand. Supported social
+URLs are recognized and validated locally before a request. For profiles, the
+remaining shorthand is a username, including an all-numeric username:
 
 ```ts
+openhandle.instagram.profile('openai');
+openhandle.instagram.profile('https://www.instagram.com/openai/');
+openhandle.instagram.profile('12356');
+openhandle.instagram.profile({ username: '12356' });
 openhandle.instagram.profile({ id: '25025320' });
 openhandle.instagram.profile({ url: 'https://www.instagram.com/openai/' });
 ```
 
-Platform IDs are opaque strings. Numeric ID values are rejected.
+Platform IDs are opaque strings and always require an explicit `{ id: '...' }`
+reference. Numeric ID values are rejected. Resolution is entirely local: the
+SDK does not follow redirects, make hidden lookup requests, or try multiple
+interpretations.
 
 Use `fetch` when the URL's platform or resource is not known:
 

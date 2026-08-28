@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import openapiTS, { astToString } from 'openapi-typescript';
@@ -266,6 +266,7 @@ function writeGenerated(relativePath, contents) {
         }
         return;
     }
+    mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, contents);
 }
 

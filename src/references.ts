@@ -19,7 +19,7 @@ export const resolveReference = (input: ProfileReference | ResourceReference, pl
     }
     if (typeof input === 'string') {
         const value = requiredString(input);
-        return resource === 'profile' ? usernameReference(value, platform) : value;
+        return resolveRawReference(value, platform, resource);
     }
     if (!input || typeof input !== 'object' || Array.isArray(input)) {
         throw new OpenHandleReferenceError('A reference must be a string or an object containing exactly one of username, id, or url.');
@@ -45,13 +45,48 @@ export const resolveReference = (input: ProfileReference | ResourceReference, pl
         return value;
     }
     if (kind === 'url') {
-        const resolution = resolveSocialURL(value);
-        if (resolution.platform !== platform || resolution.resource !== resource) {
-            throw new ReferenceMismatchError(platform, resource, resolution.platform, resolution.resource);
-        }
-        return resolution.identifier;
+        return resolveURLReference(value, platform, resource);
     }
     throw new OpenHandleReferenceError(`Unknown reference kind ${kind}.`);
+};
+
+const resolveRawReference = (value: string, platform: string, resource: string): string => {
+    if (looksLikeSupportedSocialURL(value)) {
+        return resolveURLReference(value, platform, resource);
+    }
+    return resource === 'profile' ? usernameReference(value, platform) : value;
+};
+
+const resolveURLReference = (value: string, platform: string, resource: string): string => {
+    const resolution = resolveSocialURL(value);
+    if (resolution.platform !== platform || resolution.resource !== resource) {
+        throw new ReferenceMismatchError(platform, resource, resolution.platform, resolution.resource);
+    }
+    return resolution.identifier;
+};
+
+const looksLikeSupportedSocialURL = (input: string): boolean => {
+    let value = input.trim().toLowerCase();
+    const scheme = value.indexOf('://');
+    const hasScheme = scheme >= 0;
+    if (hasScheme) {
+        value = value.slice(scheme + 3);
+    }
+    const separator = value.search(/[/?#]/);
+    if (!hasScheme && separator < 0) {
+        return false;
+    }
+    let authority = separator >= 0 ? value.slice(0, separator) : value;
+    const credentials = authority.lastIndexOf('@');
+    if (credentials >= 0) {
+        authority = authority.slice(credentials + 1);
+    }
+    const port = authority.lastIndexOf(':');
+    if (port >= 0) {
+        authority = authority.slice(0, port);
+    }
+    const host = authority.replace(/^www\./, '');
+    return ['instagram.com', 'tiktok.com', 'm.tiktok.com', 'x.com', 'twitter.com', 'mobile.twitter.com'].includes(host);
 };
 
 const usernameReference = (input: string, platform: string): string => {

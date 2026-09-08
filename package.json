@@ -1,6 +1,6 @@
 {
     "name": "@openhandle/sdk",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Official TypeScript SDK for OpenHandle",
     "license": "MIT",
     "repository": {

@@ -99,9 +99,6 @@ export type MediaReference = Camelize<components['schemas']["MediaReference"]>;
 /** Camel-cased MessageEnvelope model used by SDK responses. */
 export type MessageEnvelope = Camelize<components['schemas']["MessageEnvelope"]>;
 
-/** Camel-cased Money model used by SDK responses. */
-export type Money = Camelize<components['schemas']["Money"]>;
-
 /** Camel-cased Music model used by SDK responses. */
 export type Music = Camelize<components['schemas']["Music"]>;
 
@@ -183,18 +180,6 @@ export type TikTokEffect = Camelize<components['schemas']["TikTokEffect"]>;
 /** Camel-cased TikTokEntity model used by SDK responses. */
 export type TikTokEntity = Camelize<components['schemas']["TikTokEntity"]>;
 
-/** Camel-cased TikTokInsight model used by SDK responses. */
-export type TikTokInsight = Camelize<components['schemas']["TikTokInsight"]>;
-
-/** Camel-cased TikTokLiveRanking model used by SDK responses. */
-export type TikTokLiveRanking = Camelize<components['schemas']["TikTokLiveRanking"]>;
-
-/** Camel-cased TikTokLiveRoom model used by SDK responses. */
-export type TikTokLiveRoom = Camelize<components['schemas']["TikTokLiveRoom"]>;
-
-/** Camel-cased TikTokOption model used by SDK responses. */
-export type TikTokOption = Camelize<components['schemas']["TikTokOption"]>;
-
 /** Camel-cased TikTokPlaylist model used by SDK responses. */
 export type TikTokPlaylist = Camelize<components['schemas']["TikTokPlaylist"]>;
 
@@ -212,27 +197,6 @@ export type TikTokProfile = Camelize<components['schemas']["TikTokProfile"]>;
 
 /** Camel-cased TikTokProfileExtended model used by SDK responses. */
 export type TikTokProfileExtended = Camelize<components['schemas']["TikTokProfileExtended"]>;
-
-/** Camel-cased TikTokQRCode model used by SDK responses. */
-export type TikTokQRCode = Camelize<components['schemas']["TikTokQRCode"]>;
-
-/** Camel-cased TikTokSearchResult model used by SDK responses. */
-export type TikTokSearchResult = Camelize<components['schemas']["TikTokSearchResult"]>;
-
-/** Camel-cased TikTokShopCategory model used by SDK responses. */
-export type TikTokShopCategory = Camelize<components['schemas']["TikTokShopCategory"]>;
-
-/** Camel-cased TikTokShopProduct model used by SDK responses. */
-export type TikTokShopProduct = Camelize<components['schemas']["TikTokShopProduct"]>;
-
-/** Camel-cased TikTokShopReview model used by SDK responses. */
-export type TikTokShopReview = Camelize<components['schemas']["TikTokShopReview"]>;
-
-/** Camel-cased TikTokShopSeller model used by SDK responses. */
-export type TikTokShopSeller = Camelize<components['schemas']["TikTokShopSeller"]>;
-
-/** Camel-cased TikTokSuggestion model used by SDK responses. */
-export type TikTokSuggestion = Camelize<components['schemas']["TikTokSuggestion"]>;
 
 /** Camel-cased TrendingCategory model used by SDK responses. */
 export type TrendingCategory = Camelize<components['schemas']["TrendingCategory"]>;
@@ -579,36 +543,6 @@ export type TikTokHashtagPostsOptions = OperationOptions<"/v1/tiktok/hashtags/{i
 /** Typed result returned by tiktok.hashtag.posts.list. */
 export type TikTokHashtagPostsPage = OperationPage<"/v1/tiktok/hashtags/{identifier}/posts", "get">;
 
-/** Options accepted by tiktok.live.event.get. */
-export type TikTokLiveEventOptions = OperationOptions<"/v1/tiktok/live/events/{identifier}", "get">;
-
-/** Typed result returned by tiktok.live.event.get. */
-export type TikTokLiveEventResponse = OperationResponse<"/v1/tiktok/live/events/{identifier}", "get">;
-
-/** Options accepted by tiktok.live.feed.list. */
-export type TikTokLiveFeedOptions = OperationOptions<"/v1/tiktok/live/feed", "get">;
-
-/** Typed result returned by tiktok.live.feed.list. */
-export type TikTokLiveFeedPage = OperationPage<"/v1/tiktok/live/feed", "get">;
-
-/** Options accepted by tiktok.live.room.get. */
-export type TikTokLiveRoomOptions = OperationOptions<"/v1/tiktok/live/rooms/{identifier}", "get">;
-
-/** Typed result returned by tiktok.live.room.get. */
-export type TikTokLiveRoomResponse = OperationResponse<"/v1/tiktok/live/rooms/{identifier}", "get">;
-
-/** Options accepted by tiktok.live.room.rankings.list. */
-export type TikTokLiveRoomRankingsOptions = OperationOptions<"/v1/tiktok/live/rooms/{identifier}/rankings", "get">;
-
-/** Typed result returned by tiktok.live.room.rankings.list. */
-export type TikTokLiveRoomRankingsPage = OperationPage<"/v1/tiktok/live/rooms/{identifier}/rankings", "get">;
-
-/** Options accepted by tiktok.live.room.rankingTypes.list. */
-export type TikTokLiveRoomRankingTypesOptions = OperationOptions<"/v1/tiktok/live/rooms/{identifier}/ranking-types", "get">;
-
-/** Typed result returned by tiktok.live.room.rankingTypes.list. */
-export type TikTokLiveRoomRankingTypesPage = OperationPage<"/v1/tiktok/live/rooms/{identifier}/ranking-types", "get">;
-
 /** Options accepted by tiktok.location.get. */
 export type TikTokLocationOptions = OperationOptions<"/v1/tiktok/locations/{identifier}", "get">;
 
@@ -632,12 +566,6 @@ export type TikTokMusicPostsOptions = OperationOptions<"/v1/tiktok/music/{identi
 
 /** Typed result returned by tiktok.music.posts.list. */
 export type TikTokMusicPostsPage = OperationPage<"/v1/tiktok/music/{identifier}/posts", "get">;
-
-/** Options accepted by tiktok.post.comment.get. */
-export type TikTokPostCommentOptions = OperationOptions<"/v1/tiktok/posts/{identifier}/comments/{comment_id}", "get">;
-
-/** Typed result returned by tiktok.post.comment.get. */
-export type TikTokPostCommentResponse = OperationResponse<"/v1/tiktok/posts/{identifier}/comments/{comment_id}", "get">;
 
 /** Options accepted by tiktok.post.comment.replies.list. */
 export type TikTokPostCommentRepliesOptions = OperationOptions<"/v1/tiktok/posts/{identifier}/comments/{comment_id}/replies", "get">;
@@ -681,12 +609,6 @@ export type TikTokProfileLikedPostsOptions = OperationOptions<"/v1/tiktok/profil
 /** Typed result returned by tiktok.profile.likedPosts.list. */
 export type TikTokProfileLikedPostsPage = OperationPage<"/v1/tiktok/profiles/{identifier}/liked-posts", "get">;
 
-/** Options accepted by tiktok.profile.music.list. */
-export type TikTokProfileMusicOptions = OperationOptions<"/v1/tiktok/profiles/{identifier}/music", "get">;
-
-/** Typed result returned by tiktok.profile.music.list. */
-export type TikTokProfileMusicPage = OperationPage<"/v1/tiktok/profiles/{identifier}/music", "get">;
-
 /** Options accepted by tiktok.profile.playlist.get. */
 export type TikTokProfilePlaylistOptions = OperationOptions<"/v1/tiktok/profiles/{identifier}/playlists/{playlist_id}", "get">;
 
@@ -711,41 +633,11 @@ export type TikTokProfilePostsOptions = OperationOptions<"/v1/tiktok/profiles/{i
 /** Typed result returned by tiktok.profile.posts.list. */
 export type TikTokProfilePostsPage = OperationPage<"/v1/tiktok/profiles/{identifier}/posts", "get">;
 
-/** Options accepted by tiktok.profile.qrCode.get. */
-export type TikTokProfileQRCodeOptions = OperationOptions<"/v1/tiktok/profiles/{identifier}/qr-code", "get">;
-
-/** Typed result returned by tiktok.profile.qrCode.get. */
-export type TikTokProfileQRCodeResponse = OperationResponse<"/v1/tiktok/profiles/{identifier}/qr-code", "get">;
-
-/** Options accepted by tiktok.profile.stories.list. */
-export type TikTokProfileStoriesOptions = OperationOptions<"/v1/tiktok/profiles/{identifier}/stories", "get">;
-
-/** Typed result returned by tiktok.profile.stories.list. */
-export type TikTokProfileStoriesPage = OperationPage<"/v1/tiktok/profiles/{identifier}/stories", "get">;
-
-/** Options accepted by tiktok.search.commentSuggestions.list. */
-export type TikTokSearchCommentSuggestionsOptions = OperationOptions<"/v1/tiktok/search/comment-suggestions", "get">;
-
-/** Typed result returned by tiktok.search.commentSuggestions.list. */
-export type TikTokSearchCommentSuggestionsPage = OperationPage<"/v1/tiktok/search/comment-suggestions", "get">;
-
 /** Options accepted by tiktok.search.hashtags.list. */
 export type TikTokSearchHashtagsOptions = OperationOptions<"/v1/tiktok/search/hashtags", "get">;
 
 /** Typed result returned by tiktok.search.hashtags.list. */
 export type TikTokSearchHashtagsPage = OperationPage<"/v1/tiktok/search/hashtags", "get">;
-
-/** Options accepted by tiktok.search.insights.list. */
-export type TikTokSearchInsightsOptions = OperationOptions<"/v1/tiktok/search/insights", "get">;
-
-/** Typed result returned by tiktok.search.insights.list. */
-export type TikTokSearchInsightsPage = OperationPage<"/v1/tiktok/search/insights", "get">;
-
-/** Options accepted by tiktok.search.live.list. */
-export type TikTokSearchLiveOptions = OperationOptions<"/v1/tiktok/search/live", "get">;
-
-/** Typed result returned by tiktok.search.live.list. */
-export type TikTokSearchLivePage = OperationPage<"/v1/tiktok/search/live", "get">;
 
 /** Options accepted by tiktok.search.locations.list. */
 export type TikTokSearchLocationsOptions = OperationOptions<"/v1/tiktok/search/locations", "get">;
@@ -771,125 +663,11 @@ export type TikTokSearchProfilesOptions = OperationOptions<"/v1/tiktok/search/pr
 /** Typed result returned by tiktok.search.profiles.list. */
 export type TikTokSearchProfilesPage = OperationPage<"/v1/tiktok/search/profiles", "get">;
 
-/** Options accepted by tiktok.search.top.list. */
-export type TikTokSearchTopOptions = OperationOptions<"/v1/tiktok/search/top", "get">;
-
-/** Typed result returned by tiktok.search.top.list. */
-export type TikTokSearchTopPage = OperationPage<"/v1/tiktok/search/top", "get">;
-
-/** Options accepted by tiktok.shop.deals.flashSale.list. */
-export type TikTokShopDealsFlashSaleOptions = OperationOptions<"/v1/tiktok/shop/deals/flash-sale", "get">;
-
-/** Typed result returned by tiktok.shop.deals.flashSale.list. */
-export type TikTokShopDealsFlashSalePage = OperationPage<"/v1/tiktok/shop/deals/flash-sale", "get">;
-
-/** Options accepted by tiktok.shop.deals.newUser.list. */
-export type TikTokShopDealsNewUserOptions = OperationOptions<"/v1/tiktok/shop/deals/new-user", "get">;
-
-/** Typed result returned by tiktok.shop.deals.newUser.list. */
-export type TikTokShopDealsNewUserPage = OperationPage<"/v1/tiktok/shop/deals/new-user", "get">;
-
-/** Options accepted by tiktok.shop.home.list. */
-export type TikTokShopHomeOptions = OperationOptions<"/v1/tiktok/shop/home", "get">;
-
-/** Typed result returned by tiktok.shop.home.list. */
-export type TikTokShopHomePage = OperationPage<"/v1/tiktok/shop/home", "get">;
-
-/** Options accepted by tiktok.shop.live.products.list. */
-export type TikTokShopLiveProductsOptions = OperationOptions<"/v1/tiktok/shop/live/{identifier}/products", "get">;
-
-/** Typed result returned by tiktok.shop.live.products.list. */
-export type TikTokShopLiveProductsPage = OperationPage<"/v1/tiktok/shop/live/{identifier}/products", "get">;
-
-/** Options accepted by tiktok.shop.product.get. */
-export type TikTokShopProductOptions = OperationOptions<"/v1/tiktok/shop/products/{identifier}", "get">;
-
-/** Typed result returned by tiktok.shop.product.get. */
-export type TikTokShopProductResponse = OperationResponse<"/v1/tiktok/shop/products/{identifier}", "get">;
-
-/** Options accepted by tiktok.shop.product.reviews.list. */
-export type TikTokShopProductReviewsOptions = OperationOptions<"/v1/tiktok/shop/products/{identifier}/reviews", "get">;
-
-/** Typed result returned by tiktok.shop.product.reviews.list. */
-export type TikTokShopProductReviewsPage = OperationPage<"/v1/tiktok/shop/products/{identifier}/reviews", "get">;
-
-/** Options accepted by tiktok.shop.profile.page.list. */
-export type TikTokShopProfilePageOptions = OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/page", "get">;
-
-/** Typed result returned by tiktok.shop.profile.page.list. */
-export type TikTokShopProfilePagePage = OperationPage<"/v1/tiktok/shop/profiles/{identifier}/page", "get">;
-
-/** Options accepted by tiktok.shop.profile.products.list. */
-export type TikTokShopProfileProductsOptions = OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/products", "get">;
-
-/** Typed result returned by tiktok.shop.profile.products.list. */
-export type TikTokShopProfileProductsPage = OperationPage<"/v1/tiktok/shop/profiles/{identifier}/products", "get">;
-
-/** Options accepted by tiktok.shop.profile.tabs.list. */
-export type TikTokShopProfileTabsOptions = OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/tabs", "get">;
-
-/** Typed result returned by tiktok.shop.profile.tabs.list. */
-export type TikTokShopProfileTabsPage = OperationPage<"/v1/tiktok/shop/profiles/{identifier}/tabs", "get">;
-
-/** Options accepted by tiktok.shop.recommendations.list. */
-export type TikTokShopRecommendationsOptions = OperationOptions<"/v1/tiktok/shop/recommendations", "get">;
-
-/** Typed result returned by tiktok.shop.recommendations.list. */
-export type TikTokShopRecommendationsPage = OperationPage<"/v1/tiktok/shop/recommendations", "get">;
-
-/** Options accepted by tiktok.shop.search.list. */
-export type TikTokShopSearchOptions = OperationOptions<"/v1/tiktok/shop/search", "get">;
-
-/** Typed result returned by tiktok.shop.search.list. */
-export type TikTokShopSearchPage = OperationPage<"/v1/tiktok/shop/search", "get">;
-
-/** Options accepted by tiktok.shop.seller.categories.list. */
-export type TikTokShopSellerCategoriesOptions = OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/categories", "get">;
-
-/** Typed result returned by tiktok.shop.seller.categories.list. */
-export type TikTokShopSellerCategoriesPage = OperationPage<"/v1/tiktok/shop/sellers/{identifier}/categories", "get">;
-
-/** Options accepted by tiktok.shop.seller.category.products.list. */
-export type TikTokShopSellerCategoryProductsOptions = OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/categories/{category_id}/products", "get">;
-
-/** Typed result returned by tiktok.shop.seller.category.products.list. */
-export type TikTokShopSellerCategoryProductsPage = OperationPage<"/v1/tiktok/shop/sellers/{identifier}/categories/{category_id}/products", "get">;
-
-/** Options accepted by tiktok.shop.seller.get. */
-export type TikTokShopSellerOptions = OperationOptions<"/v1/tiktok/shop/sellers/{identifier}", "get">;
-
-/** Typed result returned by tiktok.shop.seller.get. */
-export type TikTokShopSellerResponse = OperationResponse<"/v1/tiktok/shop/sellers/{identifier}", "get">;
-
-/** Options accepted by tiktok.shop.seller.products.list. */
-export type TikTokShopSellerProductsOptions = OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/products", "get">;
-
-/** Typed result returned by tiktok.shop.seller.products.list. */
-export type TikTokShopSellerProductsPage = OperationPage<"/v1/tiktok/shop/sellers/{identifier}/products", "get">;
-
-/** Options accepted by tiktok.shop.seller.sortTypes.list. */
-export type TikTokShopSellerSortTypesOptions = OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/sort-types", "get">;
-
-/** Typed result returned by tiktok.shop.seller.sortTypes.list. */
-export type TikTokShopSellerSortTypesPage = OperationPage<"/v1/tiktok/shop/sellers/{identifier}/sort-types", "get">;
-
-/** Options accepted by tiktok.story.get. */
-export type TikTokStoryOptions = OperationOptions<"/v1/tiktok/stories/{identifier}", "get">;
-
-/** Typed result returned by tiktok.story.get. */
-export type TikTokStoryResponse = OperationResponse<"/v1/tiktok/stories/{identifier}", "get">;
-
 /** Options accepted by tiktok.trending.categories.list. */
 export type TikTokTrendingCategoriesOptions = OperationOptions<"/v1/tiktok/trending/categories", "get">;
 
 /** Typed result returned by tiktok.trending.categories.list. */
 export type TikTokTrendingCategoriesPage = OperationPage<"/v1/tiktok/trending/categories", "get">;
-
-/** Options accepted by tiktok.trending.insights.list. */
-export type TikTokTrendingInsightsOptions = OperationOptions<"/v1/tiktok/trending/insights", "get">;
-
-/** Typed result returned by tiktok.trending.insights.list. */
-export type TikTokTrendingInsightsPage = OperationPage<"/v1/tiktok/trending/insights", "get">;
 
 /** Options accepted by tiktok.trending.music.list. */
 export type TikTokTrendingMusicOptions = OperationOptions<"/v1/tiktok/trending/music", "get">;
@@ -939,12 +717,6 @@ export type TwitterPostOptions = OperationOptions<"/v1/twitter/posts/{identifier
 /** Typed result returned by twitter.post.get. */
 export type TwitterPostResponse = OperationResponse<"/v1/twitter/posts/{identifier}", "get">;
 
-/** Options accepted by twitter.post.likers.list. */
-export type TwitterPostLikersOptions = OperationOptions<"/v1/twitter/posts/{identifier}/likers", "get">;
-
-/** Typed result returned by twitter.post.likers.list. */
-export type TwitterPostLikersPage = OperationPage<"/v1/twitter/posts/{identifier}/likers", "get">;
-
 /** Options accepted by twitter.post.reposters.list. */
 export type TwitterPostRepostersOptions = OperationOptions<"/v1/twitter/posts/{identifier}/reposters", "get">;
 
@@ -968,12 +740,6 @@ export type TwitterProfileOptions = OperationOptions<"/v1/twitter/profiles/{iden
 
 /** Typed result returned by twitter.profile.get. */
 export type TwitterProfileResponse = OperationResponse<"/v1/twitter/profiles/{identifier}", "get">;
-
-/** Options accepted by twitter.profile.lists.list. */
-export type TwitterProfileListsOptions = OperationOptions<"/v1/twitter/profiles/{identifier}/lists", "get">;
-
-/** Typed result returned by twitter.profile.lists.list. */
-export type TwitterProfileListsPage = OperationPage<"/v1/twitter/profiles/{identifier}/lists", "get">;
 
 /** Options accepted by twitter.profile.media.list. */
 export type TwitterProfileMediaOptions = OperationOptions<"/v1/twitter/profiles/{identifier}/media", "get">;

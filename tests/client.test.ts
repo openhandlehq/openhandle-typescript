@@ -8,7 +8,21 @@ import { OpenHandle, OpenHandleError, OpenHandleReferenceError, ReferenceMismatc
 
 describe('OpenHandle resource graph', () => {
     it('generates every OpenAPI operation exactly once', () => {
-        assert.equal(operations.length, 126);
+        const document = JSON.parse(readFileSync(new URL('../openapi/openhandle.json', import.meta.url), 'utf8')) as {
+            paths: Record<string, Record<string, unknown>>;
+        };
+        const methods = new Set(['get', 'post', 'put', 'patch', 'delete']);
+        const expectedOperations = new Set(
+            Object.entries(document.paths).flatMap(([apiPath, pathItem]) =>
+                Object.keys(pathItem)
+                    .filter(method => methods.has(method))
+                    .map(method => `${method} ${apiPath}`),
+            ),
+        );
+        const generatedOperations = new Set(operations.map(operation => `${operation.method} ${operation.apiPath}`));
+
+        assert.equal(generatedOperations.size, operations.length);
+        assert.deepEqual(generatedOperations, expectedOperations);
         assert.equal(new Set(operations.map(operation => operation.path)).size, operations.length);
     });
 
@@ -115,7 +129,7 @@ describe('OpenHandle resource graph', () => {
                     error: {
                         code: 'PROFILE_PRIVATE',
                         message: 'This profile is private.',
-                        request_id: 'req_private',
+                        requestId: 'req_private',
                         retryable: false,
                     },
                 }),
@@ -153,7 +167,7 @@ describe('OpenHandle resource graph', () => {
                 requests++;
                 if (requests === 1) {
                     return new Response(
-                        JSON.stringify({ error: { code: 'UPSTREAM_DEGRADED', message: 'Try again.', request_id: 'req_retry', retryable: true } }),
+                        JSON.stringify({ error: { code: 'UPSTREAM_DEGRADED', message: 'Try again.', requestId: 'req_retry', retryable: true } }),
                         { status: 503, headers: { 'Content-Type': 'application/json', 'Retry-After': '0' } },
                     );
                 }
@@ -179,7 +193,7 @@ const profileResponse = (): Response =>
     response({
         platform: 'instagram',
         resource: 'profile',
-        captured_at: '2026-08-26T12:00:00Z',
+        capturedAt: '2026-08-26T12:00:00Z',
         source: 'live',
         data: { id: '25025320', handle: 'openai' },
     });
@@ -188,7 +202,7 @@ const pageResponse = (cursor: string | null): Response =>
     response({
         platform: 'instagram',
         resource: 'comment',
-        captured_at: '2026-08-26T12:00:00Z',
+        capturedAt: '2026-08-26T12:00:00Z',
         source: 'live',
         data: [],
         meta: { cursors: { next: cursor } },

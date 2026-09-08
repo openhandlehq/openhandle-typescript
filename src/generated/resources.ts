@@ -794,7 +794,6 @@ export interface TikTokResource {
      * Resource selection is synchronous and does not perform a request.
      */
     readonly hashtag: (reference: ResourceReference) => TikTokHashtagResource;
-    readonly live: TikTokLiveResource;
     /**
      * Select the location resource using a supported string shorthand or an explicit ID or URL reference.
      *
@@ -820,13 +819,6 @@ export interface TikTokResource {
      */
     readonly profile: (reference: ProfileReference) => TikTokProfileResource;
     readonly search: TikTokSearchResource;
-    readonly shop: TikTokShopResource;
-    /**
-     * Select the story resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly story: (reference: ResourceReference) => TikTokStoryResource;
     readonly trending: TikTokTrendingResource;
 }
 
@@ -900,94 +892,6 @@ export interface TikTokHashtagPostsResource {
      * @see https://openhandle.dev/docs/api-reference/tiktok-hashtag-posts-list
      */
     readonly list: (options?: OperationOptions<"/v1/tiktok/hashtags/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/hashtags/{identifier}/posts", "get">>;
-}
-
-export interface TikTokLiveResource {
-    /**
-     * Select the event resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly event: (reference: ResourceReference) => TikTokLiveEventResource;
-    readonly feed: TikTokLiveFeedResource;
-    /**
-     * Select the room resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly room: (reference: ResourceReference) => TikTokLiveRoomResource;
-}
-
-export interface TikTokLiveEventResource {
-    /**
-     * Get a live event
-     *
-     * Get a live event from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.live.event("920100000000000001").get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-live-event-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/tiktok/live/events/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/live/events/{identifier}", "get">>;
-}
-
-export interface TikTokLiveFeedResource {
-    /**
-     * List live feed
-     *
-     * List live feed from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.live.feed.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-live-feed-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/live/feed", "get">) => Promise<OperationPage<"/v1/tiktok/live/feed", "get">>;
-}
-
-export interface TikTokLiveRoomResource {
-    readonly rankings: TikTokLiveRoomRankingsResource;
-    readonly rankingTypes: TikTokLiveRoomRankingTypesResource;
-    /**
-     * Get live room info
-     *
-     * Get live room info from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.live.room("920100000000000001").get({ userId: "920000000001", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-live-info-get
-     */
-    readonly get: (options: OperationOptions<"/v1/tiktok/live/rooms/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/live/rooms/{identifier}", "get">>;
-}
-
-export interface TikTokLiveRoomRankingsResource {
-    /**
-     * Get a live ranking
-     *
-     * Get a live ranking from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.live.room("920100000000000001").rankings.list({ userId: "920000000001", rankType: "daily", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-live-ranking-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/live/rooms/{identifier}/rankings", "get">) => Promise<OperationPage<"/v1/tiktok/live/rooms/{identifier}/rankings", "get">>;
-}
-
-export interface TikTokLiveRoomRankingTypesResource {
-    /**
-     * List live ranking types
-     *
-     * List live ranking types from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.live.room("920100000000000001").rankingTypes.list({ userId: "920000000001", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-live-ranking-types-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/live/rooms/{identifier}/ranking-types", "get">) => Promise<OperationPage<"/v1/tiktok/live/rooms/{identifier}/ranking-types", "get">>;
 }
 
 export interface TikTokLocationResource {
@@ -1071,17 +975,6 @@ export interface TikTokPostResource {
 
 export interface TikTokPostCommentResource {
     readonly replies: TikTokPostCommentRepliesResource;
-    /**
-     * Get a comment
-     *
-     * Get a comment from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.post("920100000000000001").comment("920200000000000001").get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-comment-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/tiktok/posts/{identifier}/comments/{comment_id}", "get">) => Promise<OperationResponse<"/v1/tiktok/posts/{identifier}/comments/{comment_id}", "get">>;
 }
 
 export interface TikTokPostCommentRepliesResource {
@@ -1116,7 +1009,6 @@ export interface TikTokProfileResource {
     readonly followers: TikTokProfileFollowersResource;
     readonly following: TikTokProfileFollowingResource;
     readonly likedPosts: TikTokProfileLikedPostsResource;
-    readonly music: TikTokProfileMusicResource;
     /**
      * Select the playlist resource using a supported string shorthand or an explicit ID or URL reference.
      *
@@ -1125,8 +1017,6 @@ export interface TikTokProfileResource {
     readonly playlist: (reference: ResourceReference) => TikTokProfilePlaylistResource;
     readonly playlists: TikTokProfilePlaylistsResource;
     readonly posts: TikTokProfilePostsResource;
-    readonly qrCode: TikTokProfileQRCodeResource;
-    readonly stories: TikTokProfileStoriesResource;
     /**
      * Get a profile
      *
@@ -1180,20 +1070,6 @@ export interface TikTokProfileLikedPostsResource {
      * @see https://openhandle.dev/docs/api-reference/tiktok-profile-liked-posts-list
      */
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/liked-posts", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/liked-posts", "get">>;
-}
-
-export interface TikTokProfileMusicResource {
-    /**
-     * List profile music
-     *
-     * Return sounds published by a public TikTok profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").music.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-music-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/music", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/music", "get">>;
 }
 
 export interface TikTokProfilePlaylistResource {
@@ -1253,58 +1129,12 @@ export interface TikTokProfilePostsResource {
     readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/posts", "get">>;
 }
 
-export interface TikTokProfileQRCodeResource {
-    /**
-     * Get a profile QR code
-     *
-     * Get a profile QR code from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").qrCode.get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-qr-code-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/qr-code", "get">) => Promise<OperationResponse<"/v1/tiktok/profiles/{identifier}/qr-code", "get">>;
-}
-
-export interface TikTokProfileStoriesResource {
-    /**
-     * List profile stories
-     *
-     * Return a cursor-paginated Tiktok profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.profile("@pixel_orchard_tt_test").stories.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-profile-stories-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/profiles/{identifier}/stories", "get">) => Promise<OperationPage<"/v1/tiktok/profiles/{identifier}/stories", "get">>;
-}
-
 export interface TikTokSearchResource {
-    readonly commentSuggestions: TikTokSearchCommentSuggestionsResource;
     readonly hashtags: TikTokSearchHashtagsResource;
-    readonly insights: TikTokSearchInsightsResource;
-    readonly live: TikTokSearchLiveResource;
     readonly locations: TikTokSearchLocationsResource;
     readonly music: TikTokSearchMusicResource;
     readonly posts: TikTokSearchPostsResource;
     readonly profiles: TikTokSearchProfilesResource;
-    readonly top: TikTokSearchTopResource;
-}
-
-export interface TikTokSearchCommentSuggestionsResource {
-    /**
-     * Search comment suggestions
-     *
-     * Search comment suggestions from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.search.commentSuggestions.list({ q: "synthetic", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-search-comment-suggestions-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/search/comment-suggestions", "get">) => Promise<OperationPage<"/v1/tiktok/search/comment-suggestions", "get">>;
 }
 
 export interface TikTokSearchHashtagsResource {
@@ -1319,34 +1149,6 @@ export interface TikTokSearchHashtagsResource {
      * @see https://openhandle.dev/docs/api-reference/tiktok-search-hashtags-list
      */
     readonly list: (options: OperationOptions<"/v1/tiktok/search/hashtags", "get">) => Promise<OperationPage<"/v1/tiktok/search/hashtags", "get">>;
-}
-
-export interface TikTokSearchInsightsResource {
-    /**
-     * Search insights
-     *
-     * Search insights from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.search.insights.list({ q: "synthetic", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-search-insights-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/search/insights", "get">) => Promise<OperationPage<"/v1/tiktok/search/insights", "get">>;
-}
-
-export interface TikTokSearchLiveResource {
-    /**
-     * Search live streams
-     *
-     * Search live streams from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.search.live.list({ q: "synthetic", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-search-live-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/search/live", "get">) => Promise<OperationPage<"/v1/tiktok/search/live", "get">>;
 }
 
 export interface TikTokSearchLocationsResource {
@@ -1405,321 +1207,8 @@ export interface TikTokSearchProfilesResource {
     readonly list: (options: OperationOptions<"/v1/tiktok/search/profiles", "get">) => Promise<OperationPage<"/v1/tiktok/search/profiles", "get">>;
 }
 
-export interface TikTokSearchTopResource {
-    /**
-     * Search all TikTok results
-     *
-     * Search all TikTok results from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.search.top.list({ q: "synthetic", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-search-top-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/search/top", "get">) => Promise<OperationPage<"/v1/tiktok/search/top", "get">>;
-}
-
-export interface TikTokShopResource {
-    readonly deals: TikTokShopDealsResource;
-    readonly home: TikTokShopHomeResource;
-    /**
-     * Select the live resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly live: (reference: ResourceReference) => TikTokShopLiveResource;
-    /**
-     * Select the product resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly product: (reference: ResourceReference) => TikTokShopProductResource;
-    /**
-     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly profile: (reference: ProfileReference) => TikTokShopProfileResource;
-    readonly recommendations: TikTokShopRecommendationsResource;
-    readonly search: TikTokShopSearchResource;
-    /**
-     * Select the seller resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly seller: (reference: ResourceReference) => TikTokShopSellerResource;
-}
-
-export interface TikTokShopDealsResource {
-    readonly flashSale: TikTokShopDealsFlashSaleResource;
-    readonly newUser: TikTokShopDealsNewUserResource;
-}
-
-export interface TikTokShopDealsFlashSaleResource {
-    /**
-     * List flash-sale products
-     *
-     * List flash-sale products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.deals.flashSale.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-flash-sale-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/deals/flash-sale", "get">) => Promise<OperationPage<"/v1/tiktok/shop/deals/flash-sale", "get">>;
-}
-
-export interface TikTokShopDealsNewUserResource {
-    /**
-     * List new-user deals
-     *
-     * List new-user deals from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.deals.newUser.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-new-user-deals-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/deals/new-user", "get">) => Promise<OperationPage<"/v1/tiktok/shop/deals/new-user", "get">>;
-}
-
-export interface TikTokShopHomeResource {
-    /**
-     * List shop home sections
-     *
-     * List shop home sections from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.home.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-home-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/home", "get">) => Promise<OperationPage<"/v1/tiktok/shop/home", "get">>;
-}
-
-export interface TikTokShopLiveResource {
-    readonly products: TikTokShopLiveProductsResource;
-}
-
-export interface TikTokShopLiveProductsResource {
-    /**
-     * List livestream products
-     *
-     * List livestream products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.live("920100000000000001").products.list({ roomId: "950000000009", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-live-products-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/shop/live/{identifier}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/live/{identifier}/products", "get">>;
-}
-
-export interface TikTokShopProductResource {
-    readonly reviews: TikTokShopProductReviewsResource;
-    /**
-     * Get a shop product
-     *
-     * Get a shop product from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.product("920100000000000001").get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-product-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/tiktok/shop/products/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/shop/products/{identifier}", "get">>;
-}
-
-export interface TikTokShopProductReviewsResource {
-    /**
-     * List product reviews
-     *
-     * List product reviews from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.product("920100000000000001").reviews.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-product-reviews-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/products/{identifier}/reviews", "get">) => Promise<OperationPage<"/v1/tiktok/shop/products/{identifier}/reviews", "get">>;
-}
-
-export interface TikTokShopProfileResource {
-    readonly page: TikTokShopProfilePageResource;
-    readonly products: TikTokShopProfileProductsResource;
-    readonly tabs: TikTokShopProfileTabsResource;
-}
-
-export interface TikTokShopProfilePageResource {
-    /**
-     * List seller page products
-     *
-     * List seller page products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.profile("@pixel_orchard_tt_test").page.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-profile-page-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/page", "get">) => Promise<OperationPage<"/v1/tiktok/shop/profiles/{identifier}/page", "get">>;
-}
-
-export interface TikTokShopProfileProductsResource {
-    /**
-     * List profile shop products
-     *
-     * List profile shop products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.profile("@pixel_orchard_tt_test").products.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-profile-products-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/profiles/{identifier}/products", "get">>;
-}
-
-export interface TikTokShopProfileTabsResource {
-    /**
-     * List seller tabs
-     *
-     * List seller tabs from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.profile("@pixel_orchard_tt_test").tabs.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-profile-tabs-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/profiles/{identifier}/tabs", "get">) => Promise<OperationPage<"/v1/tiktok/shop/profiles/{identifier}/tabs", "get">>;
-}
-
-export interface TikTokShopRecommendationsResource {
-    /**
-     * List recommended shop products
-     *
-     * List recommended shop products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.recommendations.list({ categoryId: "950000000008", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-recommendations-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/shop/recommendations", "get">) => Promise<OperationPage<"/v1/tiktok/shop/recommendations", "get">>;
-}
-
-export interface TikTokShopSearchResource {
-    /**
-     * Search shop products
-     *
-     * Search shop products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.search.list({ q: "synthetic", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-search-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/shop/search", "get">) => Promise<OperationPage<"/v1/tiktok/shop/search", "get">>;
-}
-
-export interface TikTokShopSellerResource {
-    readonly categories: TikTokShopSellerCategoriesResource;
-    /**
-     * Select the category resource using a supported string shorthand or an explicit ID or URL reference.
-     *
-     * Resource selection is synchronous and does not perform a request.
-     */
-    readonly category: (reference: ResourceReference) => TikTokShopSellerCategoryResource;
-    readonly products: TikTokShopSellerProductsResource;
-    readonly sortTypes: TikTokShopSellerSortTypesResource;
-    /**
-     * Get a seller
-     *
-     * Get a seller from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.seller("920100000000000001").get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/shop/sellers/{identifier}", "get">>;
-}
-
-export interface TikTokShopSellerCategoriesResource {
-    /**
-     * List seller categories
-     *
-     * List seller categories from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.seller("920100000000000001").categories.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-categories-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/categories", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/categories", "get">>;
-}
-
-export interface TikTokShopSellerCategoryResource {
-    readonly products: TikTokShopSellerCategoryProductsResource;
-}
-
-export interface TikTokShopSellerCategoryProductsResource {
-    /**
-     * List seller category products
-     *
-     * List seller category products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.seller("920100000000000001").category("950000000008").products.list({ productSourceType: "0", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-category-products-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/categories/{category_id}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/categories/{category_id}/products", "get">>;
-}
-
-export interface TikTokShopSellerProductsResource {
-    /**
-     * List seller products
-     *
-     * List seller products from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.seller("920100000000000001").products.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-products-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/products", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/products", "get">>;
-}
-
-export interface TikTokShopSellerSortTypesResource {
-    /**
-     * List seller product sort types
-     *
-     * List seller product sort types from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.shop.seller("920100000000000001").sortTypes.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-shop-seller-sort-types-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/shop/sellers/{identifier}/sort-types", "get">) => Promise<OperationPage<"/v1/tiktok/shop/sellers/{identifier}/sort-types", "get">>;
-}
-
-export interface TikTokStoryResource {
-    /**
-     * Get a story
-     *
-     * Return one public TikTok story by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.story("920100000000000001").get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-story-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/tiktok/stories/{identifier}", "get">) => Promise<OperationResponse<"/v1/tiktok/stories/{identifier}", "get">>;
-}
-
 export interface TikTokTrendingResource {
     readonly categories: TikTokTrendingCategoriesResource;
-    readonly insights: TikTokTrendingInsightsResource;
     readonly music: TikTokTrendingMusicResource;
     readonly posts: TikTokTrendingPostsResource;
 }
@@ -1736,20 +1225,6 @@ export interface TikTokTrendingCategoriesResource {
      * @see https://openhandle.dev/docs/api-reference/tiktok-trending-categories-list
      */
     readonly list: (options?: OperationOptions<"/v1/tiktok/trending/categories", "get">) => Promise<OperationPage<"/v1/tiktok/trending/categories", "get">>;
-}
-
-export interface TikTokTrendingInsightsResource {
-    /**
-     * List trending insights
-     *
-     * List trending insights from public Tiktok data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.tiktok.trending.insights.list({ tab: "synthetic", freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/tiktok-trending-insights-list
-     */
-    readonly list: (options: OperationOptions<"/v1/tiktok/trending/insights", "get">) => Promise<OperationPage<"/v1/tiktok/trending/insights", "get">>;
 }
 
 export interface TikTokTrendingMusicResource {
@@ -1854,7 +1329,6 @@ export interface TwitterPostResource {
      */
     readonly comment: (reference: ResourceReference) => TwitterPostCommentResource;
     readonly comments: TwitterPostCommentsResource;
-    readonly likers: TwitterPostLikersResource;
     readonly reposters: TwitterPostRepostersResource;
     /**
      * Get a post
@@ -1901,20 +1375,6 @@ export interface TwitterPostCommentsResource {
     readonly list: (options?: OperationOptions<"/v1/twitter/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/twitter/posts/{identifier}/comments", "get">>;
 }
 
-export interface TwitterPostLikersResource {
-    /**
-     * List post likers
-     *
-     * Return public profiles that interacted with a Twitter post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.twitter.post("940100000000000001").likers.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/twitter-post-likers-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/twitter/posts/{identifier}/likers", "get">) => Promise<OperationPage<"/v1/twitter/posts/{identifier}/likers", "get">>;
-}
-
 export interface TwitterPostRepostersResource {
     /**
      * List post reposters
@@ -1932,7 +1392,6 @@ export interface TwitterPostRepostersResource {
 export interface TwitterProfileResource {
     readonly followers: TwitterProfileFollowersResource;
     readonly following: TwitterProfileFollowingResource;
-    readonly lists: TwitterProfileListsResource;
     readonly media: TwitterProfileMediaResource;
     readonly posts: TwitterProfilePostsResource;
     readonly replies: TwitterProfileRepliesResource;
@@ -1975,20 +1434,6 @@ export interface TwitterProfileFollowingResource {
      * @see https://openhandle.dev/docs/api-reference/twitter-profile-following-list
      */
     readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/following", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/following", "get">>;
-}
-
-export interface TwitterProfileListsResource {
-    /**
-     * List profile lists
-     *
-     * Return a cursor-paginated collection of public Twitter lists owned by a profile. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.twitter.profile("@copperfield_lab_x_test").lists.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/twitter-profile-lists-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/twitter/profiles/{identifier}/lists", "get">) => Promise<OperationPage<"/v1/twitter/profiles/{identifier}/lists", "get">>;
 }
 
 export interface TwitterProfileMediaResource {

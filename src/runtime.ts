@@ -196,7 +196,7 @@ const apiError = (response: Response, body: unknown): OpenHandleError => {
         code: typeof error.code === 'string' ? error.code : `HTTP_${response.status}`,
         details: error.details && typeof error.details === 'object' ? (error.details as Record<string, unknown>) : undefined,
         message: typeof error.message === 'string' ? error.message : `OpenHandle request failed with status ${response.status}.`,
-        requestId: typeof error.request_id === 'string' ? error.request_id : (response.headers.get('X-Request-ID') ?? undefined),
+        requestId: typeof error.requestId === 'string' ? error.requestId : (response.headers.get('X-Request-ID') ?? undefined),
         retryable: typeof error.retryable === 'boolean' ? error.retryable : response.status === 429 || response.status >= 500,
         retryAfter: retryAfterMilliseconds(response.headers.get('Retry-After')),
         status: response.status,

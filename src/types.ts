@@ -33,7 +33,7 @@ export interface ResponseBilling {
     /** Synthetic dataset version for Test responses. */
     datasetVersion: string | null;
     /** How this request was accounted for. */
-    disposition: 'test' | 'allowance' | 'postpaid' | null;
+    disposition: 'test' | 'allowance' | 'prepaid' | null;
     /** Environment selected by the API key. */
     environment: 'test' | 'live' | null;
     /** Live-equivalent list price as a decimal string. */

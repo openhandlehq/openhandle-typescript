@@ -123,26 +123,6 @@ export const operations = [
         ]
     },
     {
-        "apiPath": "/v1/instagram/locations/{identifier}/guides",
-        "method": "get",
-        "operation": "list",
-        "paginated": true,
-        "path": "instagram.location.guides.list",
-        "scope": [
-            {
-                "name": "instagram"
-            },
-            {
-                "name": "location",
-                "parameter": "identifier",
-                "reference": "location"
-            },
-            {
-                "name": "guides"
-            }
-        ]
-    },
-    {
         "apiPath": "/v1/instagram/locations/{identifier}/posts",
         "method": "get",
         "operation": "list",
@@ -639,26 +619,6 @@ export const operations = [
         ]
     },
     {
-        "apiPath": "/v1/instagram/profiles/{identifier}/related",
-        "method": "get",
-        "operation": "list",
-        "paginated": true,
-        "path": "instagram.profile.related.list",
-        "scope": [
-            {
-                "name": "instagram"
-            },
-            {
-                "name": "profile",
-                "parameter": "identifier",
-                "reference": "profile"
-            },
-            {
-                "name": "related"
-            }
-        ]
-    },
-    {
         "apiPath": "/v1/instagram/profiles/{identifier}/reposts",
         "method": "get",
         "operation": "list",
@@ -880,6 +840,387 @@ export const operations = [
                 "name": "story",
                 "parameter": "identifier",
                 "reference": "story"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/domains/{identifier}/posts",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.domain.posts.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "domain",
+                "parameter": "identifier",
+                "reference": "domain"
+            },
+            {
+                "name": "posts"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/posts/{identifier}/comments",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.post.comments.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "post",
+                "parameter": "identifier",
+                "reference": "post"
+            },
+            {
+                "name": "comments"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/posts/{identifier}/duplicates",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.post.duplicates.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "post",
+                "parameter": "identifier",
+                "reference": "post"
+            },
+            {
+                "name": "duplicates"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/posts/{identifier}",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "reddit.post.get",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "post",
+                "parameter": "identifier",
+                "reference": "post"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/profiles/{identifier}/comments",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.profile.comments.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "profile",
+                "parameter": "identifier",
+                "reference": "profile"
+            },
+            {
+                "name": "comments"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/profiles/{identifier}",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "reddit.profile.get",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "profile",
+                "parameter": "identifier",
+                "reference": "profile"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/profiles/{identifier}/moderated",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.profile.moderated.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "profile",
+                "parameter": "identifier",
+                "reference": "profile"
+            },
+            {
+                "name": "moderated"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/profiles/{identifier}/posts",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.profile.posts.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "profile",
+                "parameter": "identifier",
+                "reference": "profile"
+            },
+            {
+                "name": "posts"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/profiles/{identifier}/trophies",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.profile.trophies.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "profile",
+                "parameter": "identifier",
+                "reference": "profile"
+            },
+            {
+                "name": "trophies"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/search/posts",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.search.posts.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "search"
+            },
+            {
+                "name": "posts"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/search/profiles",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.search.profiles.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "search"
+            },
+            {
+                "name": "profiles"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/search/subreddits",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.search.subreddits.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "search"
+            },
+            {
+                "name": "subreddits"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/{identifier}",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "reddit.subreddit.get",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddit",
+                "parameter": "identifier",
+                "reference": "subreddit"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/{identifier}/posts",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.subreddit.posts.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddit",
+                "parameter": "identifier",
+                "reference": "subreddit"
+            },
+            {
+                "name": "posts"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/{identifier}/rules",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.subreddit.rules.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddit",
+                "parameter": "identifier",
+                "reference": "subreddit"
+            },
+            {
+                "name": "rules"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/{identifier}/wiki-pages/{page}",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "reddit.subreddit.wikiPage.get",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddit",
+                "parameter": "identifier",
+                "reference": "subreddit"
+            },
+            {
+                "name": "wikiPage",
+                "parameter": "page",
+                "reference": "wikiPage"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/{identifier}/wiki-pages",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.subreddit.wikiPages.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddit",
+                "parameter": "identifier",
+                "reference": "subreddit"
+            },
+            {
+                "name": "wikiPages"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/new",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.subreddits.new.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddits"
+            },
+            {
+                "name": "new"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/subreddits/popular",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.subreddits.popular.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "subreddits"
+            },
+            {
+                "name": "popular"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/reddit/trending/posts",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "reddit.trending.posts.list",
+        "scope": [
+            {
+                "name": "reddit"
+            },
+            {
+                "name": "trending"
+            },
+            {
+                "name": "posts"
             }
         ]
     },
@@ -1442,43 +1783,6 @@ export const operations = [
             },
             {
                 "name": "posts"
-            }
-        ]
-    },
-    {
-        "apiPath": "/v1/twitter/lists/{identifier}",
-        "method": "get",
-        "operation": "get",
-        "paginated": false,
-        "path": "twitter.list.get",
-        "scope": [
-            {
-                "name": "twitter"
-            },
-            {
-                "name": "list",
-                "parameter": "identifier",
-                "reference": "list"
-            }
-        ]
-    },
-    {
-        "apiPath": "/v1/twitter/lists/{identifier}/members",
-        "method": "get",
-        "operation": "list",
-        "paginated": true,
-        "path": "twitter.list.members.list",
-        "scope": [
-            {
-                "name": "twitter"
-            },
-            {
-                "name": "list",
-                "parameter": "identifier",
-                "reference": "list"
-            },
-            {
-                "name": "members"
             }
         ]
     },

@@ -3,29 +3,23 @@
 import type { Camelize, OperationOptions, OperationPage, OperationResponse } from '../types.js';
 import type { components } from './schema.js';
 
-/** Camel-cased Comment model used by SDK responses. */
-export type Comment = Camelize<components['schemas']["Comment"]>;
-
-/** Camel-cased CommentCore model used by SDK responses. */
-export type CommentCore = Camelize<components['schemas']["CommentCore"]>;
-
-/** Camel-cased CommentMetrics model used by SDK responses. */
-export type CommentMetrics = Camelize<components['schemas']["CommentMetrics"]>;
-
-/** Camel-cased Entity model used by SDK responses. */
-export type Entity = Camelize<components['schemas']["Entity"]>;
-
-/** Camel-cased EntityCore model used by SDK responses. */
-export type EntityCore = Camelize<components['schemas']["EntityCore"]>;
-
-/** Camel-cased EntityReference model used by SDK responses. */
-export type EntityReference = Camelize<components['schemas']["EntityReference"]>;
-
 /** Camel-cased ErrorEnvelope model used by SDK responses. */
 export type ErrorEnvelope = Camelize<components['schemas']["ErrorEnvelope"]>;
 
-/** Camel-cased Hashtag model used by SDK responses. */
-export type Hashtag = Camelize<components['schemas']["Hashtag"]>;
+/** Camel-cased InstagramAudio model used by SDK responses. */
+export type InstagramAudio = Camelize<components['schemas']["InstagramAudio"]>;
+
+/** Camel-cased InstagramAudioMetrics model used by SDK responses. */
+export type InstagramAudioMetrics = Camelize<components['schemas']["InstagramAudioMetrics"]>;
+
+/** Camel-cased InstagramAudioPart model used by SDK responses. */
+export type InstagramAudioPart = Camelize<components['schemas']["InstagramAudioPart"]>;
+
+/** Camel-cased InstagramAudioReference model used by SDK responses. */
+export type InstagramAudioReference = Camelize<components['schemas']["InstagramAudioReference"]>;
+
+/** Camel-cased InstagramBioLink model used by SDK responses. */
+export type InstagramBioLink = Camelize<components['schemas']["InstagramBioLink"]>;
 
 /** Camel-cased InstagramClipMetadata model used by SDK responses. */
 export type InstagramClipMetadata = Camelize<components['schemas']["InstagramClipMetadata"]>;
@@ -36,32 +30,92 @@ export type InstagramComment = Camelize<components['schemas']["InstagramComment"
 /** Camel-cased InstagramCommentMetadata model used by SDK responses. */
 export type InstagramCommentMetadata = Camelize<components['schemas']["InstagramCommentMetadata"]>;
 
+/** Camel-cased InstagramCommentMetrics model used by SDK responses. */
+export type InstagramCommentMetrics = Camelize<components['schemas']["InstagramCommentMetrics"]>;
+
 /** Camel-cased InstagramCommentModeration model used by SDK responses. */
 export type InstagramCommentModeration = Camelize<components['schemas']["InstagramCommentModeration"]>;
 
-/** Camel-cased InstagramEntity model used by SDK responses. */
-export type InstagramEntity = Camelize<components['schemas']["InstagramEntity"]>;
+/** Camel-cased InstagramCommentReference model used by SDK responses. */
+export type InstagramCommentReference = Camelize<components['schemas']["InstagramCommentReference"]>;
+
+/** Camel-cased InstagramCommentSettings model used by SDK responses. */
+export type InstagramCommentSettings = Camelize<components['schemas']["InstagramCommentSettings"]>;
+
+/** Camel-cased InstagramCoordinates model used by SDK responses. */
+export type InstagramCoordinates = Camelize<components['schemas']["InstagramCoordinates"]>;
+
+/** Camel-cased InstagramCrop model used by SDK responses. */
+export type InstagramCrop = Camelize<components['schemas']["InstagramCrop"]>;
+
+/** Camel-cased InstagramDASH model used by SDK responses. */
+export type InstagramDASH = Camelize<components['schemas']["InstagramDASH"]>;
+
+/** Camel-cased InstagramHashtag model used by SDK responses. */
+export type InstagramHashtag = Camelize<components['schemas']["InstagramHashtag"]>;
+
+/** Camel-cased InstagramHashtagReference model used by SDK responses. */
+export type InstagramHashtagReference = Camelize<components['schemas']["InstagramHashtagReference"]>;
 
 /** Camel-cased InstagramHighlight model used by SDK responses. */
 export type InstagramHighlight = Camelize<components['schemas']["InstagramHighlight"]>;
 
-/** Camel-cased InstagramLocationGuide model used by SDK responses. */
-export type InstagramLocationGuide = Camelize<components['schemas']["InstagramLocationGuide"]>;
+/** Camel-cased InstagramHighlightReference model used by SDK responses. */
+export type InstagramHighlightReference = Camelize<components['schemas']["InstagramHighlightReference"]>;
+
+/** Camel-cased InstagramImage model used by SDK responses. */
+export type InstagramImage = Camelize<components['schemas']["InstagramImage"]>;
+
+/** Camel-cased InstagramLocation model used by SDK responses. */
+export type InstagramLocation = Camelize<components['schemas']["InstagramLocation"]>;
+
+/** Camel-cased InstagramLocationAddress model used by SDK responses. */
+export type InstagramLocationAddress = Camelize<components['schemas']["InstagramLocationAddress"]>;
+
+/** Camel-cased InstagramLocationHours model used by SDK responses. */
+export type InstagramLocationHours = Camelize<components['schemas']["InstagramLocationHours"]>;
+
+/** Camel-cased InstagramLocationReference model used by SDK responses. */
+export type InstagramLocationReference = Camelize<components['schemas']["InstagramLocationReference"]>;
+
+/** Camel-cased InstagramMedia model used by SDK responses. */
+export type InstagramMedia = Camelize<components['schemas']["InstagramMedia"]>;
+
+/** Camel-cased InstagramMediaPreview model used by SDK responses. */
+export type InstagramMediaPreview = Camelize<components['schemas']["InstagramMediaPreview"]>;
+
+/** Camel-cased InstagramMediaVariant model used by SDK responses. */
+export type InstagramMediaVariant = Camelize<components['schemas']["InstagramMediaVariant"]>;
+
+/** Camel-cased InstagramMusic model used by SDK responses. */
+export type InstagramMusic = Camelize<components['schemas']["InstagramMusic"]>;
 
 /** Camel-cased InstagramMusicStream model used by SDK responses. */
 export type InstagramMusicStream = Camelize<components['schemas']["InstagramMusicStream"]>;
 
+/** Camel-cased InstagramMusicStreamMetrics model used by SDK responses. */
+export type InstagramMusicStreamMetrics = Camelize<components['schemas']["InstagramMusicStreamMetrics"]>;
+
+/** Camel-cased InstagramNote model used by SDK responses. */
+export type InstagramNote = Camelize<components['schemas']["InstagramNote"]>;
+
 /** Camel-cased InstagramOEmbed model used by SDK responses. */
 export type InstagramOEmbed = Camelize<components['schemas']["InstagramOEmbed"]>;
 
-/** Camel-cased InstagramPlayCountBreakdown model used by SDK responses. */
-export type InstagramPlayCountBreakdown = Camelize<components['schemas']["InstagramPlayCountBreakdown"]>;
+/** Camel-cased InstagramPageMetadata model used by SDK responses. */
+export type InstagramPageMetadata = Camelize<components['schemas']["InstagramPageMetadata"]>;
+
+/** Camel-cased InstagramPartialData model used by SDK responses. */
+export type InstagramPartialData = Camelize<components['schemas']["InstagramPartialData"]>;
+
+/** Camel-cased InstagramPartialError model used by SDK responses. */
+export type InstagramPartialError = Camelize<components['schemas']["InstagramPartialError"]>;
+
+/** Camel-cased InstagramPosition model used by SDK responses. */
+export type InstagramPosition = Camelize<components['schemas']["InstagramPosition"]>;
 
 /** Camel-cased InstagramPost model used by SDK responses. */
 export type InstagramPost = Camelize<components['schemas']["InstagramPost"]>;
-
-/** Camel-cased InstagramPostExtended model used by SDK responses. */
-export type InstagramPostExtended = Camelize<components['schemas']["InstagramPostExtended"]>;
 
 /** Camel-cased InstagramPostInsight model used by SDK responses. */
 export type InstagramPostInsight = Camelize<components['schemas']["InstagramPostInsight"]>;
@@ -69,83 +123,263 @@ export type InstagramPostInsight = Camelize<components['schemas']["InstagramPost
 /** Camel-cased InstagramPostMetrics model used by SDK responses. */
 export type InstagramPostMetrics = Camelize<components['schemas']["InstagramPostMetrics"]>;
 
+/** Camel-cased InstagramPostReference model used by SDK responses. */
+export type InstagramPostReference = Camelize<components['schemas']["InstagramPostReference"]>;
+
+/** Camel-cased InstagramPrice model used by SDK responses. */
+export type InstagramPrice = Camelize<components['schemas']["InstagramPrice"]>;
+
+/** Camel-cased InstagramProduct model used by SDK responses. */
+export type InstagramProduct = Camelize<components['schemas']["InstagramProduct"]>;
+
+/** Camel-cased InstagramProductTag model used by SDK responses. */
+export type InstagramProductTag = Camelize<components['schemas']["InstagramProductTag"]>;
+
 /** Camel-cased InstagramProfile model used by SDK responses. */
 export type InstagramProfile = Camelize<components['schemas']["InstagramProfile"]>;
 
 /** Camel-cased InstagramProfileAbout model used by SDK responses. */
 export type InstagramProfileAbout = Camelize<components['schemas']["InstagramProfileAbout"]>;
 
-/** Camel-cased InstagramProfileExtended model used by SDK responses. */
-export type InstagramProfileExtended = Camelize<components['schemas']["InstagramProfileExtended"]>;
+/** Camel-cased InstagramProfileAccountType model used by SDK responses. */
+export type InstagramProfileAccountType = Camelize<components['schemas']["InstagramProfileAccountType"]>;
+
+/** Camel-cased InstagramProfileAddress model used by SDK responses. */
+export type InstagramProfileAddress = Camelize<components['schemas']["InstagramProfileAddress"]>;
+
+/** Camel-cased InstagramProfileBroadcastChannel model used by SDK responses. */
+export type InstagramProfileBroadcastChannel = Camelize<components['schemas']["InstagramProfileBroadcastChannel"]>;
+
+/** Camel-cased InstagramProfileBroadcastChannels model used by SDK responses. */
+export type InstagramProfileBroadcastChannels = Camelize<components['schemas']["InstagramProfileBroadcastChannels"]>;
+
+/** Camel-cased InstagramProfileContact model used by SDK responses. */
+export type InstagramProfileContact = Camelize<components['schemas']["InstagramProfileContact"]>;
+
+/** Camel-cased InstagramProfileContent model used by SDK responses. */
+export type InstagramProfileContent = Camelize<components['schemas']["InstagramProfileContent"]>;
+
+/** Camel-cased InstagramProfileContentSettings model used by SDK responses. */
+export type InstagramProfileContentSettings = Camelize<components['schemas']["InstagramProfileContentSettings"]>;
+
+/** Camel-cased InstagramProfileDisplaySettings model used by SDK responses. */
+export type InstagramProfileDisplaySettings = Camelize<components['schemas']["InstagramProfileDisplaySettings"]>;
+
+/** Camel-cased InstagramProfileFanClub model used by SDK responses. */
+export type InstagramProfileFanClub = Camelize<components['schemas']["InstagramProfileFanClub"]>;
+
+/** Camel-cased InstagramProfileFundraisers model used by SDK responses. */
+export type InstagramProfileFundraisers = Camelize<components['schemas']["InstagramProfileFundraisers"]>;
+
+/** Camel-cased InstagramProfileLocation model used by SDK responses. */
+export type InstagramProfileLocation = Camelize<components['schemas']["InstagramProfileLocation"]>;
+
+/** Camel-cased InstagramProfileMetrics model used by SDK responses. */
+export type InstagramProfileMetrics = Camelize<components['schemas']["InstagramProfileMetrics"]>;
+
+/** Camel-cased InstagramProfileReference model used by SDK responses. */
+export type InstagramProfileReference = Camelize<components['schemas']["InstagramProfileReference"]>;
 
 /** Camel-cased InstagramProfileSummary model used by SDK responses. */
 export type InstagramProfileSummary = Camelize<components['schemas']["InstagramProfileSummary"]>;
 
+/** Camel-cased InstagramProfileThreads model used by SDK responses. */
+export type InstagramProfileThreads = Camelize<components['schemas']["InstagramProfileThreads"]>;
+
+/** Camel-cased InstagramScrubber model used by SDK responses. */
+export type InstagramScrubber = Camelize<components['schemas']["InstagramScrubber"]>;
+
 /** Camel-cased InstagramSearchResult model used by SDK responses. */
 export type InstagramSearchResult = Camelize<components['schemas']["InstagramSearchResult"]>;
+
+/** Camel-cased InstagramSticker model used by SDK responses. */
+export type InstagramSticker = Camelize<components['schemas']["InstagramSticker"]>;
+
+/** Camel-cased InstagramStickerPost model used by SDK responses. */
+export type InstagramStickerPost = Camelize<components['schemas']["InstagramStickerPost"]>;
 
 /** Camel-cased InstagramStory model used by SDK responses. */
 export type InstagramStory = Camelize<components['schemas']["InstagramStory"]>;
 
+/** Camel-cased InstagramStoryCollection model used by SDK responses. */
+export type InstagramStoryCollection = Camelize<components['schemas']["InstagramStoryCollection"]>;
+
+/** Camel-cased InstagramStoryReference model used by SDK responses. */
+export type InstagramStoryReference = Camelize<components['schemas']["InstagramStoryReference"]>;
+
+/** Camel-cased InstagramStreamVariant model used by SDK responses. */
+export type InstagramStreamVariant = Camelize<components['schemas']["InstagramStreamVariant"]>;
+
+/** Camel-cased InstagramStreaming model used by SDK responses. */
+export type InstagramStreaming = Camelize<components['schemas']["InstagramStreaming"]>;
+
+/** Camel-cased InstagramSubtitles model used by SDK responses. */
+export type InstagramSubtitles = Camelize<components['schemas']["InstagramSubtitles"]>;
+
+/** Camel-cased InstagramSuggestion model used by SDK responses. */
+export type InstagramSuggestion = Camelize<components['schemas']["InstagramSuggestion"]>;
+
 /** Camel-cased InstagramTemplate model used by SDK responses. */
 export type InstagramTemplate = Camelize<components['schemas']["InstagramTemplate"]>;
 
-/** Camel-cased Location model used by SDK responses. */
-export type Location = Camelize<components['schemas']["Location"]>;
+/** Camel-cased InstagramTemplateInfo model used by SDK responses. */
+export type InstagramTemplateInfo = Camelize<components['schemas']["InstagramTemplateInfo"]>;
 
-/** Camel-cased MediaReference model used by SDK responses. */
-export type MediaReference = Camelize<components['schemas']["MediaReference"]>;
+/** Camel-cased InstagramTemplateSegment model used by SDK responses. */
+export type InstagramTemplateSegment = Camelize<components['schemas']["InstagramTemplateSegment"]>;
+
+/** Camel-cased InstagramUserTag model used by SDK responses. */
+export type InstagramUserTag = Camelize<components['schemas']["InstagramUserTag"]>;
 
 /** Camel-cased MessageEnvelope model used by SDK responses. */
 export type MessageEnvelope = Camelize<components['schemas']["MessageEnvelope"]>;
 
-/** Camel-cased Music model used by SDK responses. */
-export type Music = Camelize<components['schemas']["Music"]>;
+/** Camel-cased RedditAuthor model used by SDK responses. */
+export type RedditAuthor = Camelize<components['schemas']["RedditAuthor"]>;
 
-/** Camel-cased PostAuthor model used by SDK responses. */
-export type PostAuthor = Camelize<components['schemas']["PostAuthor"]>;
+/** Camel-cased RedditComment model used by SDK responses. */
+export type RedditComment = Camelize<components['schemas']["RedditComment"]>;
 
-/** Camel-cased PostCore model used by SDK responses. */
-export type PostCore = Camelize<components['schemas']["PostCore"]>;
+/** Camel-cased RedditCommentDisplay model used by SDK responses. */
+export type RedditCommentDisplay = Camelize<components['schemas']["RedditCommentDisplay"]>;
 
-/** Camel-cased PostLocation model used by SDK responses. */
-export type PostLocation = Camelize<components['schemas']["PostLocation"]>;
+/** Camel-cased RedditCommentMetrics model used by SDK responses. */
+export type RedditCommentMetrics = Camelize<components['schemas']["RedditCommentMetrics"]>;
 
-/** Camel-cased PostMedia model used by SDK responses. */
-export type PostMedia = Camelize<components['schemas']["PostMedia"]>;
+/** Camel-cased RedditCommentReference model used by SDK responses. */
+export type RedditCommentReference = Camelize<components['schemas']["RedditCommentReference"]>;
 
-/** Camel-cased PostMediaVariant model used by SDK responses. */
-export type PostMediaVariant = Camelize<components['schemas']["PostMediaVariant"]>;
+/** Camel-cased RedditCommentSettings model used by SDK responses. */
+export type RedditCommentSettings = Camelize<components['schemas']["RedditCommentSettings"]>;
 
-/** Camel-cased PostMetrics model used by SDK responses. */
-export type PostMetrics = Camelize<components['schemas']["PostMetrics"]>;
+/** Camel-cased RedditCommentVisibility model used by SDK responses. */
+export type RedditCommentVisibility = Camelize<components['schemas']["RedditCommentVisibility"]>;
 
-/** Camel-cased PostMusic model used by SDK responses. */
-export type PostMusic = Camelize<components['schemas']["PostMusic"]>;
+/** Camel-cased RedditCommentsSetting model used by SDK responses. */
+export type RedditCommentsSetting = Camelize<components['schemas']["RedditCommentsSetting"]>;
 
-/** Camel-cased PostMusicArtist model used by SDK responses. */
-export type PostMusicArtist = Camelize<components['schemas']["PostMusicArtist"]>;
+/** Camel-cased RedditCommunity model used by SDK responses. */
+export type RedditCommunity = Camelize<components['schemas']["RedditCommunity"]>;
 
-/** Camel-cased Profile model used by SDK responses. */
-export type Profile = Camelize<components['schemas']["Profile"]>;
+/** Camel-cased RedditCommunityHandle model used by SDK responses. */
+export type RedditCommunityHandle = Camelize<components['schemas']["RedditCommunityHandle"]>;
 
-/** Camel-cased ProfileCore model used by SDK responses. */
-export type ProfileCore = Camelize<components['schemas']["ProfileCore"]>;
+/** Camel-cased RedditDisplaySettings model used by SDK responses. */
+export type RedditDisplaySettings = Camelize<components['schemas']["RedditDisplaySettings"]>;
 
-/** Camel-cased ProfileLink model used by SDK responses. */
-export type ProfileLink = Camelize<components['schemas']["ProfileLink"]>;
+/** Camel-cased RedditEmbed model used by SDK responses. */
+export type RedditEmbed = Camelize<components['schemas']["RedditEmbed"]>;
 
-/** Camel-cased ProfileMetrics model used by SDK responses. */
-export type ProfileMetrics = Camelize<components['schemas']["ProfileMetrics"]>;
+/** Camel-cased RedditEmbedAuthor model used by SDK responses. */
+export type RedditEmbedAuthor = Camelize<components['schemas']["RedditEmbedAuthor"]>;
 
-/** Camel-cased SearchResultMetrics model used by SDK responses. */
-export type SearchResultMetrics = Camelize<components['schemas']["SearchResultMetrics"]>;
+/** Camel-cased RedditEmbedSource model used by SDK responses. */
+export type RedditEmbedSource = Camelize<components['schemas']["RedditEmbedSource"]>;
 
-/** Camel-cased StoryLink model used by SDK responses. */
-export type StoryLink = Camelize<components['schemas']["StoryLink"]>;
+/** Camel-cased RedditFlair model used by SDK responses. */
+export type RedditFlair = Camelize<components['schemas']["RedditFlair"]>;
 
-/** Camel-cased StorySticker model used by SDK responses. */
-export type StorySticker = Camelize<components['schemas']["StorySticker"]>;
+/** Camel-cased RedditImage model used by SDK responses. */
+export type RedditImage = Camelize<components['schemas']["RedditImage"]>;
+
+/** Camel-cased RedditKarma model used by SDK responses. */
+export type RedditKarma = Camelize<components['schemas']["RedditKarma"]>;
+
+/** Camel-cased RedditListingContext model used by SDK responses. */
+export type RedditListingContext = Camelize<components['schemas']["RedditListingContext"]>;
+
+/** Camel-cased RedditMedia model used by SDK responses. */
+export type RedditMedia = Camelize<components['schemas']["RedditMedia"]>;
+
+/** Camel-cased RedditMediaVariant model used by SDK responses. */
+export type RedditMediaVariant = Camelize<components['schemas']["RedditMediaVariant"]>;
+
+/** Camel-cased RedditPageMetadata model used by SDK responses. */
+export type RedditPageMetadata = Camelize<components['schemas']["RedditPageMetadata"]>;
+
+/** Camel-cased RedditPost model used by SDK responses. */
+export type RedditPost = Camelize<components['schemas']["RedditPost"]>;
+
+/** Camel-cased RedditPostFlairSettings model used by SDK responses. */
+export type RedditPostFlairSettings = Camelize<components['schemas']["RedditPostFlairSettings"]>;
+
+/** Camel-cased RedditPostMetrics model used by SDK responses. */
+export type RedditPostMetrics = Camelize<components['schemas']["RedditPostMetrics"]>;
+
+/** Camel-cased RedditPostReference model used by SDK responses. */
+export type RedditPostReference = Camelize<components['schemas']["RedditPostReference"]>;
+
+/** Camel-cased RedditPostVisibility model used by SDK responses. */
+export type RedditPostVisibility = Camelize<components['schemas']["RedditPostVisibility"]>;
+
+/** Camel-cased RedditPostingLabels model used by SDK responses. */
+export type RedditPostingLabels = Camelize<components['schemas']["RedditPostingLabels"]>;
+
+/** Camel-cased RedditPostingSettings model used by SDK responses. */
+export type RedditPostingSettings = Camelize<components['schemas']["RedditPostingSettings"]>;
+
+/** Camel-cased RedditProfile model used by SDK responses. */
+export type RedditProfile = Camelize<components['schemas']["RedditProfile"]>;
+
+/** Camel-cased RedditProfileCommunity model used by SDK responses. */
+export type RedditProfileCommunity = Camelize<components['schemas']["RedditProfileCommunity"]>;
+
+/** Camel-cased RedditProfileMetrics model used by SDK responses. */
+export type RedditProfileMetrics = Camelize<components['schemas']["RedditProfileMetrics"]>;
+
+/** Camel-cased RedditProfileVisibility model used by SDK responses. */
+export type RedditProfileVisibility = Camelize<components['schemas']["RedditProfileVisibility"]>;
+
+/** Camel-cased RedditReportSettings model used by SDK responses. */
+export type RedditReportSettings = Camelize<components['schemas']["RedditReportSettings"]>;
+
+/** Camel-cased RedditRule model used by SDK responses. */
+export type RedditRule = Camelize<components['schemas']["RedditRule"]>;
+
+/** Camel-cased RedditSubreddit model used by SDK responses. */
+export type RedditSubreddit = Camelize<components['schemas']["RedditSubreddit"]>;
+
+/** Camel-cased RedditSubredditBranding model used by SDK responses. */
+export type RedditSubredditBranding = Camelize<components['schemas']["RedditSubredditBranding"]>;
+
+/** Camel-cased RedditSubredditColors model used by SDK responses. */
+export type RedditSubredditColors = Camelize<components['schemas']["RedditSubredditColors"]>;
+
+/** Camel-cased RedditSubredditMetrics model used by SDK responses. */
+export type RedditSubredditMetrics = Camelize<components['schemas']["RedditSubredditMetrics"]>;
+
+/** Camel-cased RedditSubredditSettings model used by SDK responses. */
+export type RedditSubredditSettings = Camelize<components['schemas']["RedditSubredditSettings"]>;
+
+/** Camel-cased RedditText model used by SDK responses. */
+export type RedditText = Camelize<components['schemas']["RedditText"]>;
+
+/** Camel-cased RedditThumbnail model used by SDK responses. */
+export type RedditThumbnail = Camelize<components['schemas']["RedditThumbnail"]>;
+
+/** Camel-cased RedditTrophy model used by SDK responses. */
+export type RedditTrophy = Camelize<components['schemas']["RedditTrophy"]>;
+
+/** Camel-cased RedditVerification model used by SDK responses. */
+export type RedditVerification = Camelize<components['schemas']["RedditVerification"]>;
+
+/** Camel-cased RedditWikiAuthor model used by SDK responses. */
+export type RedditWikiAuthor = Camelize<components['schemas']["RedditWikiAuthor"]>;
+
+/** Camel-cased RedditWikiContent model used by SDK responses. */
+export type RedditWikiContent = Camelize<components['schemas']["RedditWikiContent"]>;
+
+/** Camel-cased RedditWikiPage model used by SDK responses. */
+export type RedditWikiPage = Camelize<components['schemas']["RedditWikiPage"]>;
+
+/** Camel-cased RedditWikiRevision model used by SDK responses. */
+export type RedditWikiRevision = Camelize<components['schemas']["RedditWikiRevision"]>;
+
+/** Camel-cased ResponseCursors model used by SDK responses. */
+export type ResponseCursors = Camelize<components['schemas']["ResponseCursors"]>;
+
+/** Camel-cased ResponseMeta model used by SDK responses. */
+export type ResponseMeta = Camelize<components['schemas']["ResponseMeta"]>;
 
 /** Camel-cased SuccessEnvelope model used by SDK responses. */
 export type SuccessEnvelope = Camelize<components['schemas']["SuccessEnvelope"]>;
@@ -171,62 +405,461 @@ export type TestDataOperation = Camelize<components['schemas']["TestDataOperatio
 /** Camel-cased TestDataRelationship model used by SDK responses. */
 export type TestDataRelationship = Camelize<components['schemas']["TestDataRelationship"]>;
 
+/** Camel-cased TikTokAsset model used by SDK responses. */
+export type TikTokAsset = Camelize<components['schemas']["TikTokAsset"]>;
+
+/** Camel-cased TikTokBeatData model used by SDK responses. */
+export type TikTokBeatData = Camelize<components['schemas']["TikTokBeatData"]>;
+
+/** Camel-cased TikTokCategory model used by SDK responses. */
+export type TikTokCategory = Camelize<components['schemas']["TikTokCategory"]>;
+
+/** Camel-cased TikTokCategoryContext model used by SDK responses. */
+export type TikTokCategoryContext = Camelize<components['schemas']["TikTokCategoryContext"]>;
+
+/** Camel-cased TikTokChartMetadata model used by SDK responses. */
+export type TikTokChartMetadata = Camelize<components['schemas']["TikTokChartMetadata"]>;
+
+/** Camel-cased TikTokCollaborator model used by SDK responses. */
+export type TikTokCollaborator = Camelize<components['schemas']["TikTokCollaborator"]>;
+
 /** Camel-cased TikTokComment model used by SDK responses. */
 export type TikTokComment = Camelize<components['schemas']["TikTokComment"]>;
+
+/** Camel-cased TikTokCommentLabel model used by SDK responses. */
+export type TikTokCommentLabel = Camelize<components['schemas']["TikTokCommentLabel"]>;
+
+/** Camel-cased TikTokCommentMetrics model used by SDK responses. */
+export type TikTokCommentMetrics = Camelize<components['schemas']["TikTokCommentMetrics"]>;
+
+/** Camel-cased TikTokCommentPredictions model used by SDK responses. */
+export type TikTokCommentPredictions = Camelize<components['schemas']["TikTokCommentPredictions"]>;
+
+/** Camel-cased TikTokCommentReference model used by SDK responses. */
+export type TikTokCommentReference = Camelize<components['schemas']["TikTokCommentReference"]>;
+
+/** Camel-cased TikTokCommentSticker model used by SDK responses. */
+export type TikTokCommentSticker = Camelize<components['schemas']["TikTokCommentSticker"]>;
+
+/** Camel-cased TikTokCommerceMetrics model used by SDK responses. */
+export type TikTokCommerceMetrics = Camelize<components['schemas']["TikTokCommerceMetrics"]>;
+
+/** Camel-cased TikTokCoordinates model used by SDK responses. */
+export type TikTokCoordinates = Camelize<components['schemas']["TikTokCoordinates"]>;
+
+/** Camel-cased TikTokDistrict model used by SDK responses. */
+export type TikTokDistrict = Camelize<components['schemas']["TikTokDistrict"]>;
 
 /** Camel-cased TikTokEffect model used by SDK responses. */
 export type TikTokEffect = Camelize<components['schemas']["TikTokEffect"]>;
 
-/** Camel-cased TikTokEntity model used by SDK responses. */
-export type TikTokEntity = Camelize<components['schemas']["TikTokEntity"]>;
+/** Camel-cased TikTokEffectClassification model used by SDK responses. */
+export type TikTokEffectClassification = Camelize<components['schemas']["TikTokEffectClassification"]>;
+
+/** Camel-cased TikTokEffectCreation model used by SDK responses. */
+export type TikTokEffectCreation = Camelize<components['schemas']["TikTokEffectCreation"]>;
+
+/** Camel-cased TikTokEffectMetrics model used by SDK responses. */
+export type TikTokEffectMetrics = Camelize<components['schemas']["TikTokEffectMetrics"]>;
+
+/** Camel-cased TikTokEffectOwner model used by SDK responses. */
+export type TikTokEffectOwner = Camelize<components['schemas']["TikTokEffectOwner"]>;
+
+/** Camel-cased TikTokEffectOwnerVerification model used by SDK responses. */
+export type TikTokEffectOwnerVerification = Camelize<components['schemas']["TikTokEffectOwnerVerification"]>;
+
+/** Camel-cased TikTokEffectReference model used by SDK responses. */
+export type TikTokEffectReference = Camelize<components['schemas']["TikTokEffectReference"]>;
+
+/** Camel-cased TikTokEffectTrigger model used by SDK responses. */
+export type TikTokEffectTrigger = Camelize<components['schemas']["TikTokEffectTrigger"]>;
+
+/** Camel-cased TikTokHashtag model used by SDK responses. */
+export type TikTokHashtag = Camelize<components['schemas']["TikTokHashtag"]>;
+
+/** Camel-cased TikTokHashtagClassification model used by SDK responses. */
+export type TikTokHashtagClassification = Camelize<components['schemas']["TikTokHashtagClassification"]>;
+
+/** Camel-cased TikTokHashtagMetrics model used by SDK responses. */
+export type TikTokHashtagMetrics = Camelize<components['schemas']["TikTokHashtagMetrics"]>;
+
+/** Camel-cased TikTokHashtagReference model used by SDK responses. */
+export type TikTokHashtagReference = Camelize<components['schemas']["TikTokHashtagReference"]>;
+
+/** Camel-cased TikTokHashtagSearchContext model used by SDK responses. */
+export type TikTokHashtagSearchContext = Camelize<components['schemas']["TikTokHashtagSearchContext"]>;
+
+/** Camel-cased TikTokInteractionSticker model used by SDK responses. */
+export type TikTokInteractionSticker = Camelize<components['schemas']["TikTokInteractionSticker"]>;
+
+/** Camel-cased TikTokLocation model used by SDK responses. */
+export type TikTokLocation = Camelize<components['schemas']["TikTokLocation"]>;
+
+/** Camel-cased TikTokLocationAddress model used by SDK responses. */
+export type TikTokLocationAddress = Camelize<components['schemas']["TikTokLocationAddress"]>;
+
+/** Camel-cased TikTokLocationClassification model used by SDK responses. */
+export type TikTokLocationClassification = Camelize<components['schemas']["TikTokLocationClassification"]>;
+
+/** Camel-cased TikTokLocationCommerce model used by SDK responses. */
+export type TikTokLocationCommerce = Camelize<components['schemas']["TikTokLocationCommerce"]>;
+
+/** Camel-cased TikTokLocationMetrics model used by SDK responses. */
+export type TikTokLocationMetrics = Camelize<components['schemas']["TikTokLocationMetrics"]>;
+
+/** Camel-cased TikTokLocationParent model used by SDK responses. */
+export type TikTokLocationParent = Camelize<components['schemas']["TikTokLocationParent"]>;
+
+/** Camel-cased TikTokLocationRating model used by SDK responses. */
+export type TikTokLocationRating = Camelize<components['schemas']["TikTokLocationRating"]>;
+
+/** Camel-cased TikTokLocationReference model used by SDK responses. */
+export type TikTokLocationReference = Camelize<components['schemas']["TikTokLocationReference"]>;
+
+/** Camel-cased TikTokLyricAsset model used by SDK responses. */
+export type TikTokLyricAsset = Camelize<components['schemas']["TikTokLyricAsset"]>;
+
+/** Camel-cased TikTokMatchedTrack model used by SDK responses. */
+export type TikTokMatchedTrack = Camelize<components['schemas']["TikTokMatchedTrack"]>;
+
+/** Camel-cased TikTokMusic model used by SDK responses. */
+export type TikTokMusic = Camelize<components['schemas']["TikTokMusic"]>;
+
+/** Camel-cased TikTokMusicChartContext model used by SDK responses. */
+export type TikTokMusicChartContext = Camelize<components['schemas']["TikTokMusicChartContext"]>;
+
+/** Camel-cased TikTokMusicClassification model used by SDK responses. */
+export type TikTokMusicClassification = Camelize<components['schemas']["TikTokMusicClassification"]>;
+
+/** Camel-cased TikTokMusicContext model used by SDK responses. */
+export type TikTokMusicContext = Camelize<components['schemas']["TikTokMusicContext"]>;
+
+/** Camel-cased TikTokMusicDurations model used by SDK responses. */
+export type TikTokMusicDurations = Camelize<components['schemas']["TikTokMusicDurations"]>;
+
+/** Camel-cased TikTokMusicGrouping model used by SDK responses. */
+export type TikTokMusicGrouping = Camelize<components['schemas']["TikTokMusicGrouping"]>;
+
+/** Camel-cased TikTokMusicMetrics model used by SDK responses. */
+export type TikTokMusicMetrics = Camelize<components['schemas']["TikTokMusicMetrics"]>;
+
+/** Camel-cased TikTokMusicPreview model used by SDK responses. */
+export type TikTokMusicPreview = Camelize<components['schemas']["TikTokMusicPreview"]>;
+
+/** Camel-cased TikTokMusicReference model used by SDK responses. */
+export type TikTokMusicReference = Camelize<components['schemas']["TikTokMusicReference"]>;
+
+/** Camel-cased TikTokMusicRelease model used by SDK responses. */
+export type TikTokMusicRelease = Camelize<components['schemas']["TikTokMusicRelease"]>;
+
+/** Camel-cased TikTokMusicSearchContext model used by SDK responses. */
+export type TikTokMusicSearchContext = Camelize<components['schemas']["TikTokMusicSearchContext"]>;
+
+/** Camel-cased TikTokMusicSource model used by SDK responses. */
+export type TikTokMusicSource = Camelize<components['schemas']["TikTokMusicSource"]>;
+
+/** Camel-cased TikTokOpeningHours model used by SDK responses. */
+export type TikTokOpeningHours = Camelize<components['schemas']["TikTokOpeningHours"]>;
+
+/** Camel-cased TikTokOpeningHoursEntry model used by SDK responses. */
+export type TikTokOpeningHoursEntry = Camelize<components['schemas']["TikTokOpeningHoursEntry"]>;
+
+/** Camel-cased TikTokPageContinuation model used by SDK responses. */
+export type TikTokPageContinuation = Camelize<components['schemas']["TikTokPageContinuation"]>;
+
+/** Camel-cased TikTokPageMetadata model used by SDK responses. */
+export type TikTokPageMetadata = Camelize<components['schemas']["TikTokPageMetadata"]>;
 
 /** Camel-cased TikTokPlaylist model used by SDK responses. */
 export type TikTokPlaylist = Camelize<components['schemas']["TikTokPlaylist"]>;
 
+/** Camel-cased TikTokPlaylistMetrics model used by SDK responses. */
+export type TikTokPlaylistMetrics = Camelize<components['schemas']["TikTokPlaylistMetrics"]>;
+
+/** Camel-cased TikTokPlaylistReference model used by SDK responses. */
+export type TikTokPlaylistReference = Camelize<components['schemas']["TikTokPlaylistReference"]>;
+
 /** Camel-cased TikTokPost model used by SDK responses. */
 export type TikTokPost = Camelize<components['schemas']["TikTokPost"]>;
 
-/** Camel-cased TikTokPostExtended model used by SDK responses. */
-export type TikTokPostExtended = Camelize<components['schemas']["TikTokPostExtended"]>;
+/** Camel-cased TikTokPostAI model used by SDK responses. */
+export type TikTokPostAI = Camelize<components['schemas']["TikTokPostAI"]>;
+
+/** Camel-cased TikTokPostAudio model used by SDK responses. */
+export type TikTokPostAudio = Camelize<components['schemas']["TikTokPostAudio"]>;
+
+/** Camel-cased TikTokPostCaption model used by SDK responses. */
+export type TikTokPostCaption = Camelize<components['schemas']["TikTokPostCaption"]>;
+
+/** Camel-cased TikTokPostCommerce model used by SDK responses. */
+export type TikTokPostCommerce = Camelize<components['schemas']["TikTokPostCommerce"]>;
 
 /** Camel-cased TikTokPostMetrics model used by SDK responses. */
 export type TikTokPostMetrics = Camelize<components['schemas']["TikTokPostMetrics"]>;
 
+/** Camel-cased TikTokPostReference model used by SDK responses. */
+export type TikTokPostReference = Camelize<components['schemas']["TikTokPostReference"]>;
+
+/** Camel-cased TikTokPostSearchContext model used by SDK responses. */
+export type TikTokPostSearchContext = Camelize<components['schemas']["TikTokPostSearchContext"]>;
+
+/** Camel-cased TikTokPostStatus model used by SDK responses. */
+export type TikTokPostStatus = Camelize<components['schemas']["TikTokPostStatus"]>;
+
+/** Camel-cased TikTokPostTemplate model used by SDK responses. */
+export type TikTokPostTemplate = Camelize<components['schemas']["TikTokPostTemplate"]>;
+
+/** Camel-cased TikTokPreviewThumbnails model used by SDK responses. */
+export type TikTokPreviewThumbnails = Camelize<components['schemas']["TikTokPreviewThumbnails"]>;
+
+/** Camel-cased TikTokProduct model used by SDK responses. */
+export type TikTokProduct = Camelize<components['schemas']["TikTokProduct"]>;
+
+/** Camel-cased TikTokProductCategory model used by SDK responses. */
+export type TikTokProductCategory = Camelize<components['schemas']["TikTokProductCategory"]>;
+
+/** Camel-cased TikTokProductPricing model used by SDK responses. */
+export type TikTokProductPricing = Camelize<components['schemas']["TikTokProductPricing"]>;
+
+/** Camel-cased TikTokProductSKU model used by SDK responses. */
+export type TikTokProductSKU = Camelize<components['schemas']["TikTokProductSKU"]>;
+
 /** Camel-cased TikTokProfile model used by SDK responses. */
 export type TikTokProfile = Camelize<components['schemas']["TikTokProfile"]>;
 
-/** Camel-cased TikTokProfileExtended model used by SDK responses. */
-export type TikTokProfileExtended = Camelize<components['schemas']["TikTokProfileExtended"]>;
+/** Camel-cased TikTokProfileMetrics model used by SDK responses. */
+export type TikTokProfileMetrics = Camelize<components['schemas']["TikTokProfileMetrics"]>;
 
-/** Camel-cased TrendingCategory model used by SDK responses. */
-export type TrendingCategory = Camelize<components['schemas']["TrendingCategory"]>;
+/** Camel-cased TikTokProfileReference model used by SDK responses. */
+export type TikTokProfileReference = Camelize<components['schemas']["TikTokProfileReference"]>;
 
-/** Camel-cased TwitterComment model used by SDK responses. */
-export type TwitterComment = Camelize<components['schemas']["TwitterComment"]>;
+/** Camel-cased TikTokRatingSource model used by SDK responses. */
+export type TikTokRatingSource = Camelize<components['schemas']["TikTokRatingSource"]>;
+
+/** Camel-cased TikTokSearchHighlight model used by SDK responses. */
+export type TikTokSearchHighlight = Camelize<components['schemas']["TikTokSearchHighlight"]>;
+
+/** Camel-cased TikTokServiceCategory model used by SDK responses. */
+export type TikTokServiceCategory = Camelize<components['schemas']["TikTokServiceCategory"]>;
+
+/** Camel-cased TikTokSocialLink model used by SDK responses. */
+export type TikTokSocialLink = Camelize<components['schemas']["TikTokSocialLink"]>;
+
+/** Camel-cased TikTokStickerPosition model used by SDK responses. */
+export type TikTokStickerPosition = Camelize<components['schemas']["TikTokStickerPosition"]>;
+
+/** Camel-cased TikTokStoryCount model used by SDK responses. */
+export type TikTokStoryCount = Camelize<components['schemas']["TikTokStoryCount"]>;
+
+/** Camel-cased TikTokStoryReference model used by SDK responses. */
+export type TikTokStoryReference = Camelize<components['schemas']["TikTokStoryReference"]>;
+
+/** Camel-cased TikTokStreamingLink model used by SDK responses. */
+export type TikTokStreamingLink = Camelize<components['schemas']["TikTokStreamingLink"]>;
+
+/** Camel-cased TikTokTemplateMetrics model used by SDK responses. */
+export type TikTokTemplateMetrics = Camelize<components['schemas']["TikTokTemplateMetrics"]>;
+
+/** Camel-cased TikTokTextEntity model used by SDK responses. */
+export type TikTokTextEntity = Camelize<components['schemas']["TikTokTextEntity"]>;
+
+/** Camel-cased TikTokTextRange model used by SDK responses. */
+export type TikTokTextRange = Camelize<components['schemas']["TikTokTextRange"]>;
+
+/** Camel-cased TikTokUnspecified model used by SDK responses. */
+export type TikTokUnspecified = Camelize<components['schemas']["TikTokUnspecified"]>;
+
+/** Camel-cased TikTokVolumeInfo model used by SDK responses. */
+export type TikTokVolumeInfo = Camelize<components['schemas']["TikTokVolumeInfo"]>;
+
+/** Camel-cased TikTokWhatsAppMetrics model used by SDK responses. */
+export type TikTokWhatsAppMetrics = Camelize<components['schemas']["TikTokWhatsAppMetrics"]>;
+
+/** Camel-cased TwitterAppMetrics model used by SDK responses. */
+export type TwitterAppMetrics = Camelize<components['schemas']["TwitterAppMetrics"]>;
+
+/** Camel-cased TwitterArticle model used by SDK responses. */
+export type TwitterArticle = Camelize<components['schemas']["TwitterArticle"]>;
+
+/** Camel-cased TwitterAspectRatio model used by SDK responses. */
+export type TwitterAspectRatio = Camelize<components['schemas']["TwitterAspectRatio"]>;
+
+/** Camel-cased TwitterBroadcast model used by SDK responses. */
+export type TwitterBroadcast = Camelize<components['schemas']["TwitterBroadcast"]>;
+
+/** Camel-cased TwitterBroadcastMedia model used by SDK responses. */
+export type TwitterBroadcastMedia = Camelize<components['schemas']["TwitterBroadcastMedia"]>;
+
+/** Camel-cased TwitterBroadcaster model used by SDK responses. */
+export type TwitterBroadcaster = Camelize<components['schemas']["TwitterBroadcaster"]>;
+
+/** Camel-cased TwitterCard model used by SDK responses. */
+export type TwitterCard = Camelize<components['schemas']["TwitterCard"]>;
+
+/** Camel-cased TwitterCardApp model used by SDK responses. */
+export type TwitterCardApp = Camelize<components['schemas']["TwitterCardApp"]>;
+
+/** Camel-cased TwitterCardButton model used by SDK responses. */
+export type TwitterCardButton = Camelize<components['schemas']["TwitterCardButton"]>;
+
+/** Camel-cased TwitterCardComponent model used by SDK responses. */
+export type TwitterCardComponent = Camelize<components['schemas']["TwitterCardComponent"]>;
+
+/** Camel-cased TwitterCardDestination model used by SDK responses. */
+export type TwitterCardDestination = Camelize<components['schemas']["TwitterCardDestination"]>;
+
+/** Camel-cased TwitterCardMediaRef model used by SDK responses. */
+export type TwitterCardMediaRef = Camelize<components['schemas']["TwitterCardMediaRef"]>;
+
+/** Camel-cased TwitterCardText model used by SDK responses. */
+export type TwitterCardText = Camelize<components['schemas']["TwitterCardText"]>;
+
+/** Camel-cased TwitterColor model used by SDK responses. */
+export type TwitterColor = Camelize<components['schemas']["TwitterColor"]>;
+
+/** Camel-cased TwitterCommunityNote model used by SDK responses. */
+export type TwitterCommunityNote = Camelize<components['schemas']["TwitterCommunityNote"]>;
+
+/** Camel-cased TwitterConversationContext model used by SDK responses. */
+export type TwitterConversationContext = Camelize<components['schemas']["TwitterConversationContext"]>;
+
+/** Camel-cased TwitterEdit model used by SDK responses. */
+export type TwitterEdit = Camelize<components['schemas']["TwitterEdit"]>;
 
 /** Camel-cased TwitterEntity model used by SDK responses. */
 export type TwitterEntity = Camelize<components['schemas']["TwitterEntity"]>;
 
+/** Camel-cased TwitterEvent model used by SDK responses. */
+export type TwitterEvent = Camelize<components['schemas']["TwitterEvent"]>;
+
+/** Camel-cased TwitterFormatting model used by SDK responses. */
+export type TwitterFormatting = Camelize<components['schemas']["TwitterFormatting"]>;
+
+/** Camel-cased TwitterImage model used by SDK responses. */
+export type TwitterImage = Camelize<components['schemas']["TwitterImage"]>;
+
+/** Camel-cased TwitterImageAltText model used by SDK responses. */
+export type TwitterImageAltText = Camelize<components['schemas']["TwitterImageAltText"]>;
+
+/** Camel-cased TwitterLabel model used by SDK responses. */
+export type TwitterLabel = Camelize<components['schemas']["TwitterLabel"]>;
+
 /** Camel-cased TwitterList model used by SDK responses. */
 export type TwitterList = Camelize<components['schemas']["TwitterList"]>;
+
+/** Camel-cased TwitterListMetrics model used by SDK responses. */
+export type TwitterListMetrics = Camelize<components['schemas']["TwitterListMetrics"]>;
+
+/** Camel-cased TwitterLongText model used by SDK responses. */
+export type TwitterLongText = Camelize<components['schemas']["TwitterLongText"]>;
+
+/** Camel-cased TwitterMedia model used by SDK responses. */
+export type TwitterMedia = Camelize<components['schemas']["TwitterMedia"]>;
+
+/** Camel-cased TwitterMediaAvailability model used by SDK responses. */
+export type TwitterMediaAvailability = Camelize<components['schemas']["TwitterMediaAvailability"]>;
+
+/** Camel-cased TwitterMediaFeature model used by SDK responses. */
+export type TwitterMediaFeature = Camelize<components['schemas']["TwitterMediaFeature"]>;
+
+/** Camel-cased TwitterMediaRestrictions model used by SDK responses. */
+export type TwitterMediaRestrictions = Camelize<components['schemas']["TwitterMediaRestrictions"]>;
+
+/** Camel-cased TwitterMediaSize model used by SDK responses. */
+export type TwitterMediaSize = Camelize<components['schemas']["TwitterMediaSize"]>;
+
+/** Camel-cased TwitterMediaSource model used by SDK responses. */
+export type TwitterMediaSource = Camelize<components['schemas']["TwitterMediaSource"]>;
+
+/** Camel-cased TwitterMediaVariant model used by SDK responses. */
+export type TwitterMediaVariant = Camelize<components['schemas']["TwitterMediaVariant"]>;
+
+/** Camel-cased TwitterNotePresentation model used by SDK responses. */
+export type TwitterNotePresentation = Camelize<components['schemas']["TwitterNotePresentation"]>;
+
+/** Camel-cased TwitterPageMetadata model used by SDK responses. */
+export type TwitterPageMetadata = Camelize<components['schemas']["TwitterPageMetadata"]>;
+
+/** Camel-cased TwitterPlace model used by SDK responses. */
+export type TwitterPlace = Camelize<components['schemas']["TwitterPlace"]>;
+
+/** Camel-cased TwitterPoll model used by SDK responses. */
+export type TwitterPoll = Camelize<components['schemas']["TwitterPoll"]>;
+
+/** Camel-cased TwitterPollChoice model used by SDK responses. */
+export type TwitterPollChoice = Camelize<components['schemas']["TwitterPollChoice"]>;
 
 /** Camel-cased TwitterPost model used by SDK responses. */
 export type TwitterPost = Camelize<components['schemas']["TwitterPost"]>;
 
-/** Camel-cased TwitterPostExtended model used by SDK responses. */
-export type TwitterPostExtended = Camelize<components['schemas']["TwitterPostExtended"]>;
-
 /** Camel-cased TwitterPostMetrics model used by SDK responses. */
 export type TwitterPostMetrics = Camelize<components['schemas']["TwitterPostMetrics"]>;
+
+/** Camel-cased TwitterPostReference model used by SDK responses. */
+export type TwitterPostReference = Camelize<components['schemas']["TwitterPostReference"]>;
+
+/** Camel-cased TwitterPreview model used by SDK responses. */
+export type TwitterPreview = Camelize<components['schemas']["TwitterPreview"]>;
+
+/** Camel-cased TwitterPreviousMetrics model used by SDK responses. */
+export type TwitterPreviousMetrics = Camelize<components['schemas']["TwitterPreviousMetrics"]>;
+
+/** Camel-cased TwitterProfessional model used by SDK responses. */
+export type TwitterProfessional = Camelize<components['schemas']["TwitterProfessional"]>;
+
+/** Camel-cased TwitterProfessionalCategory model used by SDK responses. */
+export type TwitterProfessionalCategory = Camelize<components['schemas']["TwitterProfessionalCategory"]>;
 
 /** Camel-cased TwitterProfile model used by SDK responses. */
 export type TwitterProfile = Camelize<components['schemas']["TwitterProfile"]>;
 
-/** Camel-cased TwitterProfileExtended model used by SDK responses. */
-export type TwitterProfileExtended = Camelize<components['schemas']["TwitterProfileExtended"]>;
+/** Camel-cased TwitterProfileEntities model used by SDK responses. */
+export type TwitterProfileEntities = Camelize<components['schemas']["TwitterProfileEntities"]>;
 
-/** Camel-cased TwitterSuggestion model used by SDK responses. */
-export type TwitterSuggestion = Camelize<components['schemas']["TwitterSuggestion"]>;
+/** Camel-cased TwitterProfileLocation model used by SDK responses. */
+export type TwitterProfileLocation = Camelize<components['schemas']["TwitterProfileLocation"]>;
+
+/** Camel-cased TwitterProfileMetrics model used by SDK responses. */
+export type TwitterProfileMetrics = Camelize<components['schemas']["TwitterProfileMetrics"]>;
+
+/** Camel-cased TwitterProfileReference model used by SDK responses. */
+export type TwitterProfileReference = Camelize<components['schemas']["TwitterProfileReference"]>;
+
+/** Camel-cased TwitterPromotion model used by SDK responses. */
+export type TwitterPromotion = Camelize<components['schemas']["TwitterPromotion"]>;
+
+/** Camel-cased TwitterRGB model used by SDK responses. */
+export type TwitterRGB = Camelize<components['schemas']["TwitterRGB"]>;
+
+/** Camel-cased TwitterRange model used by SDK responses. */
+export type TwitterRange = Camelize<components['schemas']["TwitterRange"]>;
+
+/** Camel-cased TwitterRectangle model used by SDK responses. */
+export type TwitterRectangle = Camelize<components['schemas']["TwitterRectangle"]>;
+
+/** Camel-cased TwitterRestriction model used by SDK responses. */
+export type TwitterRestriction = Camelize<components['schemas']["TwitterRestriction"]>;
+
+/** Camel-cased TwitterRichText model used by SDK responses. */
+export type TwitterRichText = Camelize<components['schemas']["TwitterRichText"]>;
+
+/** Camel-cased TwitterSubscriptions model used by SDK responses. */
+export type TwitterSubscriptions = Camelize<components['schemas']["TwitterSubscriptions"]>;
+
+/** Camel-cased TwitterSuggestedQuery model used by SDK responses. */
+export type TwitterSuggestedQuery = Camelize<components['schemas']["TwitterSuggestedQuery"]>;
+
+/** Camel-cased TwitterTimelinePlacement model used by SDK responses. */
+export type TwitterTimelinePlacement = Camelize<components['schemas']["TwitterTimelinePlacement"]>;
+
+/** Camel-cased TwitterVerification model used by SDK responses. */
+export type TwitterVerification = Camelize<components['schemas']["TwitterVerification"]>;
+
+/** Camel-cased TwitterVisibility model used by SDK responses. */
+export type TwitterVisibility = Camelize<components['schemas']["TwitterVisibility"]>;
+
+/** Camel-cased TwitterWithheld model used by SDK responses. */
+export type TwitterWithheld = Camelize<components['schemas']["TwitterWithheld"]>;
 
 /** Typed result returned by fetch. */
 export type FetchResponse = OperationResponse<"/v1/urls/fetch", "post">;
@@ -266,12 +899,6 @@ export type InstagramLocationOptions = OperationOptions<"/v1/instagram/locations
 
 /** Typed result returned by instagram.location.get. */
 export type InstagramLocationResponse = OperationResponse<"/v1/instagram/locations/{identifier}", "get">;
-
-/** Options accepted by instagram.location.guides.list. */
-export type InstagramLocationGuidesOptions = OperationOptions<"/v1/instagram/locations/{identifier}/guides", "get">;
-
-/** Typed result returned by instagram.location.guides.list. */
-export type InstagramLocationGuidesPage = OperationPage<"/v1/instagram/locations/{identifier}/guides", "get">;
 
 /** Options accepted by instagram.location.posts.list. */
 export type InstagramLocationPostsOptions = OperationOptions<"/v1/instagram/locations/{identifier}/posts", "get">;
@@ -423,12 +1050,6 @@ export type InstagramProfileReelsOptions = OperationOptions<"/v1/instagram/profi
 /** Typed result returned by instagram.profile.reels.list. */
 export type InstagramProfileReelsPage = OperationPage<"/v1/instagram/profiles/{identifier}/reels", "get">;
 
-/** Options accepted by instagram.profile.related.list. */
-export type InstagramProfileRelatedOptions = OperationOptions<"/v1/instagram/profiles/{identifier}/related", "get">;
-
-/** Typed result returned by instagram.profile.related.list. */
-export type InstagramProfileRelatedPage = OperationPage<"/v1/instagram/profiles/{identifier}/related", "get">;
-
 /** Options accepted by instagram.profile.reposts.list. */
 export type InstagramProfileRepostsOptions = OperationOptions<"/v1/instagram/profiles/{identifier}/reposts", "get">;
 
@@ -500,6 +1121,126 @@ export type InstagramStoryOptions = OperationOptions<"/v1/instagram/stories/{ide
 
 /** Typed result returned by instagram.story.get. */
 export type InstagramStoryResponse = OperationResponse<"/v1/instagram/stories/{identifier}", "get">;
+
+/** Options accepted by reddit.domain.posts.list. */
+export type RedditDomainPostsOptions = OperationOptions<"/v1/reddit/domains/{identifier}/posts", "get">;
+
+/** Typed result returned by reddit.domain.posts.list. */
+export type RedditDomainPostsPage = OperationPage<"/v1/reddit/domains/{identifier}/posts", "get">;
+
+/** Options accepted by reddit.post.comments.list. */
+export type RedditPostCommentsOptions = OperationOptions<"/v1/reddit/posts/{identifier}/comments", "get">;
+
+/** Typed result returned by reddit.post.comments.list. */
+export type RedditPostCommentsPage = OperationPage<"/v1/reddit/posts/{identifier}/comments", "get">;
+
+/** Options accepted by reddit.post.duplicates.list. */
+export type RedditPostDuplicatesOptions = OperationOptions<"/v1/reddit/posts/{identifier}/duplicates", "get">;
+
+/** Typed result returned by reddit.post.duplicates.list. */
+export type RedditPostDuplicatesPage = OperationPage<"/v1/reddit/posts/{identifier}/duplicates", "get">;
+
+/** Options accepted by reddit.post.get. */
+export type RedditPostOptions = OperationOptions<"/v1/reddit/posts/{identifier}", "get">;
+
+/** Typed result returned by reddit.post.get. */
+export type RedditPostResponse = OperationResponse<"/v1/reddit/posts/{identifier}", "get">;
+
+/** Options accepted by reddit.profile.comments.list. */
+export type RedditProfileCommentsOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/comments", "get">;
+
+/** Typed result returned by reddit.profile.comments.list. */
+export type RedditProfileCommentsPage = OperationPage<"/v1/reddit/profiles/{identifier}/comments", "get">;
+
+/** Options accepted by reddit.profile.get. */
+export type RedditProfileOptions = OperationOptions<"/v1/reddit/profiles/{identifier}", "get">;
+
+/** Typed result returned by reddit.profile.get. */
+export type RedditProfileResponse = OperationResponse<"/v1/reddit/profiles/{identifier}", "get">;
+
+/** Options accepted by reddit.profile.moderated.list. */
+export type RedditProfileModeratedOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/moderated", "get">;
+
+/** Typed result returned by reddit.profile.moderated.list. */
+export type RedditProfileModeratedPage = OperationPage<"/v1/reddit/profiles/{identifier}/moderated", "get">;
+
+/** Options accepted by reddit.profile.posts.list. */
+export type RedditProfilePostsOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/posts", "get">;
+
+/** Typed result returned by reddit.profile.posts.list. */
+export type RedditProfilePostsPage = OperationPage<"/v1/reddit/profiles/{identifier}/posts", "get">;
+
+/** Options accepted by reddit.profile.trophies.list. */
+export type RedditProfileTrophiesOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/trophies", "get">;
+
+/** Typed result returned by reddit.profile.trophies.list. */
+export type RedditProfileTrophiesPage = OperationPage<"/v1/reddit/profiles/{identifier}/trophies", "get">;
+
+/** Options accepted by reddit.search.posts.list. */
+export type RedditSearchPostsOptions = OperationOptions<"/v1/reddit/search/posts", "get">;
+
+/** Typed result returned by reddit.search.posts.list. */
+export type RedditSearchPostsPage = OperationPage<"/v1/reddit/search/posts", "get">;
+
+/** Options accepted by reddit.search.profiles.list. */
+export type RedditSearchProfilesOptions = OperationOptions<"/v1/reddit/search/profiles", "get">;
+
+/** Typed result returned by reddit.search.profiles.list. */
+export type RedditSearchProfilesPage = OperationPage<"/v1/reddit/search/profiles", "get">;
+
+/** Options accepted by reddit.search.subreddits.list. */
+export type RedditSearchSubredditsOptions = OperationOptions<"/v1/reddit/search/subreddits", "get">;
+
+/** Typed result returned by reddit.search.subreddits.list. */
+export type RedditSearchSubredditsPage = OperationPage<"/v1/reddit/search/subreddits", "get">;
+
+/** Options accepted by reddit.subreddit.get. */
+export type RedditSubredditOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}", "get">;
+
+/** Typed result returned by reddit.subreddit.get. */
+export type RedditSubredditResponse = OperationResponse<"/v1/reddit/subreddits/{identifier}", "get">;
+
+/** Options accepted by reddit.subreddit.posts.list. */
+export type RedditSubredditPostsOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/posts", "get">;
+
+/** Typed result returned by reddit.subreddit.posts.list. */
+export type RedditSubredditPostsPage = OperationPage<"/v1/reddit/subreddits/{identifier}/posts", "get">;
+
+/** Options accepted by reddit.subreddit.rules.list. */
+export type RedditSubredditRulesOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/rules", "get">;
+
+/** Typed result returned by reddit.subreddit.rules.list. */
+export type RedditSubredditRulesPage = OperationPage<"/v1/reddit/subreddits/{identifier}/rules", "get">;
+
+/** Options accepted by reddit.subreddit.wikiPage.get. */
+export type RedditSubredditWikiPageOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages/{page}", "get">;
+
+/** Typed result returned by reddit.subreddit.wikiPage.get. */
+export type RedditSubredditWikiPageResponse = OperationResponse<"/v1/reddit/subreddits/{identifier}/wiki-pages/{page}", "get">;
+
+/** Options accepted by reddit.subreddit.wikiPages.list. */
+export type RedditSubredditWikiPagesOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">;
+
+/** Typed result returned by reddit.subreddit.wikiPages.list. */
+export type RedditSubredditWikiPagesPage = OperationPage<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">;
+
+/** Options accepted by reddit.subreddits.new.list. */
+export type RedditSubredditsNewOptions = OperationOptions<"/v1/reddit/subreddits/new", "get">;
+
+/** Typed result returned by reddit.subreddits.new.list. */
+export type RedditSubredditsNewPage = OperationPage<"/v1/reddit/subreddits/new", "get">;
+
+/** Options accepted by reddit.subreddits.popular.list. */
+export type RedditSubredditsPopularOptions = OperationOptions<"/v1/reddit/subreddits/popular", "get">;
+
+/** Typed result returned by reddit.subreddits.popular.list. */
+export type RedditSubredditsPopularPage = OperationPage<"/v1/reddit/subreddits/popular", "get">;
+
+/** Options accepted by reddit.trending.posts.list. */
+export type RedditTrendingPostsOptions = OperationOptions<"/v1/reddit/trending/posts", "get">;
+
+/** Typed result returned by reddit.trending.posts.list. */
+export type RedditTrendingPostsPage = OperationPage<"/v1/reddit/trending/posts", "get">;
 
 /** Options accepted by testData.entry.get. */
 export type TestDataEntryOptions = OperationOptions<"/v1/test-data/{id}", "get">;
@@ -680,18 +1421,6 @@ export type TikTokTrendingPostsOptions = OperationOptions<"/v1/tiktok/trending/p
 
 /** Typed result returned by tiktok.trending.posts.list. */
 export type TikTokTrendingPostsPage = OperationPage<"/v1/tiktok/trending/posts", "get">;
-
-/** Options accepted by twitter.list.get. */
-export type TwitterListOptions = OperationOptions<"/v1/twitter/lists/{identifier}", "get">;
-
-/** Typed result returned by twitter.list.get. */
-export type TwitterListResponse = OperationResponse<"/v1/twitter/lists/{identifier}", "get">;
-
-/** Options accepted by twitter.list.members.list. */
-export type TwitterListMembersOptions = OperationOptions<"/v1/twitter/lists/{identifier}/members", "get">;
-
-/** Typed result returned by twitter.list.members.list. */
-export type TwitterListMembersPage = OperationPage<"/v1/twitter/lists/{identifier}/members", "get">;
 
 /** Options accepted by twitter.list.posts.list. */
 export type TwitterListPostsOptions = OperationOptions<"/v1/twitter/lists/{identifier}/posts", "get">;

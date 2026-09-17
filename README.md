@@ -68,7 +68,9 @@ openhandle.instagram.profile({ url: 'https://www.instagram.com/openai/' });
 Platform IDs are opaque strings and always require an explicit `{ id: '...' }`
 reference. Numeric ID values are rejected. Resolution is entirely local: the
 SDK does not follow redirects, make hidden lookup requests, or try multiple
-interpretations.
+interpretations. TikTok short links such as `tiktok.com/t/…` and
+`vm.tiktok.com/…` are rejected here. Pass them to `fetch`, which expands them
+server-side.
 
 Use `fetch` when the URL's platform or resource is not known:
 

@@ -86,12 +86,33 @@ const looksLikeSupportedSocialURL = (input: string): boolean => {
         authority = authority.slice(0, port);
     }
     const host = authority.replace(/^www\./, '');
-    return ['instagram.com', 'tiktok.com', 'm.tiktok.com', 'x.com', 'twitter.com', 'mobile.twitter.com'].includes(host);
+    return [
+        'reddit.com',
+        'old.reddit.com',
+        'new.reddit.com',
+        'm.reddit.com',
+        'redd.it',
+        'instagram.com',
+        'tiktok.com',
+        'm.tiktok.com',
+        'vm.tiktok.com',
+        'vt.tiktok.com',
+        'x.com',
+        'twitter.com',
+        'mobile.twitter.com',
+    ].includes(host);
 };
 
 const usernameReference = (input: string, platform: string): string => {
     const username = input.replace(/^@/, '');
-    const valid = platform === 'instagram' ? instagramName.test(username) : platform === 'tiktok' ? tiktokName.test(username) : twitterName.test(username);
+    const valid =
+        platform === 'reddit'
+            ? /^[A-Za-z0-9_-]{1,100}$/.test(username)
+            : platform === 'instagram'
+              ? instagramName.test(username)
+              : platform === 'tiktok'
+                ? tiktokName.test(username)
+                : twitterName.test(username);
     if (!valid) {
         throw new OpenHandleReferenceError(`Invalid ${platform} username.`);
     }
@@ -111,8 +132,12 @@ const resolveSocialURL = (input: string): SocialURLResolution => {
 
     const host = parsed.hostname.toLowerCase().replace(/^www\./, '');
     const parts = parsed.pathname.split('/').filter(Boolean);
+    if (['reddit.com', 'old.reddit.com', 'new.reddit.com', 'm.reddit.com', 'redd.it'].includes(host)) return resolveRedditURL(host, parts);
     if (host === 'instagram.com') {
         return resolveInstagramURL(parts);
+    }
+    if (isTikTokShortLink(host, parts)) {
+        throw new OpenHandleReferenceError('TikTok short links are not resolved locally. Use fetch(url) instead.');
     }
     if (host === 'tiktok.com' || host === 'm.tiktok.com') {
         return resolveTikTokURL(parts);
@@ -157,6 +182,13 @@ const resolveInstagramURL = (parts: string[]): SocialURLResolution => {
         };
     }
     throw new OpenHandleReferenceError('Unsupported Instagram URL.');
+};
+
+const isTikTokShortLink = (host: string, parts: string[]): boolean => {
+    if (host === 'vm.tiktok.com' || host === 'vt.tiktok.com') {
+        return parts.length === 1 && shortcode.test(parts[0] ?? '');
+    }
+    return (host === 'tiktok.com' || host === 'm.tiktok.com') && parts.length === 2 && parts[0] === 't' && shortcode.test(parts[1] ?? '');
 };
 
 const resolveTikTokURL = (parts: string[]): SocialURLResolution => {
@@ -214,4 +246,23 @@ const requiredString = (input: string): string => {
         throw new OpenHandleReferenceError('Reference values must not be empty.');
     }
     return value;
+};
+
+const resolveRedditURL = (host: string, parts: string[]): SocialURLResolution => {
+    if (host === 'redd.it' && parts.length === 1 && /^[a-z0-9]+$/.test(parts[0] ?? '')) {
+        return { platform: 'reddit', resource: 'post', identifier: parts[0] ?? '' };
+    }
+    if (parts.length === 2 && ['u', 'user'].includes(parts[0] ?? '') && /^[A-Za-z0-9_-]+$/.test(parts[1] ?? '')) {
+        return { platform: 'reddit', resource: 'profile', identifier: `@${parts[1]}` };
+    }
+    if (parts.length === 2 && parts[0] === 'r' && /^[A-Za-z0-9_-]+$/.test(parts[1] ?? '')) {
+        return { platform: 'reddit', resource: 'subreddit', identifier: parts[1] ?? '' };
+    }
+    if (parts.length >= 4 && parts[0] === 'r' && parts[2] === 'comments' && /^[a-z0-9]+$/.test(parts[3] ?? '')) {
+        return { platform: 'reddit', resource: 'post', identifier: parts[3] ?? '' };
+    }
+    if (parts.length >= 2 && parts[0] === 'comments' && /^[a-z0-9]+$/.test(parts[1] ?? '')) {
+        return { platform: 'reddit', resource: 'post', identifier: parts[1] ?? '' };
+    }
+    throw new OpenHandleReferenceError('Unsupported Reddit URL.');
 };

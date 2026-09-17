@@ -233,7 +233,7 @@ const delay = (milliseconds: number, signal?: AbortSignal): Promise<void> =>
 const billingMetadata = (headers: Headers): ResponseBilling => ({
     cost: headers.get('OpenHandle-Cost'),
     datasetVersion: headers.get('OpenHandle-Dataset-Version'),
-    disposition: headerEnum(headers.get('OpenHandle-Billing-Disposition'), ['test', 'allowance', 'postpaid']),
+    disposition: headerEnum(headers.get('OpenHandle-Billing-Disposition'), ['test', 'allowance', 'prepaid']),
     environment: headerEnum(headers.get('OpenHandle-Environment'), ['test', 'live']),
     listPrice: headers.get('OpenHandle-List-Price'),
 });

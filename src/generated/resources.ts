@@ -11,13 +11,14 @@ import type {
 
 export interface GeneratedClient {
     readonly instagram: InstagramResource;
+    readonly reddit: RedditResource;
     readonly testData: TestDataResource;
     readonly tiktok: TikTokResource;
     readonly twitter: TwitterResource;
     /**
      * Fetch the resource at a social URL
      *
-     * Parse a supported social URL locally, then return the same typed resource as its canonical Openhandle operation. The underlying data read is metered once and redirects are never followed.
+     * Parse a supported social URL locally, then return the same typed resource as its canonical Openhandle operation. TikTok short links such as tiktok.com/t/… and vm.tiktok.com/… are expanded through their redirect first. The underlying data read is metered once.
      *
      * @example
      * await openhandle.fetch('https://www.instagram.com/openai/', { freshness: '24h' });
@@ -154,7 +155,6 @@ export interface InstagramHighlightResource {
 }
 
 export interface InstagramLocationResource {
-    readonly guides: InstagramLocationGuidesResource;
     readonly posts: InstagramLocationPostsResource;
     /**
      * Get a location
@@ -167,20 +167,6 @@ export interface InstagramLocationResource {
      * @see https://openhandle.dev/docs/api-reference/instagram-location-get
      */
     readonly get: (options?: OperationOptions<"/v1/instagram/locations/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/locations/{identifier}", "get">>;
-}
-
-export interface InstagramLocationGuidesResource {
-    /**
-     * List location guides
-     *
-     * List location guides from public Instagram data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.instagram.location("910100000001").guides.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/instagram-location-guides-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/instagram/locations/{identifier}/guides", "get">) => Promise<OperationPage<"/v1/instagram/locations/{identifier}/guides", "get">>;
 }
 
 export interface InstagramLocationPostsResource {
@@ -408,7 +394,6 @@ export interface InstagramProfileResource {
     readonly pinnedPosts: InstagramProfilePinnedPostsResource;
     readonly posts: InstagramProfilePostsResource;
     readonly reels: InstagramProfileReelsResource;
-    readonly related: InstagramProfileRelatedResource;
     readonly reposts: InstagramProfileRepostsResource;
     readonly stories: InstagramProfileStoriesResource;
     readonly suggested: InstagramProfileSuggestedResource;
@@ -559,20 +544,6 @@ export interface InstagramProfileReelsResource {
      * @see https://openhandle.dev/docs/api-reference/instagram-profile-reels-list
      */
     readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/reels", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/reels", "get">>;
-}
-
-export interface InstagramProfileRelatedResource {
-    /**
-     * List profile related
-     *
-     * Return a cursor-paginated collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.instagram.profile("@northstar_forge_test").related.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/instagram-profile-related-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/related", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/related", "get">>;
 }
 
 export interface InstagramProfileRepostsResource {
@@ -750,6 +721,350 @@ export interface InstagramStoryResource {
      * @see https://openhandle.dev/docs/api-reference/instagram-story-get
      */
     readonly get: (options?: OperationOptions<"/v1/instagram/stories/{identifier}", "get">) => Promise<OperationResponse<"/v1/instagram/stories/{identifier}", "get">>;
+}
+
+export interface RedditResource {
+    /**
+     * Select the domain resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly domain: (reference: ResourceReference) => RedditDomainResource;
+    /**
+     * Select the post resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly post: (reference: ResourceReference) => RedditPostResource;
+    /**
+     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly profile: (reference: ProfileReference) => RedditProfileResource;
+    readonly search: RedditSearchResource;
+    /**
+     * Select the subreddit resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly subreddit: (reference: ResourceReference) => RedditSubredditResource;
+    readonly subreddits: RedditSubredditsResource;
+    readonly trending: RedditTrendingResource;
+}
+
+export interface RedditDomainResource {
+    readonly posts: RedditDomainPostsResource;
+}
+
+export interface RedditDomainPostsResource {
+    /**
+     * List domain posts
+     *
+     * List domain posts from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.domain("example.com").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-domain-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/domains/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/reddit/domains/{identifier}/posts", "get">>;
+}
+
+export interface RedditPostResource {
+    readonly comments: RedditPostCommentsResource;
+    readonly duplicates: RedditPostDuplicatesResource;
+    /**
+     * Get a post
+     *
+     * Get a post from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.post("synthetic").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-post-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/reddit/posts/{identifier}", "get">) => Promise<OperationResponse<"/v1/reddit/posts/{identifier}", "get">>;
+}
+
+export interface RedditPostCommentsResource {
+    /**
+     * List post comments
+     *
+     * List post comments from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.post("synthetic").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-post-comments-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/reddit/posts/{identifier}/comments", "get">>;
+}
+
+export interface RedditPostDuplicatesResource {
+    /**
+     * List duplicate posts
+     *
+     * List duplicate posts from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.post("synthetic").duplicates.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-post-duplicates-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/posts/{identifier}/duplicates", "get">) => Promise<OperationPage<"/v1/reddit/posts/{identifier}/duplicates", "get">>;
+}
+
+export interface RedditProfileResource {
+    readonly comments: RedditProfileCommentsResource;
+    readonly moderated: RedditProfileModeratedResource;
+    readonly posts: RedditProfilePostsResource;
+    readonly trophies: RedditProfileTrophiesResource;
+    /**
+     * Get a profile
+     *
+     * Return one public Reddit profile. Use @username or a t2_ profile ID. An ID resolves only after the profile was read by username once. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.profile("@synthetic_reddit").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-profile-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}", "get">) => Promise<OperationResponse<"/v1/reddit/profiles/{identifier}", "get">>;
+}
+
+export interface RedditProfileCommentsResource {
+    /**
+     * List profile comments
+     *
+     * List profile comments from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.profile("@synthetic_reddit").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-profile-comments-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/reddit/profiles/{identifier}/comments", "get">>;
+}
+
+export interface RedditProfileModeratedResource {
+    /**
+     * List moderated subreddits
+     *
+     * List moderated subreddits from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.profile("@synthetic_reddit").moderated.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-profile-moderated-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/moderated", "get">) => Promise<OperationPage<"/v1/reddit/profiles/{identifier}/moderated", "get">>;
+}
+
+export interface RedditProfilePostsResource {
+    /**
+     * List profile posts
+     *
+     * List profile posts from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.profile("@synthetic_reddit").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-profile-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/reddit/profiles/{identifier}/posts", "get">>;
+}
+
+export interface RedditProfileTrophiesResource {
+    /**
+     * List profile trophies
+     *
+     * List profile trophies from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.profile("@synthetic_reddit").trophies.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-profile-trophies-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/trophies", "get">) => Promise<OperationPage<"/v1/reddit/profiles/{identifier}/trophies", "get">>;
+}
+
+export interface RedditSearchResource {
+    readonly posts: RedditSearchPostsResource;
+    readonly profiles: RedditSearchProfilesResource;
+    readonly subreddits: RedditSearchSubredditsResource;
+}
+
+export interface RedditSearchPostsResource {
+    /**
+     * Search posts
+     *
+     * Search posts from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.search.posts.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-search-posts-list
+     */
+    readonly list: (options: OperationOptions<"/v1/reddit/search/posts", "get">) => Promise<OperationPage<"/v1/reddit/search/posts", "get">>;
+}
+
+export interface RedditSearchProfilesResource {
+    /**
+     * Search profiles
+     *
+     * Search profiles from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.search.profiles.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-search-profiles-list
+     */
+    readonly list: (options: OperationOptions<"/v1/reddit/search/profiles", "get">) => Promise<OperationPage<"/v1/reddit/search/profiles", "get">>;
+}
+
+export interface RedditSearchSubredditsResource {
+    /**
+     * Search subreddits
+     *
+     * Search subreddits from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.search.subreddits.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-search-subreddits-list
+     */
+    readonly list: (options: OperationOptions<"/v1/reddit/search/subreddits", "get">) => Promise<OperationPage<"/v1/reddit/search/subreddits", "get">>;
+}
+
+export interface RedditSubredditResource {
+    readonly posts: RedditSubredditPostsResource;
+    readonly rules: RedditSubredditRulesResource;
+    /**
+     * Select the wikiPage resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly wikiPage: (reference: ResourceReference) => RedditSubredditWikiPageResource;
+    readonly wikiPages: RedditSubredditWikiPagesResource;
+    /**
+     * Get a subreddit
+     *
+     * Get a subreddit from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddit("synthetic").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}", "get">) => Promise<OperationResponse<"/v1/reddit/subreddits/{identifier}", "get">>;
+}
+
+export interface RedditSubredditPostsResource {
+    /**
+     * List subreddit posts
+     *
+     * List subreddit posts from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddit("synthetic").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/{identifier}/posts", "get">>;
+}
+
+export interface RedditSubredditRulesResource {
+    /**
+     * List subreddit rules
+     *
+     * List subreddit rules from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddit("synthetic").rules.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-rules-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/rules", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/{identifier}/rules", "get">>;
+}
+
+export interface RedditSubredditWikiPageResource {
+    /**
+     * Get a wiki page
+     *
+     * Get a wiki page from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddit("synthetic").wikiPage("index").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-wiki-page-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages/{page}", "get">) => Promise<OperationResponse<"/v1/reddit/subreddits/{identifier}/wiki-pages/{page}", "get">>;
+}
+
+export interface RedditSubredditWikiPagesResource {
+    /**
+     * List wiki pages
+     *
+     * List wiki pages from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddit("synthetic").wikiPages.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-wiki-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">>;
+}
+
+export interface RedditSubredditsResource {
+    readonly new: RedditSubredditsNewResource;
+    readonly popular: RedditSubredditsPopularResource;
+}
+
+export interface RedditSubredditsNewResource {
+    /**
+     * List new subreddits
+     *
+     * List new subreddits from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddits.new.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddits-new-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/new", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/new", "get">>;
+}
+
+export interface RedditSubredditsPopularResource {
+    /**
+     * List popular subreddits
+     *
+     * List popular subreddits from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.subreddits.popular.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-subreddits-popular-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/popular", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/popular", "get">>;
+}
+
+export interface RedditTrendingResource {
+    readonly posts: RedditTrendingPostsResource;
+}
+
+export interface RedditTrendingPostsResource {
+    /**
+     * List trending posts
+     *
+     * List trending posts from public Reddit data. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.reddit.trending.posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/reddit-trending-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/reddit/trending/posts", "get">) => Promise<OperationPage<"/v1/reddit/trending/posts", "get">>;
 }
 
 export interface TestDataResource {
@@ -1278,33 +1593,7 @@ export interface TwitterResource {
 }
 
 export interface TwitterListResource {
-    readonly members: TwitterListMembersResource;
     readonly posts: TwitterListPostsResource;
-    /**
-     * Get a Twitter list
-     *
-     * Return one public Twitter list by its native identifier. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.twitter.list("950000000005").get({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/twitter-list-get
-     */
-    readonly get: (options?: OperationOptions<"/v1/twitter/lists/{identifier}", "get">) => Promise<OperationResponse<"/v1/twitter/lists/{identifier}", "get">>;
-}
-
-export interface TwitterListMembersResource {
-    /**
-     * List Twitter list members
-     *
-     * Return a cursor-paginated collection of Twitter list members. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
-     *
-     * @example
-     * await openhandle.twitter.list("950000000005").members.list({ freshness: "24h" });
-     *
-     * @see https://openhandle.dev/docs/api-reference/twitter-list-members-list
-     */
-    readonly list: (options?: OperationOptions<"/v1/twitter/lists/{identifier}/members", "get">) => Promise<OperationPage<"/v1/twitter/lists/{identifier}/members", "get">>;
 }
 
 export interface TwitterListPostsResource {

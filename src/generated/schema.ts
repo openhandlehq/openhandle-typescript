@@ -2315,6 +2315,7 @@ export interface components {
             author: components["schemas"]["InstagramProfileReference"] | null;
             /** Format: date-time */
             createdAt: string;
+            extracted: components["schemas"]["InstagramExtracted"];
             id: string;
             isByPostAuthor: boolean | null;
             isCovered: boolean | null;
@@ -2364,6 +2365,7 @@ export interface components {
             author: components["schemas"]["InstagramProfileReference"] | null;
             /** Format: date-time */
             createdAt: string | null;
+            extracted: components["schemas"]["InstagramExtracted"];
             id: string | null;
             isByPostAuthor: boolean | null;
             isCovered: boolean | null;
@@ -2414,6 +2416,16 @@ export interface components {
             manifest: string | null;
             qualityCount: number | null;
             variants: components["schemas"]["InstagramStreamVariant"][] | null;
+        };
+        InstagramExtracted: {
+            emails: string[] | null;
+            handles: components["schemas"]["InstagramExtractedHandle"][] | null;
+            links: string[] | null;
+            phones: string[] | null;
+        };
+        InstagramExtractedHandle: {
+            handle: string | null;
+            platform: string | null;
         };
         InstagramHashtag: {
             avatar: components["schemas"]["InstagramImage"] | null;
@@ -2712,6 +2724,7 @@ export interface components {
                 isFeedbackAggregated: boolean | null;
                 isSharedToFacebook: boolean | null;
             };
+            extracted: components["schemas"]["InstagramExtracted"];
             fbid: string | null;
             hasDelayedMetadata: boolean | null;
             hasTaggedUsers: boolean | null;
@@ -2833,6 +2846,7 @@ export interface components {
                 isFeedbackAggregated: boolean | null;
                 isSharedToFacebook: boolean | null;
             };
+            extracted: components["schemas"]["InstagramExtracted"];
             fbid: string | null;
             hasDelayedMetadata: boolean | null;
             hasTaggedUsers: boolean | null;
@@ -2927,6 +2941,7 @@ export interface components {
             displaySettings: components["schemas"]["InstagramProfileDisplaySettings"];
             /** Format: uri */
             externalUrl: string | null;
+            extracted: components["schemas"]["InstagramExtracted"];
             fanClub: components["schemas"]["InstagramProfileFanClub"];
             fbid: string | null;
             fundraisers: components["schemas"]["InstagramProfileFundraisers"];
@@ -3062,6 +3077,7 @@ export interface components {
             displaySettings: components["schemas"]["InstagramProfileDisplaySettings"];
             /** Format: uri */
             externalUrl: string | null;
+            extracted: components["schemas"]["InstagramExtracted"];
             fanClub: components["schemas"]["InstagramProfileFanClub"];
             fbid: string | null;
             fundraisers: components["schemas"]["InstagramProfileFundraisers"];
@@ -3177,6 +3193,7 @@ export interface components {
             };
             /** Format: date-time */
             expiresAt: string | null;
+            extracted: components["schemas"]["InstagramExtracted"];
             fbid: string | null;
             hasDelayedMetadata: boolean | null;
             hasTaggedUsers: boolean | null;
@@ -3271,6 +3288,7 @@ export interface components {
             };
             /** Format: date-time */
             expiresAt: string | null;
+            extracted: components["schemas"]["InstagramExtracted"];
             fbid: string | null;
             hasDelayedMetadata: boolean | null;
             hasTaggedUsers: boolean | null;
@@ -3407,6 +3425,7 @@ export interface components {
             distinguishedBy: string | null;
             /** Format: date-time */
             editedAt: string | null;
+            extracted: components["schemas"]["RedditExtracted"];
             id: string;
             isArchived: boolean | null;
             isByPostAuthor: boolean | null;
@@ -3444,6 +3463,7 @@ export interface components {
             distinguishedBy: string | null;
             /** Format: date-time */
             editedAt: string | null;
+            extracted: components["schemas"]["RedditExtracted"];
             id: string | null;
             isArchived: boolean | null;
             isByPostAuthor: boolean | null;
@@ -3514,6 +3534,16 @@ export interface components {
             name: string | null;
             /** Format: uri */
             url: string | null;
+        };
+        RedditExtracted: {
+            emails: string[] | null;
+            handles: components["schemas"]["RedditExtractedHandle"][] | null;
+            links: string[] | null;
+            phones: string[] | null;
+        };
+        RedditExtractedHandle: {
+            handle: string | null;
+            platform: string | null;
         };
         RedditFlair: {
             backgroundColor: string | null;
@@ -3591,6 +3621,7 @@ export interface components {
             /** Format: date-time */
             editedAt: string | null;
             embed: components["schemas"]["RedditEmbed"] | null;
+            extracted: components["schemas"]["RedditExtracted"];
             flair: components["schemas"]["RedditFlair"] | null;
             id: string;
             isArchived: boolean | null;
@@ -3663,6 +3694,7 @@ export interface components {
             /** Format: date-time */
             editedAt: string | null;
             embed: components["schemas"]["RedditEmbed"] | null;
+            extracted: components["schemas"]["RedditExtracted"];
             flair: components["schemas"]["RedditFlair"] | null;
             id: string | null;
             isArchived: boolean | null;
@@ -3707,6 +3739,7 @@ export interface components {
             createdAt: string | null;
             displayHandle: string | null;
             displayName: string | null;
+            extracted: components["schemas"]["RedditExtracted"];
             handle: string;
             id: string;
             isEmployee: boolean | null;
@@ -4064,6 +4097,7 @@ export interface components {
             /** Format: date-time */
             createdAt: string;
             entities: components["schemas"]["TikTokTextEntity"][] | null;
+            extracted: components["schemas"]["TikTokExtracted"];
             id: string;
             isLikedByCreator: boolean | null;
             isPinned: boolean | null;
@@ -4096,6 +4130,7 @@ export interface components {
             /** Format: date-time */
             createdAt: string | null;
             entities: components["schemas"]["TikTokTextEntity"][] | null;
+            extracted: components["schemas"]["TikTokExtracted"];
             id: string | null;
             isLikedByCreator: boolean | null;
             isPinned: boolean | null;
@@ -4205,6 +4240,16 @@ export interface components {
         TikTokEffectTrigger: {
             actionCodes: number[] | null;
             type: string | null;
+        };
+        TikTokExtracted: {
+            emails: string[] | null;
+            handles: components["schemas"]["TikTokExtractedHandle"][] | null;
+            links: string[] | null;
+            phones: string[] | null;
+        };
+        TikTokExtractedHandle: {
+            handle: string | null;
+            platform: string | null;
         };
         TikTokHashtag: {
             avatar: components["schemas"]["TikTokAsset"] | null;
@@ -4554,6 +4599,7 @@ export interface components {
             description: string | null;
             effects: components["schemas"]["TikTokEffectReference"][] | null;
             entities: components["schemas"]["TikTokTextEntity"][] | null;
+            extracted: components["schemas"]["TikTokExtracted"];
             hasDanmaku: boolean | null;
             hashtags: components["schemas"]["TikTokHashtagReference"][];
             hasPromotionalMusic: boolean | null;
@@ -4632,6 +4678,7 @@ export interface components {
             description: string | null;
             effects: components["schemas"]["TikTokEffectReference"][] | null;
             entities: components["schemas"]["TikTokTextEntity"][] | null;
+            extracted: components["schemas"]["TikTokExtracted"];
             hasDanmaku: boolean | null;
             hashtags: components["schemas"]["TikTokHashtagReference"][] | null;
             hasPromotionalMusic: boolean | null;
@@ -4739,6 +4786,7 @@ export interface components {
             /** Format: date-time */
             createdAt: string | null;
             displayName: string | null;
+            extracted: components["schemas"]["TikTokExtracted"];
             handle: string;
             id: string;
             isAdVirtual: boolean | null;
@@ -4811,6 +4859,7 @@ export interface components {
             /** Format: date-time */
             createdAt: string | null;
             displayName: string | null;
+            extracted: components["schemas"]["TikTokExtracted"];
             handle: string | null;
             id: string | null;
             isAdVirtual: boolean | null;
@@ -5104,6 +5153,16 @@ export interface components {
             timelineId: string | null;
             title: string | null;
         };
+        TwitterExtracted: {
+            emails: string[] | null;
+            handles: components["schemas"]["TwitterExtractedHandle"][] | null;
+            links: string[] | null;
+            phones: string[] | null;
+        };
+        TwitterExtractedHandle: {
+            handle: string | null;
+            platform: string | null;
+        };
         TwitterFormatting: {
             range: components["schemas"]["TwitterRange"];
             types: string[] | null;
@@ -5259,6 +5318,7 @@ export interface components {
             displayTextRange: components["schemas"]["TwitterRange"] | null;
             edit: components["schemas"]["TwitterEdit"] | null;
             entities: components["schemas"]["TwitterEntity"][];
+            extracted: components["schemas"]["TwitterExtracted"];
             hasGrokAnalysisButton: boolean | null;
             id: string;
             inReplyToHandle: string | null;
@@ -5305,6 +5365,7 @@ export interface components {
             displayTextRange: components["schemas"]["TwitterRange"] | null;
             edit: components["schemas"]["TwitterEdit"] | null;
             entities: components["schemas"]["TwitterEntity"][] | null;
+            extracted: components["schemas"]["TwitterExtracted"];
             hasGrokAnalysisButton: boolean | null;
             id: string | null;
             inReplyToHandle: string | null;
@@ -5358,6 +5419,7 @@ export interface components {
             entities: components["schemas"]["TwitterProfileEntities"];
             /** Format: uri */
             externalUrl: string | null;
+            extracted: components["schemas"]["TwitterExtracted"];
             handle: string;
             hasCustomTimelines: boolean | null;
             id: string;
@@ -5404,6 +5466,7 @@ export interface components {
             entities: components["schemas"]["TwitterProfileEntities"];
             /** Format: uri */
             externalUrl: string | null;
+            extracted: components["schemas"]["TwitterExtracted"];
             handle: string | null;
             hasCustomTimelines: boolean | null;
             id: string | null;

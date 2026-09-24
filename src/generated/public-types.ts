@@ -51,6 +51,12 @@ export type InstagramCrop = Camelize<components['schemas']["InstagramCrop"]>;
 /** Camel-cased InstagramDASH model used by SDK responses. */
 export type InstagramDASH = Camelize<components['schemas']["InstagramDASH"]>;
 
+/** Camel-cased InstagramExtracted model used by SDK responses. */
+export type InstagramExtracted = Camelize<components['schemas']["InstagramExtracted"]>;
+
+/** Camel-cased InstagramExtractedHandle model used by SDK responses. */
+export type InstagramExtractedHandle = Camelize<components['schemas']["InstagramExtractedHandle"]>;
+
 /** Camel-cased InstagramHashtag model used by SDK responses. */
 export type InstagramHashtag = Camelize<components['schemas']["InstagramHashtag"]>;
 
@@ -276,6 +282,12 @@ export type RedditEmbedAuthor = Camelize<components['schemas']["RedditEmbedAutho
 /** Camel-cased RedditEmbedSource model used by SDK responses. */
 export type RedditEmbedSource = Camelize<components['schemas']["RedditEmbedSource"]>;
 
+/** Camel-cased RedditExtracted model used by SDK responses. */
+export type RedditExtracted = Camelize<components['schemas']["RedditExtracted"]>;
+
+/** Camel-cased RedditExtractedHandle model used by SDK responses. */
+export type RedditExtractedHandle = Camelize<components['schemas']["RedditExtractedHandle"]>;
+
 /** Camel-cased RedditFlair model used by SDK responses. */
 export type RedditFlair = Camelize<components['schemas']["RedditFlair"]>;
 
@@ -473,6 +485,12 @@ export type TikTokEffectReference = Camelize<components['schemas']["TikTokEffect
 
 /** Camel-cased TikTokEffectTrigger model used by SDK responses. */
 export type TikTokEffectTrigger = Camelize<components['schemas']["TikTokEffectTrigger"]>;
+
+/** Camel-cased TikTokExtracted model used by SDK responses. */
+export type TikTokExtracted = Camelize<components['schemas']["TikTokExtracted"]>;
+
+/** Camel-cased TikTokExtractedHandle model used by SDK responses. */
+export type TikTokExtractedHandle = Camelize<components['schemas']["TikTokExtractedHandle"]>;
 
 /** Camel-cased TikTokHashtag model used by SDK responses. */
 export type TikTokHashtag = Camelize<components['schemas']["TikTokHashtag"]>;
@@ -731,6 +749,12 @@ export type TwitterEntity = Camelize<components['schemas']["TwitterEntity"]>;
 
 /** Camel-cased TwitterEvent model used by SDK responses. */
 export type TwitterEvent = Camelize<components['schemas']["TwitterEvent"]>;
+
+/** Camel-cased TwitterExtracted model used by SDK responses. */
+export type TwitterExtracted = Camelize<components['schemas']["TwitterExtracted"]>;
+
+/** Camel-cased TwitterExtractedHandle model used by SDK responses. */
+export type TwitterExtractedHandle = Camelize<components['schemas']["TwitterExtractedHandle"]>;
 
 /** Camel-cased TwitterFormatting model used by SDK responses. */
 export type TwitterFormatting = Camelize<components['schemas']["TwitterFormatting"]>;

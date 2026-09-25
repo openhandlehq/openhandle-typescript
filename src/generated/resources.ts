@@ -578,14 +578,14 @@ export interface InstagramProfileSuggestedResource {
     /**
      * List profile suggested
      *
-     * Return the current collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.instagram.profile("@northstar_forge_test").suggested.list({ freshness: "24h" });
      *
      * @see https://openhandle.dev/docs/api-reference/instagram-profile-suggested-list
      */
-    readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/suggested", "get">) => Promise<OperationResponse<"/v1/instagram/profiles/{identifier}/suggested", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/instagram/profiles/{identifier}/suggested", "get">) => Promise<OperationPage<"/v1/instagram/profiles/{identifier}/suggested", "get">>;
 }
 
 export interface InstagramProfileTaggedPostsResource {
@@ -798,7 +798,7 @@ export interface RedditPostCommentsResource {
      *
      * @see https://openhandle.dev/docs/api-reference/reddit-post-comments-list
      */
-    readonly list: (options?: OperationOptions<"/v1/reddit/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/reddit/posts/{identifier}/comments", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/reddit/posts/{identifier}/comments", "get">) => Promise<OperationResponse<"/v1/reddit/posts/{identifier}/comments", "get">>;
 }
 
 export interface RedditPostDuplicatesResource {
@@ -858,7 +858,7 @@ export interface RedditProfileModeratedResource {
      *
      * @see https://openhandle.dev/docs/api-reference/reddit-profile-moderated-list
      */
-    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/moderated", "get">) => Promise<OperationPage<"/v1/reddit/profiles/{identifier}/moderated", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/moderated", "get">) => Promise<OperationResponse<"/v1/reddit/profiles/{identifier}/moderated", "get">>;
 }
 
 export interface RedditProfilePostsResource {
@@ -886,7 +886,7 @@ export interface RedditProfileTrophiesResource {
      *
      * @see https://openhandle.dev/docs/api-reference/reddit-profile-trophies-list
      */
-    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/trophies", "get">) => Promise<OperationPage<"/v1/reddit/profiles/{identifier}/trophies", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/reddit/profiles/{identifier}/trophies", "get">) => Promise<OperationResponse<"/v1/reddit/profiles/{identifier}/trophies", "get">>;
 }
 
 export interface RedditSearchResource {
@@ -985,7 +985,7 @@ export interface RedditSubredditRulesResource {
      *
      * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-rules-list
      */
-    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/rules", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/{identifier}/rules", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/rules", "get">) => Promise<OperationResponse<"/v1/reddit/subreddits/{identifier}/rules", "get">>;
 }
 
 export interface RedditSubredditWikiPageResource {
@@ -1013,7 +1013,7 @@ export interface RedditSubredditWikiPagesResource {
      *
      * @see https://openhandle.dev/docs/api-reference/reddit-subreddit-wiki-list
      */
-    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">) => Promise<OperationPage<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">) => Promise<OperationResponse<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">>;
 }
 
 export interface RedditSubredditsResource {
@@ -1553,7 +1553,7 @@ export interface TikTokTrendingMusicResource {
      *
      * @see https://openhandle.dev/docs/api-reference/tiktok-trending-music-list
      */
-    readonly list: (options?: OperationOptions<"/v1/tiktok/trending/music", "get">) => Promise<OperationResponse<"/v1/tiktok/trending/music", "get">>;
+    readonly list: (options?: OperationOptions<"/v1/tiktok/trending/music", "get">) => Promise<OperationPage<"/v1/tiktok/trending/music", "get">>;
 }
 
 export interface TikTokTrendingPostsResource {

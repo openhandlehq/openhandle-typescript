@@ -670,7 +670,7 @@ export interface paths {
         };
         /**
          * List profile suggested
-         * @description Return the current collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+         * @description Return a cursor-paginated collection of Instagram profiles. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
          */
         get: operations["instagramProfileSuggestedList"];
         put?: never;
@@ -5606,7 +5606,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5644,7 +5644,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5680,7 +5680,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5716,7 +5716,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5752,7 +5752,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5788,7 +5788,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5824,7 +5860,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5860,7 +5896,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5896,7 +5932,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5955,7 +5991,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -5993,7 +6029,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6029,7 +6065,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6065,7 +6101,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6101,7 +6137,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6137,7 +6173,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6173,7 +6209,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6209,7 +6245,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6245,7 +6281,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6311,7 +6347,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6349,7 +6385,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6385,7 +6421,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6421,7 +6457,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6457,7 +6493,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6493,7 +6529,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6529,7 +6601,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6565,7 +6637,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6601,7 +6673,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6662,7 +6734,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6700,7 +6772,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6736,7 +6808,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6772,7 +6844,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6808,7 +6880,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6844,7 +6916,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6880,7 +6988,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6916,7 +7024,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -6952,7 +7060,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7011,7 +7119,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7049,7 +7157,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7085,7 +7193,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7121,7 +7229,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7157,7 +7265,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7193,7 +7301,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7229,7 +7337,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7265,7 +7373,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7301,7 +7409,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7360,7 +7468,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7398,7 +7506,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7434,7 +7542,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7470,7 +7578,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7506,7 +7614,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7542,7 +7650,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7578,7 +7686,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7614,7 +7722,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7650,7 +7758,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7716,7 +7824,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7754,7 +7862,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7790,7 +7898,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7826,7 +7934,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7862,7 +7970,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7898,7 +8006,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7934,7 +8078,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -7970,7 +8114,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8006,7 +8150,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8065,7 +8209,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8103,7 +8247,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8139,7 +8283,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8175,7 +8319,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8211,7 +8355,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8247,7 +8391,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8283,7 +8427,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8319,7 +8463,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8355,7 +8499,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8416,7 +8560,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8454,7 +8598,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8490,7 +8634,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8526,7 +8670,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8562,7 +8706,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8598,7 +8742,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8634,7 +8814,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8670,7 +8850,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8706,7 +8886,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8765,7 +8945,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8803,7 +8983,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8839,7 +9019,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8875,7 +9055,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8911,7 +9091,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8947,7 +9127,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -8983,7 +9163,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9019,7 +9199,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9055,7 +9235,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9114,7 +9294,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9152,7 +9332,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9188,7 +9368,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9224,7 +9404,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9260,7 +9440,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9296,7 +9476,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9332,7 +9512,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9368,7 +9548,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9404,7 +9584,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9463,7 +9643,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9501,7 +9681,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9537,7 +9717,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9573,7 +9753,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9609,7 +9789,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9645,7 +9825,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9681,7 +9861,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9717,7 +9897,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9753,7 +9933,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9784,7 +9964,7 @@ export interface operations {
         parameters: {
             query: {
                 /**
-                 * @description Provider-specific public-data filter for this operation.
+                 * @description Comment text to check.
                  * @example synthetic comment
                  */
                 comment: string;
@@ -9817,7 +9997,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9855,7 +10035,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9891,7 +10071,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9927,7 +10107,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9963,7 +10143,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -9999,7 +10179,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10035,7 +10215,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10071,7 +10251,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10107,7 +10287,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10168,7 +10348,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10206,7 +10386,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10242,7 +10422,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10278,7 +10458,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10314,7 +10494,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10350,7 +10530,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10386,7 +10602,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10422,7 +10638,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10458,7 +10674,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10524,7 +10740,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10562,7 +10778,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10598,7 +10814,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10634,7 +10850,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10670,7 +10886,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10706,7 +10922,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10742,7 +10994,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10778,7 +11030,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10814,7 +11066,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10873,7 +11125,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10911,7 +11163,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10947,7 +11199,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -10983,7 +11235,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11019,7 +11271,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11055,7 +11307,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11091,7 +11343,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11127,7 +11379,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11163,7 +11415,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11224,7 +11476,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11262,7 +11514,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11298,7 +11550,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11334,7 +11586,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11370,7 +11622,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11406,7 +11658,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11442,7 +11730,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11478,7 +11766,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11514,7 +11802,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11573,7 +11861,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11611,7 +11899,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11647,7 +11935,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11683,7 +11971,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11719,7 +12007,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11755,7 +12043,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11791,7 +12079,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11827,7 +12115,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11863,7 +12151,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11924,7 +12212,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11962,7 +12250,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -11998,7 +12286,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12034,7 +12322,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12070,7 +12358,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12106,7 +12394,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12142,7 +12466,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12178,7 +12502,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12214,7 +12538,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12273,7 +12597,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12311,7 +12635,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12347,7 +12671,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12383,7 +12707,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12419,7 +12743,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12455,7 +12779,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12491,7 +12815,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12527,7 +12851,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12563,7 +12887,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12622,7 +12946,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12660,7 +12984,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12696,7 +13020,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12732,7 +13056,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12768,7 +13092,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12804,7 +13128,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12840,7 +13164,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12876,7 +13200,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12912,7 +13236,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -12971,7 +13295,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13009,7 +13333,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13045,7 +13369,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13081,7 +13405,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13117,7 +13441,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13153,7 +13477,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13189,7 +13513,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13225,7 +13549,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13261,7 +13585,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13322,7 +13646,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13360,7 +13684,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13396,7 +13720,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13432,7 +13756,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13468,7 +13792,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13504,7 +13828,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13540,7 +13900,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13576,7 +13936,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13612,7 +13972,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13673,7 +14033,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13711,7 +14071,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13747,7 +14107,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13783,7 +14143,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13819,7 +14179,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13855,7 +14215,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13891,7 +14287,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13927,7 +14323,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -13963,7 +14359,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14029,7 +14425,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14067,7 +14463,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14103,7 +14499,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14139,7 +14535,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14175,7 +14571,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14211,7 +14607,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14247,7 +14679,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14283,7 +14715,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14319,7 +14751,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14380,7 +14812,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14418,7 +14850,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14454,7 +14886,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14490,7 +14922,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14526,7 +14958,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14562,7 +14994,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14598,7 +15066,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14634,7 +15102,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14670,7 +15138,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14736,7 +15204,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14774,7 +15242,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14810,7 +15278,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14846,7 +15314,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14882,7 +15350,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14918,7 +15386,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14954,7 +15458,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -14990,7 +15494,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15026,7 +15530,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15087,7 +15591,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15125,7 +15629,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15161,7 +15665,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15197,7 +15701,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15233,7 +15737,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15269,7 +15773,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15305,7 +15845,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15341,7 +15881,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15377,7 +15917,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15438,7 +15978,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15476,7 +16016,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15512,7 +16052,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15548,7 +16088,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15584,7 +16124,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15620,7 +16160,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15656,7 +16232,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15692,7 +16268,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15728,7 +16304,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15791,7 +16367,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15829,7 +16405,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15865,7 +16441,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15901,7 +16477,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15937,7 +16513,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -15973,7 +16549,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16009,7 +16621,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16045,7 +16657,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16081,7 +16693,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16142,7 +16754,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16180,7 +16792,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16216,7 +16828,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16252,7 +16864,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16288,7 +16900,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16324,7 +16936,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16360,7 +17008,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16396,7 +17044,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16432,7 +17080,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16493,7 +17141,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16531,7 +17179,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16567,7 +17215,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16603,7 +17251,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16639,7 +17287,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16675,7 +17323,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16711,7 +17395,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16747,7 +17431,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16783,7 +17467,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16844,7 +17528,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16882,7 +17566,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16918,7 +17602,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16954,7 +17638,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -16990,7 +17674,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17026,7 +17710,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17062,7 +17782,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17098,7 +17818,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17134,7 +17854,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17164,6 +17884,8 @@ export interface operations {
     instagramProfileSuggestedList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
+                cursor?: string;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
@@ -17193,7 +17915,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17216,7 +17938,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SuccessEnvelope"] & {
-                        data: components["schemas"]["InstagramProfile"];
+                        data: components["schemas"]["InstagramProfile"][];
                     };
                 };
             };
@@ -17231,7 +17953,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17267,7 +17989,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17303,7 +18025,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17339,7 +18061,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17375,7 +18097,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17411,7 +18169,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17447,7 +18205,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17483,7 +18241,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17544,7 +18302,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17582,7 +18340,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17618,7 +18376,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17654,7 +18412,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17690,7 +18448,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17726,7 +18484,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17762,7 +18556,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17798,7 +18592,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17834,7 +18628,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17895,7 +18689,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17933,7 +18727,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -17969,7 +18763,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18005,7 +18799,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18041,7 +18835,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18077,7 +18871,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18113,7 +18943,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18149,7 +18979,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18185,7 +19015,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18245,7 +19075,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18283,7 +19113,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18319,7 +19149,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18355,7 +19185,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18391,7 +19221,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18427,7 +19257,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18463,7 +19329,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18499,7 +19365,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18535,7 +19401,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18595,7 +19461,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18633,7 +19499,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18669,7 +19535,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18705,7 +19571,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18741,7 +19607,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18777,7 +19643,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18813,7 +19715,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18849,7 +19751,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18885,7 +19787,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18945,7 +19847,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -18983,7 +19885,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19019,7 +19921,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19055,7 +19957,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19091,7 +19993,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19127,7 +20029,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19163,7 +20101,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19199,7 +20137,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19235,7 +20173,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19295,7 +20233,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19333,7 +20271,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19369,7 +20307,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19405,7 +20343,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19441,7 +20379,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19477,7 +20415,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19513,7 +20487,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19549,7 +20523,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19585,7 +20559,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19645,7 +20619,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19683,7 +20657,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19719,7 +20693,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19755,7 +20729,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19791,7 +20765,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19827,7 +20801,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19863,7 +20873,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19899,7 +20909,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19935,7 +20945,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -19995,7 +21005,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20033,7 +21043,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20069,7 +21079,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20105,7 +21115,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20141,7 +21151,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20177,7 +21187,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20213,7 +21259,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20249,7 +21295,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20285,7 +21331,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20344,7 +21390,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20382,7 +21428,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20418,7 +21464,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20454,7 +21500,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20490,7 +21536,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20526,7 +21572,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20562,7 +21608,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20598,7 +21644,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20634,7 +21680,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20671,14 +21717,20 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
                 /**
                  * @description Result ordering for this operation.
                  * @example hot
                  */
                 sort?: "hot" | "new" | "top" | "rising" | "controversial";
-                /** @description Provider-specific public-data filter for this operation. */
+                /**
+                 * @description Time window for top and controversial results.
+                 * @example week
+                 */
                 t?: "hour" | "day" | "week" | "month" | "year" | "all";
             };
             header?: never;
@@ -20704,7 +21756,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20742,7 +21794,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20778,7 +21830,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20814,7 +21866,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20850,7 +21902,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20886,7 +21938,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20922,7 +22010,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20958,7 +22046,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -20994,7 +22082,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21053,7 +22141,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21091,7 +22179,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21127,7 +22215,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21163,7 +22251,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21199,7 +22287,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21235,7 +22323,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21271,7 +22359,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21307,7 +22395,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21343,7 +22431,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21373,16 +22461,20 @@ export interface operations {
     Reddit_post_comments_list: {
         parameters: {
             query?: {
-                /** @description Opaque cursor returned by the previous page. */
-                cursor?: string;
-                /** @description Provider-specific public-data filter for this operation. */
+                /**
+                 * @description Maximum depth of nested replies.
+                 * @example 2
+                 */
                 depth?: number;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
                 /**
                  * @description Result ordering for this operation.
@@ -21413,7 +22505,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21451,7 +22543,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21487,7 +22579,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21523,7 +22615,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21559,7 +22651,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21595,7 +22687,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21631,7 +22723,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21667,7 +22759,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21703,7 +22795,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21740,7 +22832,10 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
             };
             header?: never;
@@ -21766,7 +22861,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21804,7 +22899,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21840,7 +22935,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21876,7 +22971,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21912,7 +23007,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21948,7 +23043,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -21984,7 +23115,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22020,7 +23151,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22056,7 +23187,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22115,7 +23246,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22153,7 +23284,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22189,7 +23320,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22225,7 +23356,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22261,7 +23392,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22297,7 +23428,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22333,7 +23464,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22369,7 +23500,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22405,7 +23536,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22442,14 +23573,20 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
                 /**
                  * @description Result ordering for this operation.
                  * @example new
                  */
                 sort?: "new" | "hot" | "top" | "controversial";
-                /** @description Provider-specific public-data filter for this operation. */
+                /**
+                 * @description Time window for top and controversial results.
+                 * @example week
+                 */
                 t?: "hour" | "day" | "week" | "month" | "year" | "all";
             };
             header?: never;
@@ -22475,7 +23612,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22513,7 +23650,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22549,7 +23686,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22585,7 +23722,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22621,7 +23758,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22657,7 +23794,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22693,7 +23866,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22729,7 +23902,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22765,7 +23938,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22795,8 +23968,6 @@ export interface operations {
     Reddit_profile_moderated_list: {
         parameters: {
             query?: {
-                /** @description Opaque cursor returned by the previous page. */
-                cursor?: string;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
@@ -22826,7 +23997,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22864,7 +24035,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22900,7 +24071,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22936,7 +24107,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -22972,7 +24143,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23008,7 +24179,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23044,7 +24215,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23080,7 +24251,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23116,7 +24287,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23153,14 +24324,20 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
                 /**
                  * @description Result ordering for this operation.
                  * @example new
                  */
                 sort?: "new" | "hot" | "top" | "controversial";
-                /** @description Provider-specific public-data filter for this operation. */
+                /**
+                 * @description Time window for top and controversial results.
+                 * @example week
+                 */
                 t?: "hour" | "day" | "week" | "month" | "year" | "all";
             };
             header?: never;
@@ -23186,7 +24363,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23224,7 +24401,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23260,7 +24437,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23296,7 +24473,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23332,7 +24509,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23368,7 +24545,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23404,7 +24617,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23440,7 +24653,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23476,7 +24689,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23506,8 +24719,6 @@ export interface operations {
     Reddit_profile_trophies_list: {
         parameters: {
             query?: {
-                /** @description Opaque cursor returned by the previous page. */
-                cursor?: string;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
@@ -23537,7 +24748,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23575,7 +24786,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23611,7 +24822,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23647,7 +24858,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23683,7 +24894,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23719,7 +24930,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23755,7 +24966,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23791,7 +25002,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23827,7 +25038,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23866,7 +25077,7 @@ export interface operations {
                 freshness?: "live" | "24h" | "7d" | "30d";
                 /**
                  * @description Maximum number of results to return.
-                 * @example synthetic
+                 * @example 25
                  */
                 limit?: number;
                 /**
@@ -23879,14 +25090,11 @@ export interface operations {
                  * @example relevance
                  */
                 sort?: "relevance" | "hot" | "top" | "new" | "comments";
-                /**
-                 * @description Provider-specific public-data filter for this operation.
-                 * @example synthetic
-                 */
+                /** @description Search inside one subreddit only. */
                 subreddit?: string;
                 /**
-                 * @description Provider-specific public-data filter for this operation.
-                 * @example synthetic
+                 * @description Time window for top and controversial results.
+                 * @example week
                  */
                 t?: "hour" | "day" | "week" | "month" | "year" | "all";
             };
@@ -23907,7 +25115,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23945,7 +25153,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -23981,7 +25189,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24017,7 +25225,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24053,7 +25261,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24089,7 +25297,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24125,7 +25369,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24161,7 +25405,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24197,7 +25441,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24236,7 +25480,7 @@ export interface operations {
                 freshness?: "live" | "24h" | "7d" | "30d";
                 /**
                  * @description Maximum number of results to return.
-                 * @example synthetic
+                 * @example 25
                  */
                 limit?: number;
                 /**
@@ -24262,7 +25506,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24300,7 +25544,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24336,7 +25580,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24372,7 +25616,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24408,7 +25652,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24444,7 +25688,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24480,7 +25760,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24516,7 +25796,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24552,7 +25832,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24591,7 +25871,7 @@ export interface operations {
                 freshness?: "live" | "24h" | "7d" | "30d";
                 /**
                  * @description Maximum number of results to return.
-                 * @example synthetic
+                 * @example 25
                  */
                 limit?: number;
                 /**
@@ -24617,7 +25897,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24655,7 +25935,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24691,7 +25971,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24727,7 +26007,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24763,7 +26043,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24799,7 +26079,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24835,7 +26151,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24871,7 +26187,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24907,7 +26223,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -24966,7 +26282,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25004,7 +26320,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25040,7 +26356,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25076,7 +26392,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25112,7 +26428,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25148,7 +26464,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25184,7 +26500,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25220,7 +26536,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25256,7 +26572,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25293,14 +26609,20 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
                 /**
                  * @description Result ordering for this operation.
                  * @example hot
                  */
                 sort?: "hot" | "new" | "top" | "rising" | "controversial";
-                /** @description Provider-specific public-data filter for this operation. */
+                /**
+                 * @description Time window for top and controversial results.
+                 * @example week
+                 */
                 t?: "hour" | "day" | "week" | "month" | "year" | "all";
             };
             header?: never;
@@ -25326,7 +26648,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25364,7 +26686,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25400,7 +26722,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25436,7 +26758,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25472,7 +26794,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25508,7 +26830,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25544,7 +26902,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25580,7 +26938,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25616,7 +26974,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25646,8 +27004,6 @@ export interface operations {
     Reddit_subreddit_rules_list: {
         parameters: {
             query?: {
-                /** @description Opaque cursor returned by the previous page. */
-                cursor?: string;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
@@ -25677,7 +27033,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25715,7 +27071,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25751,7 +27107,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25787,7 +27143,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25823,7 +27179,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25859,7 +27215,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25895,7 +27251,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25931,7 +27287,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25967,7 +27323,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -25997,8 +27353,6 @@ export interface operations {
     Reddit_subreddit_wiki_list: {
         parameters: {
             query?: {
-                /** @description Opaque cursor returned by the previous page. */
-                cursor?: string;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
@@ -26028,7 +27382,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26066,7 +27420,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26102,7 +27456,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26138,7 +27492,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26174,7 +27528,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26210,7 +27564,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26246,7 +27600,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26282,7 +27636,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26318,7 +27672,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26362,7 +27716,7 @@ export interface operations {
                  */
                 identifier: string;
                 /**
-                 * @description Provider-specific public-data filter for this operation.
+                 * @description Wiki page name.
                  * @example index
                  */
                 page: string;
@@ -26382,7 +27736,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26420,7 +27774,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26456,7 +27810,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26492,7 +27846,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26528,7 +27882,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26564,7 +27918,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26600,7 +27954,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26636,7 +27990,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26672,7 +28026,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26709,7 +28063,10 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
             };
             header?: never;
@@ -26729,7 +28086,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26767,7 +28124,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26803,7 +28160,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26839,7 +28196,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26875,7 +28232,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26911,7 +28268,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26947,7 +28340,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -26983,7 +28376,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27019,7 +28412,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27056,7 +28449,10 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
             };
             header?: never;
@@ -27076,7 +28472,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27114,7 +28510,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27150,7 +28546,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27186,7 +28582,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27222,7 +28618,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27258,7 +28654,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27294,7 +28726,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27330,7 +28762,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27366,7 +28798,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27403,14 +28835,20 @@ export interface operations {
                  * @example 24h
                  */
                 freshness?: "live" | "24h" | "7d" | "30d";
-                /** @description Maximum number of results to return. */
+                /**
+                 * @description Maximum number of results to return.
+                 * @example 25
+                 */
                 limit?: number;
                 /**
                  * @description Result ordering for this operation.
                  * @example hot
                  */
                 sort?: "hot" | "new" | "top" | "rising" | "controversial" | "best";
-                /** @description Provider-specific public-data filter for this operation. */
+                /**
+                 * @description Time window for top and controversial results.
+                 * @example week
+                 */
                 t?: "hour" | "day" | "week" | "month" | "year" | "all";
             };
             header?: never;
@@ -27430,7 +28868,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27468,7 +28906,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27504,7 +28942,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27540,7 +28978,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27576,7 +29014,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27612,7 +29050,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27648,7 +29122,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27684,7 +29158,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27720,7 +29194,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27855,7 +29329,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27893,7 +29367,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27929,7 +29403,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -27965,7 +29439,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28001,7 +29475,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28037,7 +29511,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28073,7 +29583,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28109,7 +29619,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28145,7 +29655,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28204,7 +29714,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28242,7 +29752,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28278,7 +29788,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28314,7 +29824,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28350,7 +29860,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28386,7 +29896,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28422,7 +29932,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28458,7 +29968,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28494,7 +30004,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28555,7 +30065,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28593,7 +30103,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28629,7 +30139,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28665,7 +30175,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28701,7 +30211,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28737,7 +30247,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28773,7 +30319,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28809,7 +30355,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28845,7 +30391,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28904,7 +30450,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28942,7 +30488,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -28978,7 +30524,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29014,7 +30560,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29050,7 +30596,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29086,7 +30632,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29122,7 +30668,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29158,7 +30704,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29194,7 +30740,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29255,7 +30801,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29293,7 +30839,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29329,7 +30875,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29365,7 +30911,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29401,7 +30947,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29437,7 +30983,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29473,7 +31055,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29509,7 +31091,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29545,7 +31127,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29604,7 +31186,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29642,7 +31224,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29678,7 +31260,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29714,7 +31296,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29750,7 +31332,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29786,7 +31368,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29822,7 +31404,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29858,7 +31440,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29894,7 +31476,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29955,7 +31537,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -29993,7 +31575,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30029,7 +31611,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30065,7 +31647,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30101,7 +31683,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30137,7 +31719,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30173,7 +31791,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30209,7 +31827,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30245,7 +31863,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30304,7 +31922,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30342,7 +31960,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30378,7 +31996,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30414,7 +32032,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30450,7 +32068,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30486,7 +32104,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30522,7 +32140,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30558,7 +32176,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30594,7 +32212,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30655,7 +32273,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30693,7 +32311,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30729,7 +32347,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30765,7 +32383,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30801,7 +32419,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30837,7 +32455,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30873,7 +32527,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30909,7 +32563,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -30945,7 +32599,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31004,7 +32658,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31042,7 +32696,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31078,7 +32732,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31114,7 +32768,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31150,7 +32804,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31186,7 +32840,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31222,7 +32876,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31258,7 +32912,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31294,7 +32948,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31355,7 +33009,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31393,7 +33047,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31429,7 +33083,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31465,7 +33119,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31501,7 +33155,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31537,7 +33191,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31573,7 +33263,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31609,7 +33299,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31645,7 +33335,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31711,7 +33401,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31749,7 +33439,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31785,7 +33475,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31821,7 +33511,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31857,7 +33547,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31893,7 +33583,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31929,7 +33655,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -31965,7 +33691,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32001,7 +33727,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32060,7 +33786,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32098,7 +33824,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32134,7 +33860,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32170,7 +33896,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32206,7 +33932,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32242,7 +33968,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32278,7 +34004,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32314,7 +34040,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32350,7 +34076,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32411,7 +34137,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32449,7 +34175,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32485,7 +34211,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32521,7 +34247,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32557,7 +34283,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32593,7 +34319,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32629,7 +34391,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32665,7 +34427,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32701,7 +34463,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32762,7 +34524,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32800,7 +34562,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32836,7 +34598,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32872,7 +34634,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32908,7 +34670,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32944,7 +34706,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -32980,7 +34778,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33016,7 +34814,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33052,7 +34850,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33113,7 +34911,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33151,7 +34949,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33187,7 +34985,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33223,7 +35021,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33259,7 +35057,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33295,7 +35093,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33331,7 +35165,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33367,7 +35201,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33403,7 +35237,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33464,7 +35298,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33502,7 +35336,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33538,7 +35372,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33574,7 +35408,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33610,7 +35444,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33646,7 +35480,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33682,7 +35552,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33718,7 +35588,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33754,7 +35624,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33818,7 +35688,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33856,7 +35726,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33892,7 +35762,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33928,7 +35798,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -33964,7 +35834,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34000,7 +35870,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34036,7 +35906,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34072,7 +35942,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34108,7 +35978,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34174,7 +36044,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34212,7 +36082,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34248,7 +36118,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34284,7 +36154,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34320,7 +36190,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34356,7 +36226,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34392,7 +36298,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34428,7 +36334,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34464,7 +36370,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34527,7 +36433,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34565,7 +36471,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34601,7 +36507,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34637,7 +36543,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34673,7 +36579,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34709,7 +36615,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34745,7 +36687,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34781,7 +36723,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34817,7 +36759,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34877,7 +36819,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34915,7 +36857,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34951,7 +36893,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -34987,7 +36929,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35023,7 +36965,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35059,7 +37001,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35095,7 +37073,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35131,7 +37109,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35167,7 +37145,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35227,7 +37205,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35265,7 +37243,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35301,7 +37279,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35337,7 +37315,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35373,7 +37351,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35409,7 +37387,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35445,7 +37459,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35481,7 +37495,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35517,7 +37531,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35577,7 +37591,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35615,7 +37629,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35651,7 +37665,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35687,7 +37701,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35723,7 +37737,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35759,7 +37773,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35795,7 +37845,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35831,7 +37881,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35867,7 +37917,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35927,7 +37977,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -35965,7 +38015,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36001,7 +38051,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36037,7 +38087,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36073,7 +38123,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36109,7 +38159,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36145,7 +38231,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36181,7 +38267,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36217,7 +38303,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36277,7 +38363,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36315,7 +38401,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36351,7 +38437,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36387,7 +38473,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36423,7 +38509,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36459,7 +38545,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36495,7 +38617,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36531,7 +38653,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36567,7 +38689,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36622,7 +38744,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36660,7 +38782,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36696,7 +38818,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36732,7 +38854,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36768,7 +38890,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36804,7 +38926,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36840,7 +38998,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36876,7 +39034,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36912,7 +39070,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36942,6 +39100,8 @@ export interface operations {
     tiktokTrendingMusicList: {
         parameters: {
             query?: {
+                /** @description Opaque cursor returned by the previous page. */
+                cursor?: string;
                 /**
                  * @description Maximum accepted data age. The default is 24h.
                  * @example 24h
@@ -36965,7 +39125,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -36988,7 +39148,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["SuccessEnvelope"] & {
-                        data: components["schemas"]["TikTokMusic"];
+                        data: components["schemas"]["TikTokMusic"][];
                     };
                 };
             };
@@ -37003,7 +39163,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37039,7 +39199,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37075,7 +39235,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37111,7 +39271,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37147,7 +39307,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37183,7 +39379,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37219,7 +39415,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37255,7 +39451,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37310,7 +39506,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37348,7 +39544,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37384,7 +39580,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37420,7 +39616,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37456,7 +39652,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37492,7 +39688,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37528,7 +39760,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37564,7 +39796,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37600,7 +39832,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37661,7 +39893,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37699,7 +39931,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37735,7 +39967,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37771,7 +40003,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37807,7 +40039,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37843,7 +40075,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37879,7 +40147,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37915,7 +40183,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -37951,7 +40219,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38010,7 +40278,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38048,7 +40316,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38084,7 +40352,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38120,7 +40388,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38156,7 +40424,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38192,7 +40460,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38228,7 +40496,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38264,7 +40532,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38300,7 +40568,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38361,7 +40629,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38399,7 +40667,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38435,7 +40703,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38471,7 +40739,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38507,7 +40775,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38543,7 +40811,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38579,7 +40883,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38615,7 +40919,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38651,7 +40955,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38717,7 +41021,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38755,7 +41059,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38791,7 +41095,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38827,7 +41131,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38863,7 +41167,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38899,7 +41203,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38935,7 +41275,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -38971,7 +41311,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39007,7 +41347,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39068,7 +41408,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39106,7 +41446,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39142,7 +41482,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39178,7 +41518,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39214,7 +41554,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39250,7 +41590,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39286,7 +41662,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39322,7 +41698,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39358,7 +41734,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39417,7 +41793,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39455,7 +41831,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39491,7 +41867,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39527,7 +41903,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39563,7 +41939,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39599,7 +41975,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39635,7 +42011,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39671,7 +42047,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39707,7 +42083,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39768,7 +42144,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39806,7 +42182,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39842,7 +42218,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39878,7 +42254,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39914,7 +42290,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39950,7 +42326,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -39986,7 +42398,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40022,7 +42434,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40058,7 +42470,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40119,7 +42531,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40157,7 +42569,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40193,7 +42605,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40229,7 +42641,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40265,7 +42677,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40301,7 +42713,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40337,7 +42785,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40373,7 +42821,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40409,7 +42857,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40470,7 +42918,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40508,7 +42956,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40544,7 +42992,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40580,7 +43028,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40616,7 +43064,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40652,7 +43100,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40688,7 +43172,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40724,7 +43208,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40760,7 +43244,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40823,7 +43307,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40861,7 +43345,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40897,7 +43381,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40933,7 +43417,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -40969,7 +43453,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41005,7 +43489,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41041,7 +43561,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41077,7 +43597,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41113,7 +43633,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41174,7 +43694,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41212,7 +43732,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41248,7 +43768,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41284,7 +43804,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41320,7 +43840,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41356,7 +43876,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41392,7 +43948,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41428,7 +43984,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41464,7 +44020,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41529,7 +44085,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41567,7 +44123,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41603,7 +44159,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41639,7 +44195,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41675,7 +44231,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41711,7 +44267,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41747,7 +44339,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41783,7 +44375,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41819,7 +44411,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41884,7 +44476,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41922,7 +44514,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41958,7 +44550,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -41994,7 +44586,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42030,7 +44622,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42066,7 +44658,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42102,7 +44730,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42138,7 +44766,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42174,7 +44802,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42234,7 +44862,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42272,7 +44900,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42308,7 +44936,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42344,7 +44972,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42380,7 +45008,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42416,7 +45044,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42452,7 +45116,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42488,7 +45152,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42524,7 +45188,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42584,7 +45248,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42622,7 +45286,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42658,7 +45322,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42694,7 +45358,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42730,7 +45394,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42766,7 +45430,43 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
+            409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42802,7 +45502,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42838,7 +45538,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42874,7 +45574,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -42935,7 +45635,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43037,7 +45737,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43073,7 +45773,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43109,7 +45809,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43145,7 +45845,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43181,7 +45881,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43217,7 +45917,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43253,7 +45953,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
@@ -43289,7 +45989,7 @@ export interface operations {
                     "Openhandle-Dataset-Version"?: string;
                     /** @description Environment selected by the API key. */
                     "Openhandle-Environment"?: "test" | "live";
-                    /** @description Live-equivalent list price. */
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
                     "Openhandle-List-Price"?: string;
                     /**
                      * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.

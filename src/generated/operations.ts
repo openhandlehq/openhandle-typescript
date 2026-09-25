@@ -662,7 +662,7 @@ export const operations = [
         "apiPath": "/v1/instagram/profiles/{identifier}/suggested",
         "method": "get",
         "operation": "list",
-        "paginated": false,
+        "paginated": true,
         "path": "instagram.profile.suggested.list",
         "scope": [
             {
@@ -867,7 +867,7 @@ export const operations = [
         "apiPath": "/v1/reddit/posts/{identifier}/comments",
         "method": "get",
         "operation": "list",
-        "paginated": true,
+        "paginated": false,
         "path": "reddit.post.comments.list",
         "scope": [
             {
@@ -961,7 +961,7 @@ export const operations = [
         "apiPath": "/v1/reddit/profiles/{identifier}/moderated",
         "method": "get",
         "operation": "list",
-        "paginated": true,
+        "paginated": false,
         "path": "reddit.profile.moderated.list",
         "scope": [
             {
@@ -1001,7 +1001,7 @@ export const operations = [
         "apiPath": "/v1/reddit/profiles/{identifier}/trophies",
         "method": "get",
         "operation": "list",
-        "paginated": true,
+        "paginated": false,
         "path": "reddit.profile.trophies.list",
         "scope": [
             {
@@ -1112,7 +1112,7 @@ export const operations = [
         "apiPath": "/v1/reddit/subreddits/{identifier}/rules",
         "method": "get",
         "operation": "list",
-        "paginated": true,
+        "paginated": false,
         "path": "reddit.subreddit.rules.list",
         "scope": [
             {
@@ -1154,7 +1154,7 @@ export const operations = [
         "apiPath": "/v1/reddit/subreddits/{identifier}/wiki-pages",
         "method": "get",
         "operation": "list",
-        "paginated": true,
+        "paginated": false,
         "path": "reddit.subreddit.wikiPages.list",
         "scope": [
             {
@@ -1754,7 +1754,7 @@ export const operations = [
         "apiPath": "/v1/tiktok/trending/music",
         "method": "get",
         "operation": "list",
-        "paginated": false,
+        "paginated": true,
         "path": "tiktok.trending.music.list",
         "scope": [
             {

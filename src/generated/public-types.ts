@@ -1105,7 +1105,7 @@ export type InstagramProfileStoriesPage = OperationPage<"/v1/instagram/profiles/
 export type InstagramProfileSuggestedOptions = OperationOptions<"/v1/instagram/profiles/{identifier}/suggested", "get">;
 
 /** Typed result returned by instagram.profile.suggested.list. */
-export type InstagramProfileSuggestedResponse = OperationResponse<"/v1/instagram/profiles/{identifier}/suggested", "get">;
+export type InstagramProfileSuggestedPage = OperationPage<"/v1/instagram/profiles/{identifier}/suggested", "get">;
 
 /** Options accepted by instagram.profile.taggedPosts.list. */
 export type InstagramProfileTaggedPostsOptions = OperationOptions<"/v1/instagram/profiles/{identifier}/tagged-posts", "get">;
@@ -1171,7 +1171,7 @@ export type RedditDomainPostsPage = OperationPage<"/v1/reddit/domains/{identifie
 export type RedditPostCommentsOptions = OperationOptions<"/v1/reddit/posts/{identifier}/comments", "get">;
 
 /** Typed result returned by reddit.post.comments.list. */
-export type RedditPostCommentsPage = OperationPage<"/v1/reddit/posts/{identifier}/comments", "get">;
+export type RedditPostCommentsResponse = OperationResponse<"/v1/reddit/posts/{identifier}/comments", "get">;
 
 /** Options accepted by reddit.post.duplicates.list. */
 export type RedditPostDuplicatesOptions = OperationOptions<"/v1/reddit/posts/{identifier}/duplicates", "get">;
@@ -1201,7 +1201,7 @@ export type RedditProfileResponse = OperationResponse<"/v1/reddit/profiles/{iden
 export type RedditProfileModeratedOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/moderated", "get">;
 
 /** Typed result returned by reddit.profile.moderated.list. */
-export type RedditProfileModeratedPage = OperationPage<"/v1/reddit/profiles/{identifier}/moderated", "get">;
+export type RedditProfileModeratedResponse = OperationResponse<"/v1/reddit/profiles/{identifier}/moderated", "get">;
 
 /** Options accepted by reddit.profile.posts.list. */
 export type RedditProfilePostsOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/posts", "get">;
@@ -1213,7 +1213,7 @@ export type RedditProfilePostsPage = OperationPage<"/v1/reddit/profiles/{identif
 export type RedditProfileTrophiesOptions = OperationOptions<"/v1/reddit/profiles/{identifier}/trophies", "get">;
 
 /** Typed result returned by reddit.profile.trophies.list. */
-export type RedditProfileTrophiesPage = OperationPage<"/v1/reddit/profiles/{identifier}/trophies", "get">;
+export type RedditProfileTrophiesResponse = OperationResponse<"/v1/reddit/profiles/{identifier}/trophies", "get">;
 
 /** Options accepted by reddit.search.posts.list. */
 export type RedditSearchPostsOptions = OperationOptions<"/v1/reddit/search/posts", "get">;
@@ -1249,7 +1249,7 @@ export type RedditSubredditPostsPage = OperationPage<"/v1/reddit/subreddits/{ide
 export type RedditSubredditRulesOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/rules", "get">;
 
 /** Typed result returned by reddit.subreddit.rules.list. */
-export type RedditSubredditRulesPage = OperationPage<"/v1/reddit/subreddits/{identifier}/rules", "get">;
+export type RedditSubredditRulesResponse = OperationResponse<"/v1/reddit/subreddits/{identifier}/rules", "get">;
 
 /** Options accepted by reddit.subreddit.wikiPage.get. */
 export type RedditSubredditWikiPageOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages/{page}", "get">;
@@ -1261,7 +1261,7 @@ export type RedditSubredditWikiPageResponse = OperationResponse<"/v1/reddit/subr
 export type RedditSubredditWikiPagesOptions = OperationOptions<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">;
 
 /** Typed result returned by reddit.subreddit.wikiPages.list. */
-export type RedditSubredditWikiPagesPage = OperationPage<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">;
+export type RedditSubredditWikiPagesResponse = OperationResponse<"/v1/reddit/subreddits/{identifier}/wiki-pages", "get">;
 
 /** Options accepted by reddit.subreddits.new.list. */
 export type RedditSubredditsNewOptions = OperationOptions<"/v1/reddit/subreddits/new", "get">;
@@ -1453,7 +1453,7 @@ export type TikTokTrendingCategoriesPage = OperationPage<"/v1/tiktok/trending/ca
 export type TikTokTrendingMusicOptions = OperationOptions<"/v1/tiktok/trending/music", "get">;
 
 /** Typed result returned by tiktok.trending.music.list. */
-export type TikTokTrendingMusicResponse = OperationResponse<"/v1/tiktok/trending/music", "get">;
+export type TikTokTrendingMusicPage = OperationPage<"/v1/tiktok/trending/music", "get">;
 
 /** Options accepted by tiktok.trending.posts.list. */
 export type TikTokTrendingPostsOptions = OperationOptions<"/v1/tiktok/trending/posts", "get">;

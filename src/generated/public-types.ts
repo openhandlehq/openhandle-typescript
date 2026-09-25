@@ -417,11 +417,14 @@ export type TestDataOperation = Camelize<components['schemas']["TestDataOperatio
 /** Camel-cased TestDataRelationship model used by SDK responses. */
 export type TestDataRelationship = Camelize<components['schemas']["TestDataRelationship"]>;
 
-/** Camel-cased TikTokAsset model used by SDK responses. */
-export type TikTokAsset = Camelize<components['schemas']["TikTokAsset"]>;
+/** Camel-cased TikTokAudio model used by SDK responses. */
+export type TikTokAudio = Camelize<components['schemas']["TikTokAudio"]>;
 
 /** Camel-cased TikTokBeatData model used by SDK responses. */
 export type TikTokBeatData = Camelize<components['schemas']["TikTokBeatData"]>;
+
+/** Camel-cased TikTokBeatResource model used by SDK responses. */
+export type TikTokBeatResource = Camelize<components['schemas']["TikTokBeatResource"]>;
 
 /** Camel-cased TikTokCategory model used by SDK responses. */
 export type TikTokCategory = Camelize<components['schemas']["TikTokCategory"]>;
@@ -507,6 +510,9 @@ export type TikTokHashtagReference = Camelize<components['schemas']["TikTokHasht
 /** Camel-cased TikTokHashtagSearchContext model used by SDK responses. */
 export type TikTokHashtagSearchContext = Camelize<components['schemas']["TikTokHashtagSearchContext"]>;
 
+/** Camel-cased TikTokImage model used by SDK responses. */
+export type TikTokImage = Camelize<components['schemas']["TikTokImage"]>;
+
 /** Camel-cased TikTokInteractionSticker model used by SDK responses. */
 export type TikTokInteractionSticker = Camelize<components['schemas']["TikTokInteractionSticker"]>;
 
@@ -539,6 +545,9 @@ export type TikTokLyricAsset = Camelize<components['schemas']["TikTokLyricAsset"
 
 /** Camel-cased TikTokMatchedTrack model used by SDK responses. */
 export type TikTokMatchedTrack = Camelize<components['schemas']["TikTokMatchedTrack"]>;
+
+/** Camel-cased TikTokMedia model used by SDK responses. */
+export type TikTokMedia = Camelize<components['schemas']["TikTokMedia"]>;
 
 /** Camel-cased TikTokMusic model used by SDK responses. */
 export type TikTokMusic = Camelize<components['schemas']["TikTokMusic"]>;
@@ -654,6 +663,9 @@ export type TikTokProfileReference = Camelize<components['schemas']["TikTokProfi
 /** Camel-cased TikTokRatingSource model used by SDK responses. */
 export type TikTokRatingSource = Camelize<components['schemas']["TikTokRatingSource"]>;
 
+/** Camel-cased TikTokRendition model used by SDK responses. */
+export type TikTokRendition = Camelize<components['schemas']["TikTokRendition"]>;
+
 /** Camel-cased TikTokSearchHighlight model used by SDK responses. */
 export type TikTokSearchHighlight = Camelize<components['schemas']["TikTokSearchHighlight"]>;
 
@@ -674,6 +686,9 @@ export type TikTokStoryReference = Camelize<components['schemas']["TikTokStoryRe
 
 /** Camel-cased TikTokStreamingLink model used by SDK responses. */
 export type TikTokStreamingLink = Camelize<components['schemas']["TikTokStreamingLink"]>;
+
+/** Camel-cased TikTokSubtitle model used by SDK responses. */
+export type TikTokSubtitle = Camelize<components['schemas']["TikTokSubtitle"]>;
 
 /** Camel-cased TikTokTemplateMetrics model used by SDK responses. */
 export type TikTokTemplateMetrics = Camelize<components['schemas']["TikTokTemplateMetrics"]>;

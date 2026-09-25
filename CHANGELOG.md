@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.2](https://github.com/openhandlehq/openhandle-typescript/compare/v1.2.1...v1.2.2) (2026-09-25)
+
+
+### Features
+
+* sync API contract ([2e56507](https://github.com/openhandlehq/openhandle-typescript/commit/2e56507075df0d759e862f41d07de848b8f3055e))
+* sync SDK source ([b197b34](https://github.com/openhandlehq/openhandle-typescript/commit/b197b34a1544bcc3f64b723de27d064121f48617))
+
 ## [1.2.1](https://github.com/openhandlehq/openhandle-typescript/compare/v1.2.0...v1.2.1) (2026-09-25)
 
 

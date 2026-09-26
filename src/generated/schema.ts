@@ -2303,6 +2303,21 @@ export interface components {
             /** Format: uri */
             url: string | null;
         };
+        InstagramCaptionReference: {
+            /** Format: date-time */
+            createdAt: string | null;
+            id: string | null;
+            isCovered: boolean | null;
+            isEdited: boolean | null;
+            ranking: {
+                isRanked: boolean | null;
+            };
+            sharingEnabled: boolean | null;
+            status: string | null;
+            translation: {
+                text: string | null;
+            };
+        };
         InstagramClipMetadata: {
             audio: components["schemas"]["InstagramAudioReference"] | null;
             partial: components["schemas"]["InstagramPartialData"] | null;
@@ -2708,7 +2723,7 @@ export interface components {
                 originalPost: components["schemas"]["InstagramPostReference"] | null;
             };
             author: components["schemas"]["InstagramProfileReference"] | null;
-            caption: components["schemas"]["InstagramCommentReference"] | null;
+            caption: components["schemas"]["InstagramCaptionReference"] | null;
             carousel: {
                 itemCount: number | null;
                 pendingItemCount: number | null;
@@ -2830,7 +2845,7 @@ export interface components {
                 originalPost: components["schemas"]["InstagramPostReference"] | null;
             };
             author: components["schemas"]["InstagramProfileReference"] | null;
-            caption: components["schemas"]["InstagramCommentReference"] | null;
+            caption: components["schemas"]["InstagramCaptionReference"] | null;
             carousel: {
                 itemCount: number | null;
                 pendingItemCount: number | null;
@@ -3175,7 +3190,7 @@ export interface components {
                 originalPost: components["schemas"]["InstagramPostReference"] | null;
             };
             author: components["schemas"]["InstagramProfileReference"] | null;
-            caption: components["schemas"]["InstagramCommentReference"] | null;
+            caption: components["schemas"]["InstagramCaptionReference"] | null;
             carousel: {
                 itemCount: number | null;
                 pendingItemCount: number | null;
@@ -3270,7 +3285,7 @@ export interface components {
                 originalPost: components["schemas"]["InstagramPostReference"] | null;
             };
             author: components["schemas"]["InstagramProfileReference"] | null;
-            caption: components["schemas"]["InstagramCommentReference"] | null;
+            caption: components["schemas"]["InstagramCaptionReference"] | null;
             carousel: {
                 itemCount: number | null;
                 pendingItemCount: number | null;

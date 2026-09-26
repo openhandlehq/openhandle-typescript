@@ -21,6 +21,9 @@ export type InstagramAudioReference = Camelize<components['schemas']["InstagramA
 /** Camel-cased InstagramBioLink model used by SDK responses. */
 export type InstagramBioLink = Camelize<components['schemas']["InstagramBioLink"]>;
 
+/** Camel-cased InstagramCaptionReference model used by SDK responses. */
+export type InstagramCaptionReference = Camelize<components['schemas']["InstagramCaptionReference"]>;
+
 /** Camel-cased InstagramClipMetadata model used by SDK responses. */
 export type InstagramClipMetadata = Camelize<components['schemas']["InstagramClipMetadata"]>;
 

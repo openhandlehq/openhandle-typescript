@@ -3941,7 +3941,7 @@ export interface components {
             /** @enum {string} */
             platform: "instagram" | "tiktok" | "twitter" | "reddit";
             /** @enum {string} */
-            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy";
+            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "story" | "highlight" | "subreddit" | "rule" | "wiki" | "trophy";
             /** @enum {string} */
             source: "live" | "cache";
         };
@@ -49505,13 +49505,13 @@ export interface operations {
                         /** @constant */
                         platform: "instagram";
                         /** @constant */
-                        resource: "entity";
+                        resource: "story";
                     }) | (components["schemas"]["SuccessEnvelope"] & {
                         data: components["schemas"]["InstagramHighlight"];
                         /** @constant */
                         platform: "instagram";
                         /** @constant */
-                        resource: "entity";
+                        resource: "highlight";
                     }) | (components["schemas"]["SuccessEnvelope"] & {
                         data: components["schemas"]["TikTokProfile"];
                         /** @constant */

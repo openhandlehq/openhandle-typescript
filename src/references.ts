@@ -12,6 +12,7 @@ const instagramName = /^[A-Za-z0-9._]{1,30}$/;
 const tiktokName = /^[A-Za-z0-9._]{2,24}$/;
 const twitterName = /^[A-Za-z0-9_]{1,15}$/;
 const shortcode = /^[A-Za-z0-9_-]+$/;
+const youtubeHandle = /^[\p{L}\p{N}._-]{1,100}$/u;
 
 export const resolveReference = (input: ProfileReference | ResourceReference, platform: string, resource: string): string => {
     if (typeof input === 'number') {
@@ -87,6 +88,10 @@ const looksLikeSupportedSocialURL = (input: string): boolean => {
     }
     const host = authority.replace(/^www\./, '');
     return [
+        'youtube.com',
+        'm.youtube.com',
+        'music.youtube.com',
+        'youtu.be',
         'reddit.com',
         'old.reddit.com',
         'new.reddit.com',
@@ -106,13 +111,15 @@ const looksLikeSupportedSocialURL = (input: string): boolean => {
 const usernameReference = (input: string, platform: string): string => {
     const username = input.replace(/^@/, '');
     const valid =
-        platform === 'reddit'
-            ? /^[A-Za-z0-9_-]{1,100}$/.test(username)
-            : platform === 'instagram'
-              ? instagramName.test(username)
-              : platform === 'tiktok'
-                ? tiktokName.test(username)
-                : twitterName.test(username);
+        platform === 'youtube'
+            ? youtubeHandle.test(username)
+            : platform === 'reddit'
+              ? /^[A-Za-z0-9_-]{1,100}$/.test(username)
+              : platform === 'instagram'
+                ? instagramName.test(username)
+                : platform === 'tiktok'
+                  ? tiktokName.test(username)
+                  : twitterName.test(username);
     if (!valid) {
         throw new OpenHandleReferenceError(`Invalid ${platform} username.`);
     }
@@ -132,6 +139,7 @@ const resolveSocialURL = (input: string): SocialURLResolution => {
 
     const host = parsed.hostname.toLowerCase().replace(/^www\./, '');
     const parts = parsed.pathname.split('/').filter(Boolean);
+    if (['youtube.com', 'm.youtube.com', 'music.youtube.com', 'youtu.be'].includes(host)) return resolveYouTubeURL(host, parsed, parts);
     if (['reddit.com', 'old.reddit.com', 'new.reddit.com', 'm.reddit.com', 'redd.it'].includes(host)) return resolveRedditURL(host, parts);
     if (host === 'instagram.com') {
         return resolveInstagramURL(parts);
@@ -265,4 +273,34 @@ const resolveRedditURL = (host: string, parts: string[]): SocialURLResolution =>
         return { platform: 'reddit', resource: 'post', identifier: parts[1] ?? '' };
     }
     throw new OpenHandleReferenceError('Unsupported Reddit URL.');
+};
+
+const resolveYouTubeURL = (host: string, parsed: URL, parts: string[]): SocialURLResolution => {
+    const postID = /^[A-Za-z0-9_-]{11}$/;
+    if (host === 'youtu.be' && parts.length === 1 && postID.test(parts[0] ?? '')) {
+        return { platform: 'youtube', resource: 'post', identifier: parts[0] ?? '' };
+    }
+    const video = parsed.searchParams.get('v') ?? '';
+    if (parts.length === 1 && parts[0] === 'watch' && postID.test(video)) {
+        return { platform: 'youtube', resource: 'post', identifier: video };
+    }
+    if (parts.length === 2 && ['shorts', 'live', 'embed'].includes(parts[0] ?? '') && postID.test(parts[1] ?? '')) {
+        return { platform: 'youtube', resource: 'post', identifier: parts[1] ?? '' };
+    }
+    const handle = decodePathSegment(parts[0] ?? '');
+    if (handle.startsWith('@') && youtubeHandle.test(handle.slice(1))) {
+        return { platform: 'youtube', resource: 'profile', identifier: handle };
+    }
+    if (parts.length >= 2 && parts[0] === 'channel' && /^UC[A-Za-z0-9_-]{22}$/.test(parts[1] ?? '')) {
+        return { platform: 'youtube', resource: 'profile', identifier: parts[1] ?? '' };
+    }
+    throw new OpenHandleReferenceError('Unsupported YouTube URL.');
+};
+
+const decodePathSegment = (segment: string): string => {
+    try {
+        return decodeURIComponent(segment);
+    } catch {
+        return segment;
+    }
 };

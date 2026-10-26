@@ -15,6 +15,7 @@ export interface GeneratedClient {
     readonly testData: TestDataResource;
     readonly tiktok: TikTokResource;
     readonly twitter: TwitterResource;
+    readonly youtube: YouTubeResource;
     /**
      * Fetch the resource at a social URL
      *
@@ -508,7 +509,7 @@ export interface InstagramProfilePinnedPostsResource {
     /**
      * List profile pinned posts
      *
-     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Instagram profile's pinned posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.instagram.profile("@northstar_forge_test").pinnedPosts.list({ freshness: "24h" });
@@ -536,7 +537,7 @@ export interface InstagramProfileReelsResource {
     /**
      * List profile reels
      *
-     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Instagram profile's reels. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.instagram.profile("@northstar_forge_test").reels.list({ freshness: "24h" });
@@ -550,7 +551,7 @@ export interface InstagramProfileRepostsResource {
     /**
      * List profile reposts
      *
-     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Instagram profile's reposts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.instagram.profile("@northstar_forge_test").reposts.list({ freshness: "24h" });
@@ -592,7 +593,7 @@ export interface InstagramProfileTaggedPostsResource {
     /**
      * List profile tagged posts
      *
-     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Instagram profile's tagged posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.instagram.profile("@northstar_forge_test").taggedPosts.list({ freshness: "24h" });
@@ -606,7 +607,7 @@ export interface InstagramProfileVideosResource {
     /**
      * List profile videos
      *
-     * Return a cursor-paginated Instagram profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Instagram profile's videos. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.instagram.profile("@northstar_forge_test").videos.list({ freshness: "24h" });
@@ -1377,7 +1378,7 @@ export interface TikTokProfileLikedPostsResource {
     /**
      * List profile liked posts
      *
-     * Return a cursor-paginated Tiktok profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Tiktok profile's liked posts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.tiktok.profile("@pixel_orchard_tt_test").likedPosts.list({ freshness: "24h" });
@@ -1729,7 +1730,7 @@ export interface TwitterProfileMediaResource {
     /**
      * List profile media
      *
-     * Return a cursor-paginated Twitter profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Twitter profile's media. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.twitter.profile("@copperfield_lab_x_test").media.list({ freshness: "24h" });
@@ -1757,7 +1758,7 @@ export interface TwitterProfileRepliesResource {
     /**
      * List profile replies
      *
-     * Return a cursor-paginated Twitter profile collection. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     * Return a cursor-paginated collection of a public Twitter profile's replies. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
      *
      * @example
      * await openhandle.twitter.profile("@copperfield_lab_x_test").replies.list({ freshness: "24h" });
@@ -1828,4 +1829,451 @@ export interface TwitterSearchUsersResource {
      * @see https://openhandle.dev/docs/api-reference/twitter-search-users-list
      */
     readonly list: (options: OperationOptions<"/v1/twitter/search/users", "get">) => Promise<OperationPage<"/v1/twitter/search/users", "get">>;
+}
+
+export interface YouTubeResource {
+    readonly charts: YouTubeChartsResource;
+    /**
+     * Select the communityPost resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly communityPost: (reference: ResourceReference) => YouTubeCommunityPostResource;
+    /**
+     * Select the hashtag resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly hashtag: (reference: ResourceReference) => YouTubeHashtagResource;
+    /**
+     * Select the playlist resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly playlist: (reference: ResourceReference) => YouTubePlaylistResource;
+    /**
+     * Select the post resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly post: (reference: ResourceReference) => YouTubePostResource;
+    /**
+     * Select the profile resource using a username shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly profile: (reference: ProfileReference) => YouTubeProfileResource;
+    readonly search: YouTubeSearchResource;
+    readonly trending: YouTubeTrendingResource;
+}
+
+export interface YouTubeChartsResource {
+    readonly artists: YouTubeChartsArtistsResource;
+    readonly tracks: YouTubeChartsTracksResource;
+    readonly videos: YouTubeChartsVideosResource;
+}
+
+export interface YouTubeChartsArtistsResource {
+    /**
+     * List top artists
+     *
+     * Return the weekly top artists chart of one country. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.charts.artists.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-charts-artists-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/charts/artists", "get">) => Promise<OperationResponse<"/v1/youtube/charts/artists", "get">>;
+}
+
+export interface YouTubeChartsTracksResource {
+    /**
+     * List top songs
+     *
+     * Return the weekly top songs chart of one country. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.charts.tracks.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-charts-tracks-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/charts/tracks", "get">) => Promise<OperationResponse<"/v1/youtube/charts/tracks", "get">>;
+}
+
+export interface YouTubeChartsVideosResource {
+    /**
+     * List top music videos
+     *
+     * Return the weekly top music videos chart of one country. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.charts.videos.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-charts-videos-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/charts/videos", "get">) => Promise<OperationResponse<"/v1/youtube/charts/videos", "get">>;
+}
+
+export interface YouTubeCommunityPostResource {
+    readonly comments: YouTubeCommunityPostCommentsResource;
+    /**
+     * Get a community post
+     *
+     * Return one public YouTube community post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.communityPost("Ugsynthpost001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-community-post-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/youtube/community-posts/{identifier}", "get">) => Promise<OperationResponse<"/v1/youtube/community-posts/{identifier}", "get">>;
+}
+
+export interface YouTubeCommunityPostCommentsResource {
+    /**
+     * List community post comments
+     *
+     * Return the comments of a public YouTube community post. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.communityPost("Ugsynthpost001").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-community-post-comments-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/community-posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/youtube/community-posts/{identifier}/comments", "get">>;
+}
+
+export interface YouTubeHashtagResource {
+    readonly posts: YouTubeHashtagPostsResource;
+}
+
+export interface YouTubeHashtagPostsResource {
+    /**
+     * List hashtag posts
+     *
+     * Return the public YouTube videos and Shorts of one hashtag. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.hashtag("synthetic").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-hashtag-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/hashtags/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/youtube/hashtags/{identifier}/posts", "get">>;
+}
+
+export interface YouTubePlaylistResource {
+    readonly posts: YouTubePlaylistPostsResource;
+}
+
+export interface YouTubePlaylistPostsResource {
+    /**
+     * List playlist posts
+     *
+     * Return the videos of a public YouTube playlist. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.playlist("PLsynthetic001").posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-playlist-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/playlists/{identifier}/posts", "get">) => Promise<OperationPage<"/v1/youtube/playlists/{identifier}/posts", "get">>;
+}
+
+export interface YouTubePostResource {
+    /**
+     * Select the comment resource using a supported string shorthand or an explicit ID or URL reference.
+     *
+     * Resource selection is synchronous and does not perform a request.
+     */
+    readonly comment: (reference: ResourceReference) => YouTubePostCommentResource;
+    readonly comments: YouTubePostCommentsResource;
+    readonly related: YouTubePostRelatedResource;
+    readonly soundPosts: YouTubePostSoundPostsResource;
+    readonly transcript: YouTubePostTranscriptResource;
+    /**
+     * Get a post
+     *
+     * Return one public YouTube video, Short, or livestream with its exact counts and publication time. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/youtube/posts/{identifier}", "get">) => Promise<OperationResponse<"/v1/youtube/posts/{identifier}", "get">>;
+}
+
+export interface YouTubePostCommentResource {
+    readonly replies: YouTubePostCommentRepliesResource;
+}
+
+export interface YouTubePostCommentRepliesResource {
+    /**
+     * List comment replies
+     *
+     * Return the replies of one YouTube comment. Pass the repliesToken that comment carried. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").comment("Ugsynthcomment001").replies.list({ token: "synthetic-replies-Ugsynthcomment001", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-comment-replies-list
+     */
+    readonly list: (options: OperationOptions<"/v1/youtube/posts/{identifier}/comments/{comment_id}/replies", "get">) => Promise<OperationPage<"/v1/youtube/posts/{identifier}/comments/{comment_id}/replies", "get">>;
+}
+
+export interface YouTubePostCommentsResource {
+    /**
+     * List post comments
+     *
+     * Return the top-level comments of a public YouTube video or Short. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").comments.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-comments-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/youtube/posts/{identifier}/comments", "get">>;
+}
+
+export interface YouTubePostRelatedResource {
+    /**
+     * List related posts
+     *
+     * Return the videos YouTube suggests next to a public video. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").related.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-related-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/related", "get">) => Promise<OperationPage<"/v1/youtube/posts/{identifier}/related", "get">>;
+}
+
+export interface YouTubePostSoundPostsResource {
+    /**
+     * List posts using the same sound
+     *
+     * Return the Shorts that use the sound of a public Short. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").soundPosts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-sound-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/sound-posts", "get">) => Promise<OperationPage<"/v1/youtube/posts/{identifier}/sound-posts", "get">>;
+}
+
+export interface YouTubePostTranscriptResource {
+    /**
+     * Get a transcript
+     *
+     * Return the timed caption text of a public YouTube video in one of its caption languages. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").transcript.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-transcript-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/transcript", "get">) => Promise<OperationResponse<"/v1/youtube/posts/{identifier}/transcript", "get">>;
+}
+
+export interface YouTubeProfileResource {
+    readonly communityPosts: YouTubeProfileCommunityPostsResource;
+    readonly livestreams: YouTubeProfileLivestreamsResource;
+    readonly playlists: YouTubeProfilePlaylistsResource;
+    readonly products: YouTubeProfileProductsResource;
+    readonly search: YouTubeProfileSearchResource;
+    readonly shorts: YouTubeProfileShortsResource;
+    readonly videos: YouTubeProfileVideosResource;
+    /**
+     * Get a profile
+     *
+     * Return one public YouTube channel. Use @handle or the UC channel ID. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}", "get">) => Promise<OperationResponse<"/v1/youtube/profiles/{identifier}", "get">>;
+}
+
+export interface YouTubeProfileCommunityPostsResource {
+    /**
+     * List profile community posts
+     *
+     * Return the text, image, and poll posts of a public YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").communityPosts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-community-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}/community-posts", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/community-posts", "get">>;
+}
+
+export interface YouTubeProfileLivestreamsResource {
+    /**
+     * List profile livestreams
+     *
+     * Return the current, upcoming, and past livestreams of a public YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").livestreams.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-livestreams-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}/livestreams", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/livestreams", "get">>;
+}
+
+export interface YouTubeProfilePlaylistsResource {
+    /**
+     * List profile playlists
+     *
+     * Return the public playlists of a YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").playlists.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-playlists-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}/playlists", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/playlists", "get">>;
+}
+
+export interface YouTubeProfileProductsResource {
+    /**
+     * List profile products
+     *
+     * Return the products on the store shelf of a public YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").products.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-products-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}/products", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/products", "get">>;
+}
+
+export interface YouTubeProfileSearchResource {
+    /**
+     * Search profile videos
+     *
+     * Search the videos of one public YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").search.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-search-list
+     */
+    readonly list: (options: OperationOptions<"/v1/youtube/profiles/{identifier}/search", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/search", "get">>;
+}
+
+export interface YouTubeProfileShortsResource {
+    /**
+     * List profile Shorts
+     *
+     * Return the Shorts of a public YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").shorts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-shorts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}/shorts", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/shorts", "get">>;
+}
+
+export interface YouTubeProfileVideosResource {
+    /**
+     * List profile videos
+     *
+     * Return the videos of a public YouTube channel. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.profile("@synthetic_youtube").videos.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-profile-videos-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/profiles/{identifier}/videos", "get">) => Promise<OperationPage<"/v1/youtube/profiles/{identifier}/videos", "get">>;
+}
+
+export interface YouTubeSearchResource {
+    readonly playlists: YouTubeSearchPlaylistsResource;
+    readonly posts: YouTubeSearchPostsResource;
+    readonly profiles: YouTubeSearchProfilesResource;
+    readonly suggestions: YouTubeSearchSuggestionsResource;
+}
+
+export interface YouTubeSearchPlaylistsResource {
+    /**
+     * Search playlists
+     *
+     * Search public YouTube playlists and podcasts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.search.playlists.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-search-playlists-list
+     */
+    readonly list: (options: OperationOptions<"/v1/youtube/search/playlists", "get">) => Promise<OperationPage<"/v1/youtube/search/playlists", "get">>;
+}
+
+export interface YouTubeSearchPostsResource {
+    /**
+     * Search posts
+     *
+     * Search public YouTube videos or Shorts. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.search.posts.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-search-posts-list
+     */
+    readonly list: (options: OperationOptions<"/v1/youtube/search/posts", "get">) => Promise<OperationPage<"/v1/youtube/search/posts", "get">>;
+}
+
+export interface YouTubeSearchProfilesResource {
+    /**
+     * Search profiles
+     *
+     * Search public YouTube channels. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.search.profiles.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-search-profiles-list
+     */
+    readonly list: (options: OperationOptions<"/v1/youtube/search/profiles", "get">) => Promise<OperationPage<"/v1/youtube/search/profiles", "get">>;
+}
+
+export interface YouTubeSearchSuggestionsResource {
+    /**
+     * Search suggestions
+     *
+     * Return the autocomplete queries YouTube offers for a partial search. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.search.suggestions.list({ q: "synthetic", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-search-suggestions-list
+     */
+    readonly list: (options: OperationOptions<"/v1/youtube/search/suggestions", "get">) => Promise<OperationResponse<"/v1/youtube/search/suggestions", "get">>;
+}
+
+export interface YouTubeTrendingResource {
+    readonly posts: YouTubeTrendingPostsResource;
+}
+
+export interface YouTubeTrendingPostsResource {
+    /**
+     * List trending posts
+     *
+     * Return the trending YouTube videos of one country. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.trending.posts.list({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-trending-posts-list
+     */
+    readonly list: (options?: OperationOptions<"/v1/youtube/trending/posts", "get">) => Promise<OperationResponse<"/v1/youtube/trending/posts", "get">>;
 }

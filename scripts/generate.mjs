@@ -233,6 +233,7 @@ function pascalCase(value) {
         qrCode: 'QRCode',
         tiktok: 'TikTok',
         url: 'URL',
+        youtube: 'YouTube',
     };
     if (initialisms[value]) {
         return initialisms[value];

@@ -903,6 +903,99 @@ export type TwitterVisibility = Camelize<components['schemas']["TwitterVisibilit
 /** Camel-cased TwitterWithheld model used by SDK responses. */
 export type TwitterWithheld = Camelize<components['schemas']["TwitterWithheld"]>;
 
+/** Camel-cased YouTubeAudioTrack model used by SDK responses. */
+export type YouTubeAudioTrack = Camelize<components['schemas']["YouTubeAudioTrack"]>;
+
+/** Camel-cased YouTubeAuthor model used by SDK responses. */
+export type YouTubeAuthor = Camelize<components['schemas']["YouTubeAuthor"]>;
+
+/** Camel-cased YouTubeChartArtist model used by SDK responses. */
+export type YouTubeChartArtist = Camelize<components['schemas']["YouTubeChartArtist"]>;
+
+/** Camel-cased YouTubeChartEntry model used by SDK responses. */
+export type YouTubeChartEntry = Camelize<components['schemas']["YouTubeChartEntry"]>;
+
+/** Camel-cased YouTubeChartMetrics model used by SDK responses. */
+export type YouTubeChartMetrics = Camelize<components['schemas']["YouTubeChartMetrics"]>;
+
+/** Camel-cased YouTubeChartRank model used by SDK responses. */
+export type YouTubeChartRank = Camelize<components['schemas']["YouTubeChartRank"]>;
+
+/** Camel-cased YouTubeChartWeek model used by SDK responses. */
+export type YouTubeChartWeek = Camelize<components['schemas']["YouTubeChartWeek"]>;
+
+/** Camel-cased YouTubeComment model used by SDK responses. */
+export type YouTubeComment = Camelize<components['schemas']["YouTubeComment"]>;
+
+/** Camel-cased YouTubeCommentMetrics model used by SDK responses. */
+export type YouTubeCommentMetrics = Camelize<components['schemas']["YouTubeCommentMetrics"]>;
+
+/** Camel-cased YouTubeCommunityPost model used by SDK responses. */
+export type YouTubeCommunityPost = Camelize<components['schemas']["YouTubeCommunityPost"]>;
+
+/** Camel-cased YouTubeCommunityPostMetrics model used by SDK responses. */
+export type YouTubeCommunityPostMetrics = Camelize<components['schemas']["YouTubeCommunityPostMetrics"]>;
+
+/** Camel-cased YouTubeExtracted model used by SDK responses. */
+export type YouTubeExtracted = Camelize<components['schemas']["YouTubeExtracted"]>;
+
+/** Camel-cased YouTubeExtractedHandle model used by SDK responses. */
+export type YouTubeExtractedHandle = Camelize<components['schemas']["YouTubeExtractedHandle"]>;
+
+/** Camel-cased YouTubeHashtag model used by SDK responses. */
+export type YouTubeHashtag = Camelize<components['schemas']["YouTubeHashtag"]>;
+
+/** Camel-cased YouTubeImage model used by SDK responses. */
+export type YouTubeImage = Camelize<components['schemas']["YouTubeImage"]>;
+
+/** Camel-cased YouTubeLink model used by SDK responses. */
+export type YouTubeLink = Camelize<components['schemas']["YouTubeLink"]>;
+
+/** Camel-cased YouTubeMusicCredit model used by SDK responses. */
+export type YouTubeMusicCredit = Camelize<components['schemas']["YouTubeMusicCredit"]>;
+
+/** Camel-cased YouTubePageMetadata model used by SDK responses. */
+export type YouTubePageMetadata = Camelize<components['schemas']["YouTubePageMetadata"]>;
+
+/** Camel-cased YouTubePlaylist model used by SDK responses. */
+export type YouTubePlaylist = Camelize<components['schemas']["YouTubePlaylist"]>;
+
+/** Camel-cased YouTubePlaylistMetrics model used by SDK responses. */
+export type YouTubePlaylistMetrics = Camelize<components['schemas']["YouTubePlaylistMetrics"]>;
+
+/** Camel-cased YouTubePlaylistReference model used by SDK responses. */
+export type YouTubePlaylistReference = Camelize<components['schemas']["YouTubePlaylistReference"]>;
+
+/** Camel-cased YouTubePoll model used by SDK responses. */
+export type YouTubePoll = Camelize<components['schemas']["YouTubePoll"]>;
+
+/** Camel-cased YouTubePost model used by SDK responses. */
+export type YouTubePost = Camelize<components['schemas']["YouTubePost"]>;
+
+/** Camel-cased YouTubePostMetrics model used by SDK responses. */
+export type YouTubePostMetrics = Camelize<components['schemas']["YouTubePostMetrics"]>;
+
+/** Camel-cased YouTubeProduct model used by SDK responses. */
+export type YouTubeProduct = Camelize<components['schemas']["YouTubeProduct"]>;
+
+/** Camel-cased YouTubeProfile model used by SDK responses. */
+export type YouTubeProfile = Camelize<components['schemas']["YouTubeProfile"]>;
+
+/** Camel-cased YouTubeProfileMetrics model used by SDK responses. */
+export type YouTubeProfileMetrics = Camelize<components['schemas']["YouTubeProfileMetrics"]>;
+
+/** Camel-cased YouTubeSegment model used by SDK responses. */
+export type YouTubeSegment = Camelize<components['schemas']["YouTubeSegment"]>;
+
+/** Camel-cased YouTubeSubtitle model used by SDK responses. */
+export type YouTubeSubtitle = Camelize<components['schemas']["YouTubeSubtitle"]>;
+
+/** Camel-cased YouTubeSuggestion model used by SDK responses. */
+export type YouTubeSuggestion = Camelize<components['schemas']["YouTubeSuggestion"]>;
+
+/** Camel-cased YouTubeTranscript model used by SDK responses. */
+export type YouTubeTranscript = Camelize<components['schemas']["YouTubeTranscript"]>;
+
 /** Typed result returned by fetch. */
 export type FetchResponse = OperationResponse<"/v1/urls/fetch", "post">;
 
@@ -1553,3 +1646,159 @@ export type TwitterSearchUsersOptions = OperationOptions<"/v1/twitter/search/use
 
 /** Typed result returned by twitter.search.users.list. */
 export type TwitterSearchUsersPage = OperationPage<"/v1/twitter/search/users", "get">;
+
+/** Options accepted by youtube.charts.artists.list. */
+export type YouTubeChartsArtistsOptions = OperationOptions<"/v1/youtube/charts/artists", "get">;
+
+/** Typed result returned by youtube.charts.artists.list. */
+export type YouTubeChartsArtistsResponse = OperationResponse<"/v1/youtube/charts/artists", "get">;
+
+/** Options accepted by youtube.charts.tracks.list. */
+export type YouTubeChartsTracksOptions = OperationOptions<"/v1/youtube/charts/tracks", "get">;
+
+/** Typed result returned by youtube.charts.tracks.list. */
+export type YouTubeChartsTracksResponse = OperationResponse<"/v1/youtube/charts/tracks", "get">;
+
+/** Options accepted by youtube.charts.videos.list. */
+export type YouTubeChartsVideosOptions = OperationOptions<"/v1/youtube/charts/videos", "get">;
+
+/** Typed result returned by youtube.charts.videos.list. */
+export type YouTubeChartsVideosResponse = OperationResponse<"/v1/youtube/charts/videos", "get">;
+
+/** Options accepted by youtube.communityPost.comments.list. */
+export type YouTubeCommunityPostCommentsOptions = OperationOptions<"/v1/youtube/community-posts/{identifier}/comments", "get">;
+
+/** Typed result returned by youtube.communityPost.comments.list. */
+export type YouTubeCommunityPostCommentsPage = OperationPage<"/v1/youtube/community-posts/{identifier}/comments", "get">;
+
+/** Options accepted by youtube.communityPost.get. */
+export type YouTubeCommunityPostOptions = OperationOptions<"/v1/youtube/community-posts/{identifier}", "get">;
+
+/** Typed result returned by youtube.communityPost.get. */
+export type YouTubeCommunityPostResponse = OperationResponse<"/v1/youtube/community-posts/{identifier}", "get">;
+
+/** Options accepted by youtube.hashtag.posts.list. */
+export type YouTubeHashtagPostsOptions = OperationOptions<"/v1/youtube/hashtags/{identifier}/posts", "get">;
+
+/** Typed result returned by youtube.hashtag.posts.list. */
+export type YouTubeHashtagPostsPage = OperationPage<"/v1/youtube/hashtags/{identifier}/posts", "get">;
+
+/** Options accepted by youtube.playlist.posts.list. */
+export type YouTubePlaylistPostsOptions = OperationOptions<"/v1/youtube/playlists/{identifier}/posts", "get">;
+
+/** Typed result returned by youtube.playlist.posts.list. */
+export type YouTubePlaylistPostsPage = OperationPage<"/v1/youtube/playlists/{identifier}/posts", "get">;
+
+/** Options accepted by youtube.post.comment.replies.list. */
+export type YouTubePostCommentRepliesOptions = OperationOptions<"/v1/youtube/posts/{identifier}/comments/{comment_id}/replies", "get">;
+
+/** Typed result returned by youtube.post.comment.replies.list. */
+export type YouTubePostCommentRepliesPage = OperationPage<"/v1/youtube/posts/{identifier}/comments/{comment_id}/replies", "get">;
+
+/** Options accepted by youtube.post.comments.list. */
+export type YouTubePostCommentsOptions = OperationOptions<"/v1/youtube/posts/{identifier}/comments", "get">;
+
+/** Typed result returned by youtube.post.comments.list. */
+export type YouTubePostCommentsPage = OperationPage<"/v1/youtube/posts/{identifier}/comments", "get">;
+
+/** Options accepted by youtube.post.get. */
+export type YouTubePostOptions = OperationOptions<"/v1/youtube/posts/{identifier}", "get">;
+
+/** Typed result returned by youtube.post.get. */
+export type YouTubePostResponse = OperationResponse<"/v1/youtube/posts/{identifier}", "get">;
+
+/** Options accepted by youtube.post.related.list. */
+export type YouTubePostRelatedOptions = OperationOptions<"/v1/youtube/posts/{identifier}/related", "get">;
+
+/** Typed result returned by youtube.post.related.list. */
+export type YouTubePostRelatedPage = OperationPage<"/v1/youtube/posts/{identifier}/related", "get">;
+
+/** Options accepted by youtube.post.soundPosts.list. */
+export type YouTubePostSoundPostsOptions = OperationOptions<"/v1/youtube/posts/{identifier}/sound-posts", "get">;
+
+/** Typed result returned by youtube.post.soundPosts.list. */
+export type YouTubePostSoundPostsPage = OperationPage<"/v1/youtube/posts/{identifier}/sound-posts", "get">;
+
+/** Options accepted by youtube.post.transcript.get. */
+export type YouTubePostTranscriptOptions = OperationOptions<"/v1/youtube/posts/{identifier}/transcript", "get">;
+
+/** Typed result returned by youtube.post.transcript.get. */
+export type YouTubePostTranscriptResponse = OperationResponse<"/v1/youtube/posts/{identifier}/transcript", "get">;
+
+/** Options accepted by youtube.profile.communityPosts.list. */
+export type YouTubeProfileCommunityPostsOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/community-posts", "get">;
+
+/** Typed result returned by youtube.profile.communityPosts.list. */
+export type YouTubeProfileCommunityPostsPage = OperationPage<"/v1/youtube/profiles/{identifier}/community-posts", "get">;
+
+/** Options accepted by youtube.profile.get. */
+export type YouTubeProfileOptions = OperationOptions<"/v1/youtube/profiles/{identifier}", "get">;
+
+/** Typed result returned by youtube.profile.get. */
+export type YouTubeProfileResponse = OperationResponse<"/v1/youtube/profiles/{identifier}", "get">;
+
+/** Options accepted by youtube.profile.livestreams.list. */
+export type YouTubeProfileLivestreamsOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/livestreams", "get">;
+
+/** Typed result returned by youtube.profile.livestreams.list. */
+export type YouTubeProfileLivestreamsPage = OperationPage<"/v1/youtube/profiles/{identifier}/livestreams", "get">;
+
+/** Options accepted by youtube.profile.playlists.list. */
+export type YouTubeProfilePlaylistsOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/playlists", "get">;
+
+/** Typed result returned by youtube.profile.playlists.list. */
+export type YouTubeProfilePlaylistsPage = OperationPage<"/v1/youtube/profiles/{identifier}/playlists", "get">;
+
+/** Options accepted by youtube.profile.products.list. */
+export type YouTubeProfileProductsOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/products", "get">;
+
+/** Typed result returned by youtube.profile.products.list. */
+export type YouTubeProfileProductsPage = OperationPage<"/v1/youtube/profiles/{identifier}/products", "get">;
+
+/** Options accepted by youtube.profile.search.list. */
+export type YouTubeProfileSearchOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/search", "get">;
+
+/** Typed result returned by youtube.profile.search.list. */
+export type YouTubeProfileSearchPage = OperationPage<"/v1/youtube/profiles/{identifier}/search", "get">;
+
+/** Options accepted by youtube.profile.shorts.list. */
+export type YouTubeProfileShortsOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/shorts", "get">;
+
+/** Typed result returned by youtube.profile.shorts.list. */
+export type YouTubeProfileShortsPage = OperationPage<"/v1/youtube/profiles/{identifier}/shorts", "get">;
+
+/** Options accepted by youtube.profile.videos.list. */
+export type YouTubeProfileVideosOptions = OperationOptions<"/v1/youtube/profiles/{identifier}/videos", "get">;
+
+/** Typed result returned by youtube.profile.videos.list. */
+export type YouTubeProfileVideosPage = OperationPage<"/v1/youtube/profiles/{identifier}/videos", "get">;
+
+/** Options accepted by youtube.search.playlists.list. */
+export type YouTubeSearchPlaylistsOptions = OperationOptions<"/v1/youtube/search/playlists", "get">;
+
+/** Typed result returned by youtube.search.playlists.list. */
+export type YouTubeSearchPlaylistsPage = OperationPage<"/v1/youtube/search/playlists", "get">;
+
+/** Options accepted by youtube.search.posts.list. */
+export type YouTubeSearchPostsOptions = OperationOptions<"/v1/youtube/search/posts", "get">;
+
+/** Typed result returned by youtube.search.posts.list. */
+export type YouTubeSearchPostsPage = OperationPage<"/v1/youtube/search/posts", "get">;
+
+/** Options accepted by youtube.search.profiles.list. */
+export type YouTubeSearchProfilesOptions = OperationOptions<"/v1/youtube/search/profiles", "get">;
+
+/** Typed result returned by youtube.search.profiles.list. */
+export type YouTubeSearchProfilesPage = OperationPage<"/v1/youtube/search/profiles", "get">;
+
+/** Options accepted by youtube.search.suggestions.list. */
+export type YouTubeSearchSuggestionsOptions = OperationOptions<"/v1/youtube/search/suggestions", "get">;
+
+/** Typed result returned by youtube.search.suggestions.list. */
+export type YouTubeSearchSuggestionsResponse = OperationResponse<"/v1/youtube/search/suggestions", "get">;
+
+/** Options accepted by youtube.trending.posts.list. */
+export type YouTubeTrendingPostsOptions = OperationOptions<"/v1/youtube/trending/posts", "get">;
+
+/** Typed result returned by youtube.trending.posts.list. */
+export type YouTubeTrendingPostsResponse = OperationResponse<"/v1/youtube/trending/posts", "get">;

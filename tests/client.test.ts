@@ -7,6 +7,40 @@ import type { InstagramProfile, InstagramProfilePostsOptions, InstagramProfilePo
 import { OpenHandle, OpenHandleError, OpenHandleReferenceError, ReferenceMismatchError } from '../dist/index.js';
 
 describe('OpenHandle resource graph', () => {
+    it('resolves YouTube URLs in selectors and binds nested comment replies', async () => {
+        const requests: URL[] = [];
+        const openhandle = client(async input => {
+            const url = new URL(input.toString());
+            requests.push(url);
+            return response({
+                platform: 'youtube',
+                resource: 'post',
+                capturedAt: '2026-08-26T12:00:00Z',
+                source: 'live',
+                data: [{ id: 'dQw4w9WgXcQ' }],
+                meta: { cursors: { next: null } },
+            });
+        });
+        const videos = await openhandle.youtube.profile('https://www.youtube.com/@MrBeast/videos').videos.list();
+        await openhandle.youtube.post('https://youtu.be/dQw4w9WgXcQ').comment('UgzComment.123').replies.list({ token: 'replies-token' });
+        assert.equal(videos.data[0]?.id, 'dQw4w9WgXcQ');
+        assert.deepEqual(
+            requests.map(url => decodeURIComponent(url.pathname)),
+            ['/v1/youtube/profiles/@MrBeast/videos', '/v1/youtube/posts/dQw4w9WgXcQ/comments/UgzComment.123/replies'],
+        );
+        assert.equal(requests[1]?.searchParams.get('token'), 'replies-token');
+    });
+
+    it('rejects a YouTube video URL in the profile selector before making a request', () => {
+        const openhandle = client(async () => {
+            throw new Error('unexpected request');
+        });
+        assert.throws(
+            () => openhandle.youtube.profile({ url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }),
+            (error: unknown) => error instanceof ReferenceMismatchError && error.message === 'Expected a youtube profile URL, received a youtube post URL.',
+        );
+    });
+
     it('generates every OpenAPI operation exactly once', () => {
         const document = JSON.parse(readFileSync(new URL('../openapi/openhandle.json', import.meta.url), 'utf8')) as {
             paths: Record<string, Record<string, unknown>>;

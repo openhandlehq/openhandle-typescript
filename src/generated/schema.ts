@@ -2378,6 +2378,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/youtube/posts/{identifier}/files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get post files
+         * @description Return the video and audio streams of a public YouTube video as download links. Openhandle refreshes the links, so they keep working. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+         */
+        get: operations["Youtube_post_files_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/youtube/posts/{identifier}/related": {
         parameters: {
             query?: never;
@@ -4468,7 +4488,7 @@ export interface components {
             /** @enum {string} */
             platform: "instagram" | "tiktok" | "twitter" | "reddit" | "youtube";
             /** @enum {string} */
-            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "story" | "highlight" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart";
+            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "story" | "highlight" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart" | "files";
             /** @enum {string} */
             source: "live" | "cache";
         };
@@ -4500,7 +4520,7 @@ export interface components {
             platform: "instagram" | "tiktok" | "twitter" | "reddit" | "youtube";
             relationships: components["schemas"]["TestDataRelationship"][];
             /** @enum {string} */
-            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart";
+            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart" | "files";
             /** @constant */
             synthetic: true;
             traits: string[];
@@ -4526,7 +4546,7 @@ export interface components {
             platform: "instagram" | "tiktok" | "twitter" | "reddit" | "youtube";
             publicSchema: string;
             /** @enum {string} */
-            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart";
+            resource: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart" | "files";
             summary: string;
             toolName: string;
         };
@@ -6200,6 +6220,29 @@ export interface components {
         YouTubeExtractedHandle: {
             handle: string | null;
             platform: string | null;
+        };
+        YouTubeFileRendition: {
+            audioLanguage: string | null;
+            audioQuality: string | null;
+            bitrate: number | null;
+            codecs: string | null;
+            fps: number | null;
+            hasAudio: boolean;
+            hasVideo: boolean;
+            height: number | null;
+            itag: number;
+            mimeType: string | null;
+            quality: string | null;
+            size: number | null;
+            /** Format: uri */
+            url: string | null;
+            width: number | null;
+        };
+        YouTubeFiles: {
+            author: components["schemas"]["YouTubeAuthor"] | null;
+            duration: number | null;
+            postId: string;
+            renditions: components["schemas"]["YouTubeFileRendition"][];
         };
         YouTubeHashtag: {
             label: string | null;
@@ -32315,7 +32358,7 @@ export interface operations {
                 /** @description Provider-specific public-data filter for this operation. */
                 platform?: "instagram" | "tiktok" | "twitter" | "reddit" | "youtube";
                 /** @description Provider-specific public-data filter for this operation. */
-                resource?: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart";
+                resource?: "profile" | "post" | "comment" | "hashtag" | "location" | "music" | "category" | "list" | "entity" | "subreddit" | "rule" | "wiki" | "trophy" | "playlist" | "transcript" | "product" | "chart" | "files";
                 /** @description Provider-specific public-data filter for this operation. */
                 search?: string;
                 /** @description Provider-specific public-data filter for this operation. */
@@ -54559,6 +54602,391 @@ export interface operations {
             };
             /** @description The upstream source no longer accepts this cursor. Restart pagination from the first page. */
             409: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The request rate limit was exceeded. */
+            429: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The owner of this profile asked Openhandle not to serve it. */
+            451: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The request failed internally. */
+            500: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The service is temporarily unavailable. */
+            503: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+        };
+    };
+    Youtube_post_files_get: {
+        parameters: {
+            query?: {
+                /**
+                 * @description Maximum accepted data age. The default is 24h.
+                 * @example 24h
+                 */
+                freshness?: "live" | "24h" | "7d" | "30d";
+            };
+            header?: never;
+            path: {
+                /**
+                 * @description Public resource reference. Profile paths accept a username with an @ prefix, such as @openai, or the stable platform ID. Post paths accept the platform post ID or shortcode.
+                 * @example synthvid001
+                 */
+                identifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description A successful Test or Live response. */
+            200: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SuccessEnvelope"] & {
+                        data: components["schemas"]["YouTubeFiles"];
+                    };
+                };
+            };
+            /** @description The locator, cursor, or query is invalid. */
+            400: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The API key is invalid. */
+            401: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description Live billing does not permit this request. */
+            402: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The resource is private or workspace API access is security-suspended. */
+            403: {
+                headers: {
+                    /** @description Accounting disposition. */
+                    "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";
+                    /** @description Authoritative actual customer charge. Always 0.000 for Test. */
+                    "Openhandle-Cost"?: string;
+                    /** @description Synthetic dataset version. Present for Test. */
+                    "Openhandle-Dataset-Version"?: string;
+                    /** @description Environment selected by the API key. */
+                    "Openhandle-Environment"?: "test" | "live";
+                    /** @description Live-equivalent price for the source and freshness that answered. A cache hit shows the cache price. */
+                    "Openhandle-List-Price"?: string;
+                    /**
+                     * @description Remaining requests (r) and seconds until reset (t) for each evaluated policy. May be absent before authentication or when the limiter is unavailable.
+                     * @example "key";r=9;t=1, "organization";r=49;t=1
+                     */
+                    RateLimit?: string;
+                    /**
+                     * @description Quota policies for the evaluated limits. Present after rate-limit evaluation. Uses draft-ietf-httpapi-ratelimit-headers-11.
+                     * @example "key";q=10;w=1, "organization";q=50;w=1
+                     */
+                    "RateLimit-Policy"?: string;
+                    /**
+                     * @description Seconds to wait before retrying a throttled request. Present on 429 responses.
+                     * @example 1
+                     */
+                    "Retry-After"?: string;
+                    /** @description Stable request identifier. */
+                    "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The resource does not exist. */
+            404: {
                 headers: {
                     /** @description Accounting disposition. */
                     "Openhandle-Billing-Disposition"?: "test" | "allowance" | "free" | "prepaid";

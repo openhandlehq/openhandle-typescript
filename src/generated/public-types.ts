@@ -942,6 +942,12 @@ export type YouTubeExtracted = Camelize<components['schemas']["YouTubeExtracted"
 /** Camel-cased YouTubeExtractedHandle model used by SDK responses. */
 export type YouTubeExtractedHandle = Camelize<components['schemas']["YouTubeExtractedHandle"]>;
 
+/** Camel-cased YouTubeFileRendition model used by SDK responses. */
+export type YouTubeFileRendition = Camelize<components['schemas']["YouTubeFileRendition"]>;
+
+/** Camel-cased YouTubeFiles model used by SDK responses. */
+export type YouTubeFiles = Camelize<components['schemas']["YouTubeFiles"]>;
+
 /** Camel-cased YouTubeHashtag model used by SDK responses. */
 export type YouTubeHashtag = Camelize<components['schemas']["YouTubeHashtag"]>;
 
@@ -1700,6 +1706,12 @@ export type YouTubePostCommentsOptions = OperationOptions<"/v1/youtube/posts/{id
 
 /** Typed result returned by youtube.post.comments.list. */
 export type YouTubePostCommentsPage = OperationPage<"/v1/youtube/posts/{identifier}/comments", "get">;
+
+/** Options accepted by youtube.post.files.get. */
+export type YouTubePostFilesOptions = OperationOptions<"/v1/youtube/posts/{identifier}/files", "get">;
+
+/** Typed result returned by youtube.post.files.get. */
+export type YouTubePostFilesResponse = OperationResponse<"/v1/youtube/posts/{identifier}/files", "get">;
 
 /** Options accepted by youtube.post.get. */
 export type YouTubePostOptions = OperationOptions<"/v1/youtube/posts/{identifier}", "get">;

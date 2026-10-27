@@ -2274,6 +2274,26 @@ export const operations = [
         ]
     },
     {
+        "apiPath": "/v1/youtube/posts/{identifier}/frame",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "youtube.post.frame.get",
+        "scope": [
+            {
+                "name": "youtube"
+            },
+            {
+                "name": "post",
+                "parameter": "identifier",
+                "reference": "post"
+            },
+            {
+                "name": "frame"
+            }
+        ]
+    },
+    {
         "apiPath": "/v1/youtube/posts/{identifier}",
         "method": "get",
         "operation": "get",
@@ -2327,6 +2347,26 @@ export const operations = [
             },
             {
                 "name": "soundPosts"
+            }
+        ]
+    },
+    {
+        "apiPath": "/v1/youtube/posts/{identifier}/storyboard",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "youtube.post.storyboard.get",
+        "scope": [
+            {
+                "name": "youtube"
+            },
+            {
+                "name": "post",
+                "parameter": "identifier",
+                "reference": "post"
+            },
+            {
+                "name": "storyboard"
             }
         ]
     },

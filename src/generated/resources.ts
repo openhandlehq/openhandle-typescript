@@ -1989,8 +1989,10 @@ export interface YouTubePostResource {
     readonly comment: (reference: ResourceReference) => YouTubePostCommentResource;
     readonly comments: YouTubePostCommentsResource;
     readonly files: YouTubePostFilesResource;
+    readonly frame: YouTubePostFrameResource;
     readonly related: YouTubePostRelatedResource;
     readonly soundPosts: YouTubePostSoundPostsResource;
+    readonly storyboard: YouTubePostStoryboardResource;
     readonly transcript: YouTubePostTranscriptResource;
     /**
      * Get a post
@@ -2051,6 +2053,20 @@ export interface YouTubePostFilesResource {
     readonly get: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/files", "get">) => Promise<OperationResponse<"/v1/youtube/posts/{identifier}/files", "get">>;
 }
 
+export interface YouTubePostFrameResource {
+    /**
+     * Get post frame
+     *
+     * Return one still frame of a public video at a time in seconds, in every resolution the video has. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").frame.get({ at: "43", freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-frame-get
+     */
+    readonly get: (options: OperationOptions<"/v1/youtube/posts/{identifier}/frame", "get">) => Promise<OperationResponse<"/v1/youtube/posts/{identifier}/frame", "get">>;
+}
+
 export interface YouTubePostRelatedResource {
     /**
      * List related posts
@@ -2077,6 +2093,20 @@ export interface YouTubePostSoundPostsResource {
      * @see https://openhandle.dev/docs/api-reference/youtube-post-sound-posts-list
      */
     readonly list: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/sound-posts", "get">) => Promise<OperationPage<"/v1/youtube/posts/{identifier}/sound-posts", "get">>;
+}
+
+export interface YouTubePostStoryboardResource {
+    /**
+     * Get post storyboard
+     *
+     * Return YouTube's preview frames of a public video: one small frame every few seconds, packed into image sheets, with the position of every frame. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").storyboard.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-storyboard-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/storyboard", "get">) => Promise<OperationResponse<"/v1/youtube/posts/{identifier}/storyboard", "get">>;
 }
 
 export interface YouTubePostTranscriptResource {

@@ -68,6 +68,59 @@ describe('OpenHandle resource graph', () => {
         assert.equal(files.data.renditions[0]?.hasAudio, true);
     });
 
+    it('reads the sheets and frame positions of a YouTube storyboard', async () => {
+        const requests: URL[] = [];
+        const openhandle = client(async input => {
+            const url = new URL(input.toString());
+            requests.push(url);
+            return response({
+                platform: 'youtube',
+                resource: 'storyboard',
+                capturedAt: '2026-10-27T08:00:00Z',
+                source: 'live',
+                data: {
+                    postId: 'dQw4w9WgXcQ',
+                    intervalMs: 2000,
+                    frameWidth: 160,
+                    frameHeight: 90,
+                    columns: 5,
+                    rows: 5,
+                    frameCount: 2,
+                    sheets: [{ index: 0, url: 'https://media.openhandle.dev/s', width: 800, height: 90, startMs: 0, frameCount: 2 }],
+                    frames: [
+                        { timeMs: 0, sheet: 0, x: 0, y: 0 },
+                        { timeMs: 2000, sheet: 0, x: 160, y: 0 },
+                    ],
+                },
+            });
+        });
+        const storyboard = await openhandle.youtube.post('dQw4w9WgXcQ').storyboard.get();
+        assert.deepEqual(
+            requests.map(url => url.pathname),
+            ['/v1/youtube/posts/dQw4w9WgXcQ/storyboard'],
+        );
+        assert.equal(storyboard.data.frames[1]?.x, 160);
+    });
+
+    it('sends the moment of a YouTube frame in seconds', async () => {
+        const requests: URL[] = [];
+        const openhandle = client(async input => {
+            const url = new URL(input.toString());
+            requests.push(url);
+            return response({
+                platform: 'youtube',
+                resource: 'frame',
+                capturedAt: '2026-10-27T08:00:00Z',
+                source: 'live',
+                data: { postId: 'dQw4w9WgXcQ', at: 43, renditions: [{ quality: '1080p', height: 1080, url: 'https://media.openhandle.dev/f' }] },
+            });
+        });
+        const frame = await openhandle.youtube.post('dQw4w9WgXcQ').frame.get({ at: 43 });
+        assert.equal(requests[0]?.pathname, '/v1/youtube/posts/dQw4w9WgXcQ/frame');
+        assert.equal(requests[0]?.searchParams.get('at'), '43');
+        assert.equal(frame.data.renditions[0]?.quality, '1080p');
+    });
+
     it('rejects a YouTube video URL in the profile selector before making a request', () => {
         const openhandle = client(async () => {
             throw new Error('unexpected request');

@@ -948,6 +948,12 @@ export type YouTubeFileRendition = Camelize<components['schemas']["YouTubeFileRe
 /** Camel-cased YouTubeFiles model used by SDK responses. */
 export type YouTubeFiles = Camelize<components['schemas']["YouTubeFiles"]>;
 
+/** Camel-cased YouTubeFrame model used by SDK responses. */
+export type YouTubeFrame = Camelize<components['schemas']["YouTubeFrame"]>;
+
+/** Camel-cased YouTubeFrameRendition model used by SDK responses. */
+export type YouTubeFrameRendition = Camelize<components['schemas']["YouTubeFrameRendition"]>;
+
 /** Camel-cased YouTubeHashtag model used by SDK responses. */
 export type YouTubeHashtag = Camelize<components['schemas']["YouTubeHashtag"]>;
 
@@ -992,6 +998,15 @@ export type YouTubeProfileMetrics = Camelize<components['schemas']["YouTubeProfi
 
 /** Camel-cased YouTubeSegment model used by SDK responses. */
 export type YouTubeSegment = Camelize<components['schemas']["YouTubeSegment"]>;
+
+/** Camel-cased YouTubeStoryboard model used by SDK responses. */
+export type YouTubeStoryboard = Camelize<components['schemas']["YouTubeStoryboard"]>;
+
+/** Camel-cased YouTubeStoryboardFrame model used by SDK responses. */
+export type YouTubeStoryboardFrame = Camelize<components['schemas']["YouTubeStoryboardFrame"]>;
+
+/** Camel-cased YouTubeStoryboardSheet model used by SDK responses. */
+export type YouTubeStoryboardSheet = Camelize<components['schemas']["YouTubeStoryboardSheet"]>;
 
 /** Camel-cased YouTubeSubtitle model used by SDK responses. */
 export type YouTubeSubtitle = Camelize<components['schemas']["YouTubeSubtitle"]>;
@@ -1713,6 +1728,12 @@ export type YouTubePostFilesOptions = OperationOptions<"/v1/youtube/posts/{ident
 /** Typed result returned by youtube.post.files.get. */
 export type YouTubePostFilesResponse = OperationResponse<"/v1/youtube/posts/{identifier}/files", "get">;
 
+/** Options accepted by youtube.post.frame.get. */
+export type YouTubePostFrameOptions = OperationOptions<"/v1/youtube/posts/{identifier}/frame", "get">;
+
+/** Typed result returned by youtube.post.frame.get. */
+export type YouTubePostFrameResponse = OperationResponse<"/v1/youtube/posts/{identifier}/frame", "get">;
+
 /** Options accepted by youtube.post.get. */
 export type YouTubePostOptions = OperationOptions<"/v1/youtube/posts/{identifier}", "get">;
 
@@ -1730,6 +1751,12 @@ export type YouTubePostSoundPostsOptions = OperationOptions<"/v1/youtube/posts/{
 
 /** Typed result returned by youtube.post.soundPosts.list. */
 export type YouTubePostSoundPostsPage = OperationPage<"/v1/youtube/posts/{identifier}/sound-posts", "get">;
+
+/** Options accepted by youtube.post.storyboard.get. */
+export type YouTubePostStoryboardOptions = OperationOptions<"/v1/youtube/posts/{identifier}/storyboard", "get">;
+
+/** Typed result returned by youtube.post.storyboard.get. */
+export type YouTubePostStoryboardResponse = OperationResponse<"/v1/youtube/posts/{identifier}/storyboard", "get">;
 
 /** Options accepted by youtube.post.transcript.get. */
 export type YouTubePostTranscriptOptions = OperationOptions<"/v1/youtube/posts/{identifier}/transcript", "get">;

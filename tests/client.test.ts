@@ -31,6 +31,43 @@ describe('OpenHandle resource graph', () => {
         assert.equal(requests[1]?.searchParams.get('token'), 'replies-token');
     });
 
+    it('reads the streams of a YouTube video from its files', async () => {
+        const requests: URL[] = [];
+        const openhandle = client(async input => {
+            const url = new URL(input.toString());
+            requests.push(url);
+            return response({
+                platform: 'youtube',
+                resource: 'files',
+                capturedAt: '2026-10-27T08:00:00Z',
+                source: 'live',
+                data: {
+                    postId: 'dQw4w9WgXcQ',
+                    author: null,
+                    duration: 213,
+                    renditions: [
+                        {
+                            itag: 140,
+                            quality: 'audio',
+                            mimeType: 'audio/mp4',
+                            hasVideo: false,
+                            hasAudio: true,
+                            size: 3449447,
+                            url: 'https://media.openhandle.dev/b',
+                        },
+                    ],
+                },
+            });
+        });
+        const files = await openhandle.youtube.post('https://www.youtube.com/shorts/dQw4w9WgXcQ').files.get();
+        assert.deepEqual(
+            requests.map(url => url.pathname),
+            ['/v1/youtube/posts/dQw4w9WgXcQ/files'],
+        );
+        assert.equal(files.data.renditions[0]?.itag, 140);
+        assert.equal(files.data.renditions[0]?.hasAudio, true);
+    });
+
     it('rejects a YouTube video URL in the profile selector before making a request', () => {
         const openhandle = client(async () => {
             throw new Error('unexpected request');

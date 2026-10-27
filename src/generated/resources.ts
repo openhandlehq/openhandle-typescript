@@ -1988,6 +1988,7 @@ export interface YouTubePostResource {
      */
     readonly comment: (reference: ResourceReference) => YouTubePostCommentResource;
     readonly comments: YouTubePostCommentsResource;
+    readonly files: YouTubePostFilesResource;
     readonly related: YouTubePostRelatedResource;
     readonly soundPosts: YouTubePostSoundPostsResource;
     readonly transcript: YouTubePostTranscriptResource;
@@ -2034,6 +2035,20 @@ export interface YouTubePostCommentsResource {
      * @see https://openhandle.dev/docs/api-reference/youtube-post-comments-list
      */
     readonly list: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/comments", "get">) => Promise<OperationPage<"/v1/youtube/posts/{identifier}/comments", "get">>;
+}
+
+export interface YouTubePostFilesResource {
+    /**
+     * Get post files
+     *
+     * Return the video and audio streams of a public YouTube video as download links. Openhandle refreshes the links, so they keep working. Test and Live use the same route, parameters, response schema, pagination, and errors. In Test, null means unavailable, not zero.
+     *
+     * @example
+     * await openhandle.youtube.post("synthvid001").files.get({ freshness: "24h" });
+     *
+     * @see https://openhandle.dev/docs/api-reference/youtube-post-files-get
+     */
+    readonly get: (options?: OperationOptions<"/v1/youtube/posts/{identifier}/files", "get">) => Promise<OperationResponse<"/v1/youtube/posts/{identifier}/files", "get">>;
 }
 
 export interface YouTubePostRelatedResource {

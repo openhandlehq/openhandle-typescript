@@ -2254,6 +2254,26 @@ export const operations = [
         ]
     },
     {
+        "apiPath": "/v1/youtube/posts/{identifier}/files",
+        "method": "get",
+        "operation": "get",
+        "paginated": false,
+        "path": "youtube.post.files.get",
+        "scope": [
+            {
+                "name": "youtube"
+            },
+            {
+                "name": "post",
+                "parameter": "identifier",
+                "reference": "post"
+            },
+            {
+                "name": "files"
+            }
+        ]
+    },
+    {
         "apiPath": "/v1/youtube/posts/{identifier}",
         "method": "get",
         "operation": "get",

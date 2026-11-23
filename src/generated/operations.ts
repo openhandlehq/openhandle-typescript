@@ -2078,6 +2078,18 @@ export const operations = [
         ]
     },
     {
+        "apiPath": "/v1/webhook-events",
+        "method": "get",
+        "operation": "list",
+        "paginated": true,
+        "path": "webhookEvents.list",
+        "scope": [
+            {
+                "name": "webhookEvents"
+            }
+        ]
+    },
+    {
         "apiPath": "/v1/youtube/charts/artists",
         "method": "get",
         "operation": "list",

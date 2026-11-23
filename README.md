@@ -146,6 +146,47 @@ failures up to `maxRetries`. It honors `Retry-After` and uses capped exponential
 backoff with jitter. Reference-validation errors occur before a request and are
 available as `OpenHandleReferenceError` and `ReferenceMismatchError`.
 
+## Verify webhooks
+
+Openhandle signs every webhook it pushes. Pass the raw request body, the
+request headers, and the endpoint's signing secret to `verifyWebhook`. It
+returns the typed event or throws `WebhookVerificationError`:
+
+```ts
+import { verifyWebhook, WebhookVerificationError } from '@openhandle/sdk/webhooks';
+
+export async function POST(request: Request) {
+    const rawBody = await request.text();
+
+    try {
+        const event = verifyWebhook(rawBody, request.headers, process.env.OPENHANDLE_WEBHOOK_SECRET!);
+        if (event.environment === 'test' && process.env.NODE_ENV === 'production') {
+            return new Response(null, { status: 204 });
+        }
+
+        switch (event.type) {
+            case 'profile.blocked':
+                console.log(event.data.platform, event.data.handle);
+                break;
+        }
+        return new Response(null, { status: 204 });
+    } catch (error) {
+        if (error instanceof WebhookVerificationError) {
+            return new Response(error.code, { status: 400 });
+        }
+        throw error;
+    }
+}
+```
+
+Read the body before any JSON parser touches it. A re-serialized body fails
+verification. `headers` accepts a `Headers` instance or a plain object such as
+Express's `req.headers`; header names match case-insensitively. The signed
+timestamp must be within 300 seconds of the current time; change this with
+`toleranceSeconds`. Branch on `error.code`: `missing_signature`,
+`missing_timestamp`, `invalid_timestamp`, `timestamp_out_of_tolerance`,
+`invalid_signature`, or `invalid_payload`.
+
 ## Configuration
 
 ```ts
@@ -178,6 +219,8 @@ operation. Per-operation values override client defaults.
 
 The package is ESM-only and supports Node.js 20 or newer. It also works with
 runtimes that provide the standard Fetch and AbortSignal APIs.
+`@openhandle/sdk/webhooks` also needs the `node:crypto` module, which Bun,
+Deno, and Cloudflare Workers with the `nodejs_compat` flag provide.
 
 ## TypeScript conventions
 

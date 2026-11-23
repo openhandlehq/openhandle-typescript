@@ -42,3 +42,21 @@ export class ReferenceMismatchError extends OpenHandleReferenceError {
         this.name = 'ReferenceMismatchError';
     }
 }
+
+export type WebhookVerificationErrorCode =
+    | 'missing_signature'
+    | 'missing_timestamp'
+    | 'invalid_timestamp'
+    | 'timestamp_out_of_tolerance'
+    | 'invalid_signature'
+    | 'invalid_payload';
+
+export class WebhookVerificationError extends Error {
+    readonly code: WebhookVerificationErrorCode;
+
+    constructor(code: WebhookVerificationErrorCode, message: string, options?: { cause?: unknown }) {
+        super(message, { cause: options?.cause });
+        this.name = 'WebhookVerificationError';
+        this.code = code;
+    }
+}

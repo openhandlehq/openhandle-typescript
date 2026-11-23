@@ -2178,6 +2178,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/v1/webhook-events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List the webhook events of this workspace
+         * @description Every event of this workspace, oldest first: the same events a webhook pushes. A live key reads live events and a test key reads test events. Not billed.
+         */
+        get: operations["listWebhookEvents"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/v1/youtube/charts/artists": {
         parameters: {
             query?: never;
@@ -6159,6 +6179,23 @@ export interface components {
             copyright: boolean | null;
             description: string | null;
             scope: string | null;
+        };
+        WebhookEvent: {
+            /** Format: date-time */
+            createdAt: string;
+            data: components["schemas"]["WebhookProfileBlockedData"];
+            /** @enum {string} */
+            environment: "live" | "test";
+            id: string;
+            /** @enum {string} */
+            type: "profile.blocked";
+        };
+        WebhookProfileBlockedData: {
+            /** Format: date-time */
+            blockedAt: string;
+            handle: string | null;
+            platform: string;
+            platformId: string | null;
         };
         YouTubeAudioTrack: {
             language: string | null;
@@ -54656,6 +54693,69 @@ export interface operations {
                     "Retry-After"?: string;
                     /** @description Stable request identifier. */
                     "X-Request-ID"?: string;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+        };
+    };
+    listWebhookEvents: {
+        parameters: {
+            query?: {
+                /** @description Opaque cursor returned by the previous page. */
+                cursor?: string;
+                /** @description Maximum number of events to return. */
+                limit?: number;
+                /** @description Return events created at or after this RFC 3339 timestamp. */
+                since?: string;
+                /** @description Return only events of this type. */
+                type?: "profile.blocked";
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description One page of events. */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data: components["schemas"]["WebhookEvent"][];
+                        meta: {
+                            cursors: {
+                                next: string | null;
+                            };
+                        };
+                    };
+                };
+            };
+            /** @description The locator, cursor, or query is invalid. */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The API key is invalid. */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorEnvelope"];
+                };
+            };
+            /** @description The request rate limit was exceeded. */
+            429: {
+                headers: {
                     [name: string]: unknown;
                 };
                 content: {

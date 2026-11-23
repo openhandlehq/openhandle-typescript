@@ -2,11 +2,7 @@ import type { GeneratedClient } from './generated/resources.js';
 import { SDKRuntime } from './runtime.js';
 import type { OpenHandleConfig } from './types.js';
 
-export {
-    OpenHandleError,
-    OpenHandleReferenceError,
-    ReferenceMismatchError,
-} from './errors.js';
+export { OpenHandleError, OpenHandleReferenceError, ReferenceMismatchError } from './errors.js';
 export type * from './generated/public-types.js';
 export type { components } from './generated/schema.js';
 export type {

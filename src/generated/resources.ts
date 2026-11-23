@@ -15,6 +15,7 @@ export interface GeneratedClient {
     readonly testData: TestDataResource;
     readonly tiktok: TikTokResource;
     readonly twitter: TwitterResource;
+    readonly webhookEvents: WebhookEventsResource;
     readonly youtube: YouTubeResource;
     /**
      * Fetch the resource at a social URL
@@ -1829,6 +1830,18 @@ export interface TwitterSearchUsersResource {
      * @see https://openhandle.dev/docs/api-reference/twitter-search-users-list
      */
     readonly list: (options: OperationOptions<"/v1/twitter/search/users", "get">) => Promise<OperationPage<"/v1/twitter/search/users", "get">>;
+}
+
+export interface WebhookEventsResource {
+    /**
+     * List the webhook events of this workspace
+     *
+     * Every event of this workspace, oldest first: the same events a webhook pushes. A live key reads live events and a test key reads test events. Not billed.
+     *
+     * @example
+     * await openhandle.webhookEvents.list();
+     */
+    readonly list: (options?: OperationOptions<"/v1/webhook-events", "get">) => Promise<OperationPage<"/v1/webhook-events", "get">>;
 }
 
 export interface YouTubeResource {

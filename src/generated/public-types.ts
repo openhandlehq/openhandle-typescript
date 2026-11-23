@@ -903,6 +903,12 @@ export type TwitterVisibility = Camelize<components['schemas']["TwitterVisibilit
 /** Camel-cased TwitterWithheld model used by SDK responses. */
 export type TwitterWithheld = Camelize<components['schemas']["TwitterWithheld"]>;
 
+/** Camel-cased WebhookEvent model used by SDK responses. */
+export type WebhookEvent = Camelize<components['schemas']["WebhookEvent"]>;
+
+/** Camel-cased WebhookProfileBlockedData model used by SDK responses. */
+export type WebhookProfileBlockedData = Camelize<components['schemas']["WebhookProfileBlockedData"]>;
+
 /** Camel-cased YouTubeAudioTrack model used by SDK responses. */
 export type YouTubeAudioTrack = Camelize<components['schemas']["YouTubeAudioTrack"]>;
 
@@ -1667,6 +1673,12 @@ export type TwitterSearchUsersOptions = OperationOptions<"/v1/twitter/search/use
 
 /** Typed result returned by twitter.search.users.list. */
 export type TwitterSearchUsersPage = OperationPage<"/v1/twitter/search/users", "get">;
+
+/** Options accepted by webhookEvents.list. */
+export type WebhookEventsOptions = OperationOptions<"/v1/webhook-events", "get">;
+
+/** Typed result returned by webhookEvents.list. */
+export type WebhookEventsPage = OperationPage<"/v1/webhook-events", "get">;
 
 /** Options accepted by youtube.charts.artists.list. */
 export type YouTubeChartsArtistsOptions = OperationOptions<"/v1/youtube/charts/artists", "get">;
